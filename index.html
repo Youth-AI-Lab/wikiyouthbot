@@ -7,111 +7,201 @@
 <link rel="icon" href="cornicello.svg">
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body data-lang="en">
 <div class="wrap">
+  <div class="langbar" role="group" aria-label="Language">
+    <button type="button" data-set="en" aria-pressed="true">English</button>
+    <button type="button" data-set="fr" aria-pressed="false">Français</button>
+  </div>
+
   <header>
     <div class="kicker">Youth Ai Lab · WikiYouthBot</div>
-    <h1>Chatbots built by young people, and the kit that made them</h1>
-    <p class="lede">WikiYouthBot is an intensive week in which small groups pick a societal cause, investigate it in their own neighbourhood, and turn what they gather into a chatbot that speaks about it.</p>
-    <p class="lede">The chatbot starts out as a confident fabricator. It only becomes reliable to the extent the group writes it so: rules, sources, local material, personas. This site holds three things: what the participants produced, the documentation of how each chatbot was configured, and the full facilitation kit, ready to be reused by another lab.</p>
+    <h1>
+      <span lang="en">Chatbots built by young people, and the kit that made them</span>
+      <span lang="fr">Des chatbots construits par des jeunes, et le kit qui les a fait naître</span>
+    </h1>
+    <p class="lede">
+      <span lang="en">WikiYouthBot is an intensive week in which small groups pick a societal cause, investigate it in their own neighbourhood, and turn what they gather into a chatbot that speaks about it.</span>
+      <span lang="fr">WikiYouthBot est une semaine intensive pendant laquelle de petits groupes choisissent une cause sociétale, enquêtent dessus dans leur propre quartier, et transforment ce qu'ils récoltent en un chatbot qui en parle.</span>
+    </p>
+    <p class="lede">
+      <span lang="en">The chatbot starts out as a confident fabricator. It only becomes reliable to the extent the group writes it so: rules, sources, local material, personas. This site holds three things: what the participants produced, the documentation of how each chatbot was configured, and the full facilitation kit, ready to be reused by another lab.</span>
+      <span lang="fr">Le chatbot démarre en fabricateur assuré. Il ne devient fiable qu'à hauteur de ce que le groupe écrit : des règles, des sources, de la matière locale, des personas. Ce site rassemble trois choses : ce que les participants ont produit, la documentation de la configuration de chaque chatbot, et le kit d'animation complet, prêt à être repris par un autre lab.</span>
+    </p>
   </header>
 
-  <h2>Productions · Lab Les Pacman's, La Rochelle</h2>
-  <p class="sub">27 to 31 July 2026. Eleven participants aged 11 to 16, in two groups. Published as the groups left them at the end of the week.</p>
+  <h2>
+    <span lang="en">Productions · Lab Les Pacman's, La Rochelle</span>
+    <span lang="fr">Productions · Lab Les Pacman's, La Rochelle</span>
+  </h2>
+  <p class="sub">
+    <span lang="en">27 to 31 July 2026. Eleven participants aged 11 to 16, in two groups. Published as the groups left them at the end of the week.</span>
+    <span lang="fr">Du 27 au 31 juillet 2026. Onze participants de 11 à 16 ans, en deux groupes. Publiés tels que les groupes les ont laissés à la fin de la semaine.</span>
+  </p>
 
   <div class="grid">
     <a class="card" href="france/feurisson/">
-      <span class="tag t-fire">Wildfire prevention</span>
+      <span class="tag t-fire"><span lang="en">Wildfire prevention</span><span lang="fr">Prévention des incendies</span></span>
       <h3>Feurisson</h3>
-      <p>A chatbot that answers only in verse, because a piece of advice that rhymes is easier to remember. Rhyming does not exempt it from being accurate, or from saying where it read something.</p>
-      <span class="note">Needs your own Anthropic API key to answer.</span>
-      <span class="more">Open Feurisson →</span>
+      <p>
+        <span lang="en">A chatbot that answers only in verse, because a piece of advice that rhymes is easier to remember. Rhyming does not exempt it from being accurate, or from saying where it read something.</span>
+        <span lang="fr">Un chatbot qui ne répond qu'en vers, parce qu'un conseil qui rime se retient mieux. Rimer ne le dispense pas d'être exact, ni de dire où il a lu ce qu'il avance.</span>
+      </p>
+      <span class="note"><span lang="en">Needs your own Anthropic API key to answer.</span><span lang="fr">Demande votre propre clé API Anthropic pour répondre.</span></span>
+      <span class="more"><span lang="en">Open Feurisson →</span><span lang="fr">Ouvrir Feurisson →</span></span>
     </a>
 
     <a class="card" href="france/superbot/">
-      <span class="tag t-bully">School bullying</span>
+      <span class="tag t-bully"><span lang="en">School bullying</span><span lang="fr">Harcèlement scolaire</span></span>
       <h3>Superbot</h3>
-      <p>A chatbot that answers on school bullying from reference answers with their sources displayed, and that drops everything else the moment someone says they are not doing well.</p>
-      <span class="note">Answers from the group's own base, no key needed.</span>
-      <span class="more">Open Superbot →</span>
+      <p>
+        <span lang="en">A chatbot that answers on school bullying from reference answers with their sources displayed, and that drops everything else the moment someone says they are not doing well.</span>
+        <span lang="fr">Un chatbot qui répond sur le harcèlement scolaire à partir de réponses de référence dont les sources sont affichées, et qui laisse tout tomber dès que quelqu'un dit qu'il ne va pas bien.</span>
+      </p>
+      <span class="note"><span lang="en">Answers from the group's own base, no key needed.</span><span lang="fr">Répond depuis la base du groupe, sans clé.</span></span>
+      <span class="more"><span lang="en">Open Superbot →</span><span lang="fr">Ouvrir Superbot →</span></span>
     </a>
 
     <a class="card" href="france/robo-caillou/">
-      <span class="tag t-robot">Robot prototype</span>
+      <span class="tag t-robot"><span lang="en">Robot prototype</span><span lang="fr">Prototype de robot</span></span>
       <h3>Robo-Caillou</h3>
-      <p>The neighbourhood watcher. Its eyes follow the wildfire vigilance level, and it never sprays a person: it traces a circle of water on the ground around them and drowns the ember.</p>
-      <span class="note">Fully interactive, no key needed.</span>
-      <span class="more">Open Robo-Caillou →</span>
+      <p>
+        <span lang="en">The neighbourhood watcher. Its eyes follow the wildfire vigilance level, and it never sprays a person: it traces a circle of water on the ground around them and drowns the ember.</span>
+        <span lang="fr">La vigie du quartier. Ses yeux suivent le niveau de vigilance incendie, et il ne mouille jamais les gens : il trace un cercle d'eau au sol autour d'eux et noie la braise.</span>
+      </p>
+      <span class="note"><span lang="en">Fully interactive, no key needed.</span><span lang="fr">Entièrement interactif, sans clé.</span></span>
+      <span class="more"><span lang="en">Open Robo-Caillou →</span><span lang="fr">Ouvrir Robo-Caillou →</span></span>
     </a>
   </div>
 
-  <h2>Documented Claude Projects</h2>
-  <p class="sub">What each group actually wrote and gathered: the instructions given to the chatbot, the handwritten dataset transcribed card by card, the personas, the reference questions and answers, and the limits of the material.</p>
+  <h2>
+    <span lang="en">Documented Claude Projects</span>
+    <span lang="fr">Les Claude Projects documentés</span>
+  </h2>
+  <p class="sub">
+    <span lang="en">What each group actually wrote and gathered: the instructions given to the chatbot, the handwritten dataset transcribed card by card, the personas, the reference questions and answers, and the limits of the material.</span>
+    <span lang="fr">Ce que chaque groupe a réellement écrit et récolté : les consignes données au chatbot, le dataset manuscrit transcrit fiche par fiche, les personas, les questions-réponses de référence, et les limites de la matière.</span>
+  </p>
 
   <div class="grid">
     <a class="card" href="projects/feurisson/">
-      <span class="tag t-doc">Documentation</span>
-      <h3>Feurisson · the project behind the chatbot</h3>
-      <p>Thirty-five field cards on figures, actors, useful actions and places, three personas, three reference question and answer sheets, and the rules the group wrote after watching their AI invent sources.</p>
-      <span class="more">Read the documentation →</span>
+      <span class="tag t-doc"><span lang="en">Documentation</span><span lang="fr">Documentation</span></span>
+      <h3><span lang="en">Feurisson · the project behind the chatbot</span><span lang="fr">Feurisson · le projet derrière le chatbot</span></h3>
+      <p>
+        <span lang="en">Thirty-five field cards on figures, actors, useful actions and places, three personas, three reference question and answer sheets, and the rules the group wrote after watching their AI invent sources.</span>
+        <span lang="fr">Trente-cinq fiches de terrain sur les chiffres, les acteurs, les gestes utiles et les lieux, trois personas, trois fiches question-réponse, et les règles que le groupe a écrites après avoir vu son IA inventer des sources.</span>
+      </p>
+      <span class="more"><span lang="en">Read the documentation →</span><span lang="fr">Lire la documentation →</span></span>
     </a>
 
     <a class="card" href="projects/superbot/">
-      <span class="tag t-doc">Documentation</span>
-      <h3>Superbot · the project behind the chatbot</h3>
-      <p>The enquiry carried out at the social centre, four personas covering every position of the problem, the group's own question sheet format, and the distress rule that overrides everything else.</p>
-      <span class="more">Read the documentation →</span>
+      <span class="tag t-doc"><span lang="en">Documentation</span><span lang="fr">Documentation</span></span>
+      <h3><span lang="en">Superbot · the project behind the chatbot</span><span lang="fr">Superbot · le projet derrière le chatbot</span></h3>
+      <p>
+        <span lang="en">The enquiry carried out at the social centre, four personas covering every position of the problem, the group's own question sheet format, and the distress rule that overrides everything else.</span>
+        <span lang="fr">L'enquête menée au centre social, quatre personas qui couvrent toutes les positions du problème, le format de fiche inventé par le groupe, et la règle de détresse qui prime sur tout le reste.</span>
+      </p>
+      <span class="more"><span lang="en">Read the documentation →</span><span lang="fr">Lire la documentation →</span></span>
     </a>
   </div>
 
-  <h2>Facilitation kit</h2>
-  <p class="sub">The tools built for the week, published so that another lab can run the same sequence. Everything runs in a browser. Only the press conference needs an API key, and a free one is enough.</p>
+  <h2>
+    <span lang="en">Facilitation kit</span>
+    <span lang="fr">Le kit d'animation</span>
+  </h2>
+  <p class="sub">
+    <span lang="en">The tools built for the week, published so that another lab can run the same sequence. Everything runs in a browser. Only the press conference needs an API key, and a free one is enough. The tools are in French, the language they were used in.</span>
+    <span lang="fr">Les outils fabriqués pour la semaine, publiés pour qu'un autre lab puisse rejouer la même séquence. Tout fonctionne dans un navigateur. Seule la conférence de presse demande une clé API, et une clé gratuite suffit.</span>
+  </p>
 
   <div class="grid">
     <a class="card" href="tools/mission/">
-      <span class="tag t-kit">Tool</span>
-      <h3>Mission of the week</h3>
-      <p>The sealed envelope and the roadmap used to open each morning: the mission of the week, the teams, and the sixteen steps that take a generic AI to a specialised chatbot.</p>
-      <span class="more">Open the mission →</span>
+      <span class="tag t-kit"><span lang="en">Tool</span><span lang="fr">Outil</span></span>
+      <h3><span lang="en">Mission of the week</span><span lang="fr">La mission de la semaine</span></h3>
+      <p>
+        <span lang="en">The sealed envelope and the roadmap used to open each morning: the mission of the week, the teams, and the sixteen steps that take a generic AI to a specialised chatbot.</span>
+        <span lang="fr">L'enveloppe scellée et la feuille de route qui ouvrent chaque matinée : la mission de la semaine, les équipes, et les seize étapes qui mènent d'une IA générique à un chatbot spécialisé.</span>
+      </p>
+      <span class="more"><span lang="en">Open the mission →</span><span lang="fr">Ouvrir la mission →</span></span>
     </a>
 
     <a class="card" href="tools/press-conference/">
-      <span class="tag t-kit">Tool</span>
-      <h3>AI press conference</h3>
-      <p>The central device that lets a whole group question an AI out loud, as journalists at a press conference. Choose the city, the topic, the register, and whether the AI speaks with the browser voice or a natural one.</p>
-      <span class="note">Needs a free Gemini key, or a Claude key. Runs best from a local server, for the microphone.</span>
-      <span class="more">Open the press conference →</span>
+      <span class="tag t-kit"><span lang="en">Tool</span><span lang="fr">Outil</span></span>
+      <h3><span lang="en">AI press conference</span><span lang="fr">La conférence de presse IA</span></h3>
+      <p>
+        <span lang="en">The central device that lets a whole group question an AI out loud, as journalists at a press conference. Choose the city, the topic, the register, and whether the AI speaks with the browser voice or a natural one.</span>
+        <span lang="fr">Le dispositif central qui permet à tout un groupe d'interroger une IA à voix haute, en posture de journalistes. Ville, sujet, registre et voix se règlent avant de commencer.</span>
+      </p>
+      <span class="note"><span lang="en">Needs a free Gemini key, or a Claude key. Runs best from a local server, for the microphone.</span><span lang="fr">Demande une clé Gemini gratuite, ou une clé Claude. À servir depuis un serveur local, pour le micro.</span></span>
+      <span class="more"><span lang="en">Open the press conference →</span><span lang="fr">Ouvrir la conférence de presse →</span></span>
     </a>
 
     <a class="card" href="tools/key-data-cards/">
-      <span class="tag t-kit">Printable</span>
-      <h3>Key data cards</h3>
-      <p>The cards groups fill in during the field enquiry: one figure, one actor, one place, one useful action, and a source line for each.</p>
-      <span class="more">Open the cards →</span>
+      <span class="tag t-kit"><span lang="en">Printable</span><span lang="fr">Imprimable</span></span>
+      <h3><span lang="en">Key data cards</span><span lang="fr">Les bristols données clés</span></h3>
+      <p>
+        <span lang="en">The cards groups fill in during the field enquiry: one figure, one actor, one place, one useful action, and a source line for each.</span>
+        <span lang="fr">Les fiches que les groupes remplissent pendant l'enquête de terrain : un chiffre, un acteur, un lieu, un geste utile, et une ligne source pour chacun.</span>
+      </p>
+      <span class="more"><span lang="en">Open the cards →</span><span lang="fr">Ouvrir les bristols →</span></span>
     </a>
 
     <a class="card" href="tools/location-sheets/">
-      <span class="tag t-kit">Printable</span>
-      <h3>Location sheets</h3>
-      <p>Colour sheets used to anchor a cause in a real place and decide what can actually be measured or observed on the ground.</p>
-      <span class="note">Prepared for the week, not used in this edition.</span>
-      <span class="more">Open the sheets →</span>
+      <span class="tag t-kit"><span lang="en">Printable</span><span lang="fr">Imprimable</span></span>
+      <h3><span lang="en">Location sheets</span><span lang="fr">Les fiches de localisation</span></h3>
+      <p>
+        <span lang="en">Colour sheets used to anchor a cause in a real place and decide what can actually be measured or observed on the ground.</span>
+        <span lang="fr">Des fiches couleur pour ancrer une cause dans un lieu réel et décider de ce qui peut vraiment être mesuré ou observé sur le terrain.</span>
+      </p>
+      <span class="note"><span lang="en">Prepared for the week, not used in this edition.</span><span lang="fr">Préparées pour la semaine, non utilisées cette fois.</span></span>
+      <span class="more"><span lang="en">Open the sheets →</span><span lang="fr">Ouvrir les fiches →</span></span>
     </a>
 
     <a class="card" href="tools/evidence-wall/">
-      <span class="tag t-kit">Printable</span>
-      <h3>Evidence wall</h3>
-      <p>Press cuttings to sort into solid, to be checked, and bogus, with the rule that an organisation only counts if it is real and can be found again.</p>
-      <span class="note">Prepared for the week, not used in this edition.</span>
-      <span class="more">Open the evidence wall →</span>
+      <span class="tag t-kit"><span lang="en">Printable</span><span lang="fr">Imprimable</span></span>
+      <h3><span lang="en">Evidence wall</span><span lang="fr">Le mur d'enquête</span></h3>
+      <p>
+        <span lang="en">Press cuttings to sort into solid, to be checked, and bogus, with the rule that an organisation only counts if it is real and can be found again.</span>
+        <span lang="fr">Des coupures de presse à trier en solide, à vérifier et bidon, avec la règle qu'un organisme ne compte que s'il est réel et retrouvable.</span>
+      </p>
+      <span class="note"><span lang="en">Prepared for the week, not used in this edition.</span><span lang="fr">Préparé pour la semaine, non utilisé cette fois.</span></span>
+      <span class="more"><span lang="en">Open the evidence wall →</span><span lang="fr">Ouvrir le mur d'enquête →</span></span>
     </a>
   </div>
 
   <footer>
-    <p>Youth Ai Lab is co-funded by the European Union. The productions on this site are the work of the young participants and are published as they were left at the end of the workshop week.</p>
-    <p>Neither Feurisson nor Superbot is an emergency service. In case of fire, call 18, or 112 in Europe, or 114 by SMS. For bullying, call 3018. For a child in danger, call 119.</p>
-    <p>Source and reuse: <a href="https://github.com/Youth-AI-Lab/wikiyouthbot">github.com/Youth-AI-Lab/wikiyouthbot</a></p>
+    <p>
+      <span lang="en">Youth Ai Lab is co-funded by the European Union. The productions on this site are the work of the young participants and are published as they were left at the end of the workshop week.</span>
+      <span lang="fr">Youth Ai Lab est cofinancé par l'Union européenne. Les productions de ce site sont le travail des jeunes participants et sont publiées telles qu'ils les ont laissées à la fin de la semaine.</span>
+    </p>
+    <p>
+      <span lang="en">Neither Feurisson nor Superbot is an emergency service. In case of fire, call 18, or 112 in Europe, or 114 by SMS. For bullying, call 3018. For a child in danger, call 119.</span>
+      <span lang="fr">Ni Feurisson ni Superbot ne sont des services de secours. En cas d'incendie, appelez le 18, le 112 en Europe, ou le 114 par SMS. Pour le harcèlement, le 3018. Pour un enfant en danger, le 119.</span>
+    </p>
+    <p>
+      <span lang="en">Source and reuse: </span><span lang="fr">Sources et réutilisation : </span><a href="https://github.com/Youth-AI-Lab/wikiyouthbot">github.com/Youth-AI-Lab/wikiyouthbot</a>
+    </p>
   </footer>
 </div>
+
+<script>
+(function(){
+  var boutons = document.querySelectorAll('.langbar button');
+  function appliquer(l){
+    document.body.dataset.lang = l;
+    document.documentElement.lang = l;
+    boutons.forEach(function(o){ o.setAttribute('aria-pressed', String(o.dataset.set === l)); });
+  }
+  boutons.forEach(function(b){
+    b.addEventListener('click', function(){
+      appliquer(b.dataset.set);
+      try { localStorage.setItem('wyb-lang', b.dataset.set); } catch (e) {}
+    });
+  });
+  var memo;
+  try { memo = localStorage.getItem('wyb-lang'); } catch (e) {}
+  if (memo === 'fr' || memo === 'en') { appliquer(memo); }
+})();
+</script>
 </body>
 </html>

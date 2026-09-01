@@ -17,20 +17,22 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 
 PAGES = [
     {
-        "src": "projects/source/feurisson.md",
+        "src_fr": "projects/source/feurisson.md",
+        "src_en": "projects/source/feurisson.en.md",
         "out": "projects/feurisson/index.html",
-        "title": "Feurisson · Claude Project documenté",
+        "title": "Feurisson · documented Claude Project",
         "accent": "#f37030",
         "accent_soft": "#ffd5c1",
-        "back": "../",
+        "back": "../../",
     },
     {
-        "src": "projects/source/superbot.md",
+        "src_fr": "projects/source/superbot.md",
+        "src_en": "projects/source/superbot.en.md",
         "out": "projects/superbot/index.html",
-        "title": "Superbot · Claude Project documenté",
+        "title": "Superbot · documented Claude Project",
         "accent": "#38b6ff",
         "accent_soft": "#cbecff",
-        "back": "../",
+        "back": "../../",
     },
 ]
 
@@ -135,7 +137,7 @@ def convert(md):
 
 
 TEMPLATE = """<!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -163,14 +165,54 @@ TEMPLATE = """<!DOCTYPE html>
   th, td {{ text-align:left; padding:11px 14px; border-bottom:1px solid #e4ddcb; vertical-align:top; line-height:1.55; }}
   th {{ background:var(--accent-soft); font-weight:700; }}
   tbody tr:last-child td {{ border-bottom:0; }}
+  .topbar {{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between; margin-bottom:28px; }}
+  .langbar {{ display:flex; gap:0; border:2px solid var(--ink); border-radius:999px; overflow:hidden; }}
+  .langbar button {{ font:inherit; font-size:.86rem; font-weight:700; padding:6px 15px; border:0; background:#fff; color:var(--ink); cursor:pointer; }}
+  .langbar button[aria-pressed="true"] {{ background:var(--ink); color:#fff; }}
+  .langnote {{ font-size:.86rem; color:var(--soft); margin:-10px 0 26px; }}
+  body[data-lang="en"] [lang="fr"], body[data-lang="fr"] [lang="en"] {{ display:none; }}
   @media (max-width:640px) {{ .wrap {{ padding:28px 16px 70px; }} }}
 </style>
 </head>
-<body>
+<body data-lang="en">
 <div class="wrap">
-<a class="back" href="{back}">← Retour</a>
-{body}
+<div class="topbar">
+  <a class="back" href="{back}"><span lang="en">← Back to the site</span><span lang="fr">← Retour au site</span></a>
+  <div class="langbar" role="group" aria-label="Language">
+    <button type="button" data-set="en" aria-pressed="true">English</button>
+    <button type="button" data-set="fr" aria-pressed="false">Français</button>
+  </div>
 </div>
+<p class="langnote" lang="en">English is a translation. The French version holds the participants' original wording.</p>
+<p class="langnote" lang="fr">Version originale. La version anglaise en est une traduction.</p>
+<div lang="en">
+{body_en}
+</div>
+<div lang="fr">
+{body_fr}
+</div>
+</div>
+<script>
+(function(){{
+  var boutons = document.querySelectorAll('.langbar button');
+  boutons.forEach(function(b){{
+    b.addEventListener('click', function(){{
+      var l = b.dataset.set;
+      document.body.dataset.lang = l;
+      document.documentElement.lang = l;
+      boutons.forEach(function(o){{ o.setAttribute('aria-pressed', String(o.dataset.set === l)); }});
+      try {{ localStorage.setItem('wyb-lang', l); }} catch (e) {{}}
+    }});
+  }});
+  var memo;
+  try {{ memo = localStorage.getItem('wyb-lang'); }} catch (e) {{}}
+  if (memo === 'fr' || memo === 'en') {{
+    document.body.dataset.lang = memo;
+    document.documentElement.lang = memo;
+    boutons.forEach(function(o){{ o.setAttribute('aria-pressed', String(o.dataset.set === memo)); }});
+  }}
+}})();
+</script>
 </body>
 </html>
 """
@@ -178,10 +220,11 @@ TEMPLATE = """<!DOCTYPE html>
 
 def main():
     for page in PAGES:
-        src = os.path.join(ROOT, page["src"])
         out = os.path.join(ROOT, page["out"])
-        with open(src, encoding="utf-8") as f:
-            md = f.read()
+        bodies = {}
+        for lang in ("fr", "en"):
+            with open(os.path.join(ROOT, page["src_" + lang]), encoding="utf-8") as f:
+                bodies[lang] = convert(f.read())
         os.makedirs(os.path.dirname(out), exist_ok=True)
         with open(out, "w", encoding="utf-8") as f:
             f.write(TEMPLATE.format(
@@ -189,7 +232,8 @@ def main():
                 accent=page["accent"],
                 accent_soft=page["accent_soft"],
                 back=page["back"],
-                body=convert(md),
+                body_en=bodies["en"],
+                body_fr=bodies["fr"],
             ))
         print("built", page["out"])
 

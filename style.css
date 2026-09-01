@@ -21,6 +21,18 @@ html, body {
 
 .wrap { max-width: 1040px; margin: 0 auto; padding: 56px 24px 80px; }
 
+.langbar {
+  display: inline-flex; border: 2px solid var(--ink); border-radius: 999px;
+  overflow: hidden; margin-bottom: 26px;
+}
+.langbar button {
+  font: inherit; font-size: .86rem; font-weight: 700; padding: 6px 15px;
+  border: 0; background: #fff; color: var(--ink); cursor: pointer;
+}
+.langbar button[aria-pressed="true"] { background: var(--ink); color: #fff; }
+
+body[data-lang="en"] [lang="fr"], body[data-lang="fr"] [lang="en"] { display: none; }
+
 header { margin-bottom: 44px; }
 
 .kicker {

@@ -19,8 +19,10 @@ wikiyouthbot/
 │   └── robo-caillou/index.html      Robot prototype, wildfire vigilance and ember control
 ├── projects/
 │   ├── source/                      Markdown sources, edit these
-│   │   ├── feurisson.md
-│   │   ├── superbot.md
+│   │   ├── feurisson.md             French, original
+│   │   ├── feurisson.en.md          English translation
+│   │   ├── superbot.md              French, original
+│   │   ├── superbot.en.md           English translation
 │   │   └── feurisson-mascotte.png
 │   ├── feurisson/index.html         Generated, do not edit by hand
 │   └── superbot/index.html          Generated, do not edit by hand
@@ -32,9 +34,15 @@ wikiyouthbot/
     └── evidence-wall/index.html     Printable press cuttings to sort
 ```
 
+## Languages
+
+The landing page and the two documentation pages are bilingual, with a switch in the top corner. English is shown by default and the choice is remembered in the browser. French is the original: the participants wrote in French, and the English pages are a translation of the same sources.
+
+The productions and the facilitation kit stay in French only. Translating them would mean altering the artefacts themselves.
+
 ## Rebuilding the documentation pages
 
-The two documentation pages are generated from `projects/source/*.md`. Edit the markdown, then run:
+The two documentation pages are generated from the pair of markdown files for each project, `<name>.md` for French and `<name>.en.md` for English. Edit the markdown, then run:
 
 ```
 python3 build.py

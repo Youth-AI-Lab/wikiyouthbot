@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Superbot · Claude Project documenté</title>
+<title>Superbot · documented Claude Project</title>
 <link rel="icon" href="../../cornicello.svg">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;700;800&family=Manrope:wght@400;500;600;700&display=swap');
@@ -27,12 +27,99 @@
   th, td { text-align:left; padding:11px 14px; border-bottom:1px solid #e4ddcb; vertical-align:top; line-height:1.55; }
   th { background:var(--accent-soft); font-weight:700; }
   tbody tr:last-child td { border-bottom:0; }
+  .topbar { display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between; margin-bottom:28px; }
+  .langbar { display:flex; gap:0; border:2px solid var(--ink); border-radius:999px; overflow:hidden; }
+  .langbar button { font:inherit; font-size:.86rem; font-weight:700; padding:6px 15px; border:0; background:#fff; color:var(--ink); cursor:pointer; }
+  .langbar button[aria-pressed="true"] { background:var(--ink); color:#fff; }
+  .langnote { font-size:.86rem; color:var(--soft); margin:-10px 0 26px; }
+  body[data-lang="en"] [lang="fr"], body[data-lang="fr"] [lang="en"] { display:none; }
   @media (max-width:640px) { .wrap { padding:28px 16px 70px; } }
 </style>
 </head>
-<body>
+<body data-lang="en">
 <div class="wrap">
-<a class="back" href="../">← Retour</a>
+<div class="topbar">
+  <a class="back" href="../../"><span lang="en">← Back to the site</span><span lang="fr">← Retour au site</span></a>
+  <div class="langbar" role="group" aria-label="Language">
+    <button type="button" data-set="en" aria-pressed="true">English</button>
+    <button type="button" data-set="fr" aria-pressed="false">Français</button>
+  </div>
+</div>
+<p class="langnote" lang="en">English is a translation. The French version holds the participants' original wording.</p>
+<p class="langnote" lang="fr">Version originale. La version anglaise en est une traduction.</p>
+<div lang="en">
+<h1>Superbot, the chatbot of the school bullying group</h1>
+<p>WikiYouthBot intensive week, La Rochelle, July 2026. Working document: a full transcription of what the group produced, taken from the handwritten cards, the persona cards, the reference question and answer sheet, the mascot drawings and the digital artefacts. This English version is a translation. The French version holds the participants&#x27; original wording.</p>
+<p>Reading the handwriting: uncertain passages are marked [?].</p>
+<hr>
+<h2>Identity of the chatbot</h2>
+<ul><li>Name: Superbot.</li><li>Theme given to the chatbot: supporting pupils facing bullying.</li><li>Geographical scope written by the group: mainland France and the overseas territories.</li><li>Mascot: Bouclebot, a standing figure holding a large red, blue and yellow shield marked with a chevron, drawn and coloured with felt pens, captioned &quot;our mascot&quot;. A first proposal named Jean-Pierre was crossed out by the group.</li></ul>
+<p>Behaviour instructions written by the group, in their own words:</p>
+<ul><li>Stop inventing sources.</li><li>Keep a list of reliable sources.</li><li>Stay on mainland France and the overseas territories.</li></ul>
+<p>Those three instructions are short, and that matters: the first one alone was enough to pull the chatbot out of its fabricating behaviour. The group wrote it after seeing for themselves that the chatbot was producing sources that did not exist.</p>
+<hr>
+<h2>The dataset</h2>
+<p>Handwritten cards gathered through documentary research and by interviewing the people present around the venue.</p>
+<h3>What comes from official sources</h3>
+<div class="tablewrap"><table>
+<thead><tr><th>Question on the card</th><th>What the group wrote</th><th>Source stated</th></tr></thead>
+<tbody>
+<tr><td>Since when has the pHARe programme been generalised?</td><td>school year 2022: generalised to primary schools and lower secondary schools. School year 2023: extended to upper secondary schools, compulsory for all establishments</td><td>education.gouv.fr</td></tr>
+<tr><td>Since when has the 3018 helpline existed?</td><td>the 3018 has existed since 27 September 2023</td><td>source line left blank</td></tr>
+<tr><td>Which arrangements allow pupils to speak up, and what share of establishments are equipped?</td><td>primary: pHARe and a questionnaire. Lower secondary: pHARe and pupil ambassadors. Upper secondary: pHARe and a questionnaire. The figure is 96 % of establishments equipped with these arrangements</td><td>info.gouv.fr and the ministry statistics department</td></tr>
+<tr><td>Which arrangements allow pupils to speak up?</td><td>the 3018, a free helpline; the chat in the app; a digital safe to store evidence of bullying; a self-assessment questionnaire to encourage people to speak about it</td><td>info.gouv.fr</td></tr>
+</tbody></table></div>
+<h3>What comes from the field enquiry</h3>
+<div class="tablewrap"><table>
+<thead><tr><th>Question on the card</th><th>What the group wrote</th></tr></thead>
+<tbody>
+<tr><td>Out of 5 people around you, how many know the 3018?</td><td>3 yes, 1 no</td></tr>
+<tr><td>Ask 10 people whether they know the 3018</td><td>tally marks, count to be confirmed</td></tr>
+<tr><td>Ask 5 adults for one simple gesture that helps</td><td>write down what is happening; talk about it (2 answers); talk about it and work out what to do to avoid it; reassure the person targeted, restore their self-confidence, give them ways to answer bullying and not to be afraid of others or of adults; train young people and adults</td></tr>
+<tr><td>Out of 5 people, how many have already seen someone being excluded?</td><td>5 out of 5</td></tr>
+<tr><td>Ask 5 adults where they would direct a young person who is being bullied</td><td>to a parent, or an adult in general; the police, an association; first to someone responsible in the school; the school psychologist, the school nurse</td></tr>
+<tr><td>Out of 5 people, how many know who to talk to in case of bullying?</td><td>take out the phone and call 118 [?]; my parents (2 answers); no, I do not know; my therapist</td></tr>
+<tr><td>Ask adults whether they have ever faced a bullying problem, and how they reacted</td><td>no, alert the police; yes, in the street, reaction: ignore it; yes, went with their child to see the person responsible in the school; yes, alert the adults</td></tr>
+<tr><td>Out of 5 people, how many think a witness who reacts helps?</td><td>yes, because if the person does not care it can go further (2 people); yes it can help, but also no, because it can push the bully to bully more (2 people)</td></tr>
+<tr><td>Out of all the young people around you, how many say they have been bullied at least once at school?</td><td>2</td></tr>
+<tr><td>How many say they have faced mockery or racism [?] at primary, lower or upper secondary school?</td><td>4</td></tr>
+</tbody></table></div>
+<p>The nuanced answer about the witness, where four people split between &quot;it helps&quot; and &quot;it can make things worse&quot;, is the most useful material of the set: it fed the chatbot&#x27;s answer on the role of the witness directly.</p>
+<hr>
+<h2>The reference question and answer sheet</h2>
+<p>One completed sheet, with a format variant invented by the group: the reference answer box was split into two columns, what we want and what we don&#x27;t want.</p>
+<p>Theme: school bullying. Question: what sanctions exist at school against the different types of bullying? What we want: the sanctions that apply in Charente-Maritime, with reliable sources. What we don&#x27;t want: that it invents; that it says it knows nothing; that it plays down the seriousness [?]; that it says it has nothing. Prohibitions or constraints: not checking whether the content it retrieves is AI-generated; using Wikipedia.</p>
+<p>The what we want and what we don&#x27;t want split is the group&#x27;s own find, and is worth passing on to the consortium: it makes the template easier to use when stating a quality requirement.</p>
+<hr>
+<h2>The personas</h2>
+<p>Four cards, three of them complete. The group covered the four positions of a bullying situation: the target, the witness, the bully, and the adult in the school.</p>
+<h3>Joseph [surname illegible], 45</h3>
+<ul><li>Occupation: school supervisor. He lives with his parents.</li><li>Favourite apps: McDonald&#x27;s, Facebook, WhatsApp. Likelihood of using the chatbot: 2 out of 5.</li><li>Cursors: knowledge of the cause 5 out of 5, civic engagement 0 out of 5, patience 0 out of 5, perception of technology 0 out of 5.</li><li>History: he lives in Margny [?], he does not earn enough, he is bullied.</li><li>Expectations: he does not want to be a bully and he cannot understand bullying.</li><li>Typical prompt and expected tone: boxes left blank.</li></ul>
+<h3>Monsieur Non-Frus [?], 17, the witness</h3>
+<ul><li>Occupation: works at the school, he has repeated a year. His mother has died.</li><li>Favourite apps: YouTube, Snap, Spotify. Likelihood of using the chatbot: 2 out of 5.</li><li>Cursors: knowledge of the cause 4 out of 5, civic engagement 5 out of 5, patience 5 out of 5, perception of technology 2 out of 5.</li><li>History: he saw his friend being bullied.</li><li>Expectations: he is looking for how to help the person being bullied.</li><li>Typical prompt: &quot;What can I do, as a witness, to help someone who is being bullied?&quot;</li></ul>
+<h3>Valentin Amstar, 14, the bully</h3>
+<ul><li>Occupation: volunteer junior firefighter and pupil, he has not repeated a year. He has lost a grandparent, his parents are together.</li><li>Favourite apps: Snap, TikTok, Spotify. Likelihood of using the chatbot: 2 out of 5.</li><li>Cursors: knowledge of the cause 3 out of 5, civic engagement 5 out of 5, patience 2 out of 5, perception of technology 3 out of 5.</li><li>History: he went through his whole schooling. He was bullied, he could not say so, and he became a bully. He is gay.</li><li>Expectations: he is looking for more information on sanctions, and to understand how bullying works.</li><li>Typical prompt: &quot;What sanctions do I risk if I have bullied someone?&quot;</li></ul>
+<p>This is the strongest card of the set: the group built a bully who had first been bullied, and gave him a sincere question rather than a provocation.</p>
+<h3>Ariana Petite, 12, the target</h3>
+<ul><li>Favourite apps: Snap, YouTube, Spotify. Likelihood of using the chatbot: 2 out of 5.</li><li>Cursors: knowledge of the cause 2 out of 5, civic engagement 4 out of 5, patience 1 out of 5, perception of technology 2 out of 5.</li><li>The rest of the card, occupation, family situation, history, expectations, prompt and tone, was left blank.</li></ul>
+<hr>
+<h2>The digital artefacts</h2>
+<h3>Superbot, the public page</h3>
+<p>Welcome line written by the group: &quot;Hi! I answer questions about school bullying in France: the arrangements, the 3018, the pHARe programme, who to talk to. Ask your question.&quot;</p>
+<p>An embedded knowledge base of six reference answers written from the dataset, each with its source displayed:</p>
+<ol><li>What is the pHARe programme? Source: education.gouv.fr.</li><li>Since when has the 3018 existed? An answer that distinguishes the earlier existence of the number for cyberbullying, the interministerial plan of 27 September 2023 that made it the single number, and the replacement of the 3020 on 1 January 2024. Source: education.gouv.fr and e-Enfance.</li><li>Which arrangements allow pupils to speak up? With the figure of 96 % of schools engaged in pHARe certification as of 30 June 2025. Source: info.gouv.fr.</li><li>Who can a young victim turn to? Source displayed: the group&#x27;s enquiry with 5 adults.</li><li>How can you help when you are a witness? Source displayed: the group&#x27;s enquiry with 5 adults.</li><li>Why do people bully others? An answer on the rejection of a difference, the designation of a scapegoat, group pressure and the peak of risk at the end of primary and in lower secondary school. Source: education.gouv.fr, the brochure on bullying between pupils.</li></ol>
+<p>Two of the six answers cite the group&#x27;s enquiry as their source. The dataset built by the participants therefore became a displayed source on the same footing as education.gouv.fr, which is exactly the purpose of the dataset step.</p>
+<p>Response mechanisms built during the week:</p>
+<ul><li>A DISTRESS list of expressions of personal difficulty, which takes priority over any other classification: as soon as one of them is recognised, the chatbot leaves every other behaviour and directs the person to a trusted adult.</li><li>A HESITATION list for expressed blocks: I do not dare, I am ashamed, nobody believes me, it will make things worse.</li><li>A CONTEMPT list, added after a test by the group: it catches expressions of superiority over other pupils, a case the participants found themselves while testing the chatbot.</li><li>A GREETINGS list with its own welcome answer.</li><li>Approximate matching by Levenshtein distance, with tolerances by word length, to catch typing mistakes and uncertain spelling.</li><li>A learning flow when a question is not recognised, with classification and filing of the new entry.</li><li>A &quot;copy my base&quot; button to export and enrich the base durably.</li><li>Read-aloud with a voice selector.</li><li>An API key field for free questions, the key staying on the device.</li><li>A permanent footer: 3018, the free helpline against bullying and online violence; 119, children in danger; and an invitation to talk to a trusted adult, a parent, a teacher, the school nurse or the head of year.</li></ul>
+<h3>The robot of the future</h3>
+<p>A section of the public page, built from the schematic drawn by the group, with a front view, a side view and the choice between castors or a hoverboard wheel.</p>
+<p>Superbot as a robot is 50 cm wide and includes:</p>
+<ul><li>hug arms;</li><li>a night light;</li><li>a tissue box;</li><li>a phone arm to call for help;</li><li>a backpack dispenser and printer;</li><li>a sound output.</li></ul>
+<hr>
+<h2>Points to watch for the reporting</h2>
+<ul><li>Source vigilance: an earlier session produced fabricated sources, which were spotted and corrected. Any figure reused in the reporting must be attached to a real source, namely education.gouv.fr, info.gouv.fr, service-public.fr, the 3018 and e-Enfance, and the law of 2 March 2022.</li><li>The personas contain sensitive biographical elements written by the participants, in particular about the sexual orientation of one persona and the death of a parent. They are faithful to their production and revealing of their understanding of the subject, but they call for measured handling in a document circulated to the consortium.</li><li>Giving personal distress priority over every other response logic is the strongest design point of the project. That is what should be highlighted in the achievements section.</li></ul>
+</div>
+<div lang="fr">
 <h1>Superbot, le chatbot du groupe harcèlement scolaire</h1>
 <p>Semaine intensive WikiYouthBot, La Rochelle, juillet 2026. Document de travail : transcription intégrale de ce que le groupe a produit, à partir des fiches manuscrites, des cartes personas, de la fiche Q&amp;R, des dessins de mascotte et des artefacts numériques. Rédigé en français, à traduire au moment du reporting.</p>
 <p>Lecture des manuscrits : les passages incertains sont signalés par [?].</p>
@@ -105,5 +192,27 @@
 <h2>Points de vigilance pour le reporting</h2>
 <ul><li>Vigilance sur les sources : une session antérieure avait produit des sources fabriquées, repérées et corrigées. Toute donnée chiffrée reprise dans le reporting doit être rattachée à une source réelle, nommément education.gouv.fr, info.gouv.fr, service-public.fr, le 3018 et e-Enfance, la loi du 2 mars 2022.</li><li>Les personas contiennent des éléments biographiques sensibles écrits par les jeunes, notamment sur l&#x27;orientation sexuelle d&#x27;un persona et le décès d&#x27;un parent. Ils sont fidèles à leur production et éclairants sur leur compréhension du sujet, mais ils demandent un traitement mesuré dans un document diffusé au consortium.</li><li>La priorité donnée à la détresse personnelle sur toute autre logique de réponse est le point de conception le plus solide du projet. C&#x27;est ce qu&#x27;il faut mettre en avant dans la partie achievements.</li></ul>
 </div>
+</div>
+<script>
+(function(){
+  var boutons = document.querySelectorAll('.langbar button');
+  boutons.forEach(function(b){
+    b.addEventListener('click', function(){
+      var l = b.dataset.set;
+      document.body.dataset.lang = l;
+      document.documentElement.lang = l;
+      boutons.forEach(function(o){ o.setAttribute('aria-pressed', String(o.dataset.set === l)); });
+      try { localStorage.setItem('wyb-lang', l); } catch (e) {}
+    });
+  });
+  var memo;
+  try { memo = localStorage.getItem('wyb-lang'); } catch (e) {}
+  if (memo === 'fr' || memo === 'en') {
+    document.body.dataset.lang = memo;
+    document.documentElement.lang = memo;
+    boutons.forEach(function(o){ o.setAttribute('aria-pressed', String(o.dataset.set === memo)); });
+  }
+})();
+</script>
 </body>
 </html>
