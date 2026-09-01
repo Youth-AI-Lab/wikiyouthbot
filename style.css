@@ -58,10 +58,13 @@ h2 {
 .sub { color: var(--soft); font-size: .95rem; margin-bottom: 24px; max-width: 68ch; line-height: 1.6;
        text-align: justify; text-justify: inter-word; hyphens: auto; }
 
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(272px, 1fr)); gap: 20px; }
+.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; align-items: stretch; }
+@media (max-width: 900px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .grid { grid-template-columns: 1fr; } }
 
 .card {
-  display: block; text-decoration: none; color: inherit; background: #fff;
+  display: flex; flex-direction: column; height: 100%;
+  text-decoration: none; color: inherit; background: #fff;
   border: 2px solid var(--ink); border-radius: 18px; padding: 22px;
   box-shadow: 5px 5px 0 var(--ink);
   transition: transform .15s ease, box-shadow .15s ease;
@@ -85,7 +88,7 @@ h2 {
 .card p { font-size: .94rem; line-height: 1.6; color: #333;
           text-align: justify; text-justify: inter-word; hyphens: auto; }
 .card .note { display: block; margin-top: 10px; font-size: .84rem; color: var(--soft); }
-.card .more { margin-top: 14px; display: block; font-weight: 700; font-size: .9rem; }
+.card .more { margin-top: auto; padding-top: 14px; display: block; font-weight: 700; font-size: .9rem; }
 
 footer {
   margin-top: 68px; padding-top: 26px; border-top: 2px solid var(--ink);
