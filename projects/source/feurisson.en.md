@@ -1,7 +1,6 @@
 # Feurisson, the chatbot of the wildfire group
 
-WikiYouthBot intensive week, La Rochelle, July 2026.
-Working document: a full transcription of what the group produced, taken from the handwritten cards, the persona cards, the reference question and answer sheets, and the digital artefacts. This English version is a translation. The French version holds the participants' original wording.
+A full transcription of what the group produced, taken from the handwritten cards, the persona cards, the reference question and answer sheets, and the digital artefacts.
 
 Reading the handwriting: uncertain passages are marked [?].
 

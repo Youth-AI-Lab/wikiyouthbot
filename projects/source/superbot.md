@@ -1,7 +1,6 @@
 # Superbot, le chatbot du groupe harcèlement scolaire
 
-Semaine intensive WikiYouthBot, La Rochelle, juillet 2026.
-Document de travail : transcription intégrale de ce que le groupe a produit, à partir des fiches manuscrites, des cartes personas, de la fiche Q&R, des dessins de mascotte et des artefacts numériques. Rédigé en français, à traduire au moment du reporting.
+Transcription intégrale de ce que le groupe a produit, à partir des fiches manuscrites, des cartes personas, de la fiche Q&R, des dessins de mascotte et des artefacts numériques.
 
 Lecture des manuscrits : les passages incertains sont signalés par [?].
 
