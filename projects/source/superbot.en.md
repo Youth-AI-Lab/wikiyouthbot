@@ -20,8 +20,6 @@ Behaviour instructions written by the group, in their own words:
 - Keep a list of reliable sources.
 - Stay on mainland France and the overseas territories.
 
-Those three instructions are short, and that matters: the first one alone was enough to pull the chatbot out of its fabricating behaviour. The group wrote it after seeing for themselves that the chatbot was producing sources that did not exist.
-
 ---
 
 ## The dataset
@@ -52,8 +50,6 @@ Handwritten cards gathered through documentary research and by interviewing the 
 | Out of all the young people around you, how many say they have been bullied at least once at school? | 2 |
 | How many say they feel safe at primary, lower or upper secondary school? | 4 |
 
-The nuanced answer about the witness, where four people split between "it helps" and "it can make things worse", is the most useful material of the set: it fed the chatbot's answer on the role of the witness directly.
-
 ---
 
 ## The reference question and answer sheet
@@ -66,13 +62,11 @@ What we want: the sanctions that apply in Charente-Maritime, with reliable sourc
 What we don't want: that it invents; that it says it knows nothing; that it plays down the seriousness [?]; that it says it has nothing.
 Prohibitions or constraints: not checking whether the content it retrieves is AI-generated; using Wikipedia.
 
-The what we want and what we don't want split is the group's own find, and is worth passing on to the consortium: it makes the template easier to use when stating a quality requirement.
-
 ---
 
 ## The personas
 
-Four cards, three of them complete. The group covered the four positions of a bullying situation: the target, the witness, the bully, and the adult in the school.
+Four cards, three of them complete.
 
 ### Joseph du coussin, 45
 
@@ -101,8 +95,6 @@ Four cards, three of them complete. The group covered the four positions of a bu
 - Expectations: he is looking for more information on sanctions, and to understand how bullying works.
 - Typical prompt: "What sanctions do I risk if I have bullied someone?"
 
-This is the strongest card of the set: the group built a bully who had first been bullied, and gave him a sincere question rather than a provocation.
-
 ### Ariana Petite, 12, the target
 
 - Favourite apps: Snap, YouTube, Spotify. Likelihood of using the chatbot: 2 out of 5.
@@ -125,8 +117,6 @@ An embedded knowledge base of six reference answers written from the dataset, ea
 4. Who can a young victim turn to? Source displayed: the group's enquiry with 5 adults.
 5. How can you help when you are a witness? Source displayed: the group's enquiry with 5 adults.
 6. Why do people bully others? An answer on the rejection of a difference, the designation of a scapegoat, group pressure and the peak of risk at the end of primary and in lower secondary school. Source: education.gouv.fr, the brochure on bullying between pupils.
-
-Two of the six answers cite the group's enquiry as their source. The dataset built by the participants therefore became a displayed source on the same footing as education.gouv.fr, which is exactly the purpose of the dataset step.
 
 Response mechanisms built during the week:
 
@@ -153,11 +143,3 @@ Superbot as a robot is 50 cm wide and includes:
 - a phone arm to call for help;
 - a backpack dispenser and printer;
 - a sound output.
-
----
-
-## Points to watch for the reporting
-
-- Source vigilance: an earlier session produced fabricated sources, which were spotted and corrected. Any figure reused in the reporting must be attached to a real source, namely education.gouv.fr, info.gouv.fr, service-public.fr, the 3018 and e-Enfance, and the law of 2 March 2022.
-- The personas contain sensitive biographical elements written by the participants, in particular about the sexual orientation of one persona and the death of a parent. They are faithful to their production and revealing of their understanding of the subject, but they call for measured handling in a document circulated to the consortium.
-- Giving personal distress priority over every other response logic is the strongest design point of the project. That is what should be highlighted in the achievements section.

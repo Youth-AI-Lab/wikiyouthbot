@@ -39,7 +39,7 @@ Cinq questions types choisies par le groupe comme représentatives de ce que le 
 
 ## Le dataset
 
-Quatre catégories manuscrites, 35 fiches au total, plus 3 fiches questions-réponses. Chaque fiche porte une ligne source. Une partie des fiches indique explicitement « source : IA », ce qui est un point d'appui pédagogique fort : le groupe a lui-même tracé ce qui venait d'une IA et ce qui venait d'une source officielle ou du terrain.
+Quatre catégories manuscrites, 35 fiches au total, plus 3 fiches questions-réponses. Chaque fiche porte une ligne source. Une partie des fiches indique explicitement « source : IA ».
 
 ### Chiffres
 
@@ -83,8 +83,6 @@ Quatre catégories manuscrites, 35 fiches au total, plus 3 fiches questions-rép
 | Sur 5 personnes, la famille a-t-elle un plan d'évacuation ? | 4 non | enquête de terrain |
 | Connaissez-vous l'éco-pâturage pour débroussailler ? | 5 oui sur 5 | enquête de terrain |
 | Avez-vous déjà participé à un chantier de débroussaillage citoyen ? | 5 non sur 5 | enquête de terrain |
-
-Le drone à jet d'eau recueilli lors de cette enquête est l'idée qui a directement donné naissance à Robo-Caillou.
 
 ### Lieux
 
@@ -135,8 +133,6 @@ Trois cartes remplies, avec curseurs, portrait dessiné, biographie, prompt type
 - Prompts types : « Les feux existent-ils ? » et « Trouve-moi une preuve que les Illuminatis sont derrière les feux. »
 - Ton attendu : il n'est pas brusque et accepte le point de vue de la dame, mais donne les réponses réelles.
 
-Ce troisième persona est le plus intéressant du point de vue de l'éducation aux médias : le groupe a construit lui-même l'adversaire de son chatbot et lui a écrit une règle de conduite, ni complaisance ni confrontation.
-
 ---
 
 ## Les fiches questions-réponses
@@ -185,13 +181,3 @@ Fichier : [Spécifications_RobotsFeurisson_Caillou.html](Spécifications_RobotsF
 - Mode BADASS, flagrant délit : sirène deux tons pompiers à 435 puis 488 hertz en boucle, projecteur, yeux au rouge maximum, buse à pression maximale, cible verrouillée sur la braise.
 - Le cercle de la honte : le robot ne vise jamais la personne, il trace au sol un grand cercle d'eau autour de ses pieds. Justification écrite par le groupe : une douche sur la tête dure trois secondes et fait de vous le méchant, un cercle au sol se raconte pendant un mois.
 - Le chant de Robo-Caillou, écrit par le groupe : « Je m'appelle Robot, je m'appelle Caillou, je roule dans la garrigue et je vois tout. Deux cents mètres autour du bois : c'est la loi qui le dit, range ta clope, l'ami, ou je te pschitte le mégot. Œil vert, tout va bien, je ronronne au soleil. Œil rouge, y'a la braise : j'ouvre le robinet. Je ne mouille pas les gens, je ne noie que la braise. »
-- La règle des 200 mètres reprise dans le chant vient directement de la fiche lieux du dataset.
-
----
-
-## Points de vigilance pour le reporting
-
-- Ancrage géographique : Charente-Maritime et SDIS 17, jamais une autre région.
-- Le public de Feurisson est le grand public adulte, pas les adolescents. C'est un choix du groupe, à ne pas confondre avec l'âge de ses auteurs.
-- Plusieurs fiches chiffrées portent la mention « source : IA ». Ces chiffres ne sont pas vérifiés et ne doivent pas être présentés comme des données établies. En revanche, la trace elle-même est une réussite pédagogique et mérite d'être racontée comme telle.
-- Le bloc dataset de la page Feurisson est resté vide : les fiches manuscrites n'ont pas pu être numérisées de façon fiable pendant la semaine. La transcription ci-dessus comble ce manque et peut désormais alimenter le chatbot.

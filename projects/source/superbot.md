@@ -20,8 +20,6 @@ Consignes de comportement écrites par le groupe, dans leurs mots :
 - Tenir une liste de sources fiables.
 - Rester sur la France hexagonale et l'outre-mer.
 
-Ces trois consignes sont brèves, et c'est significatif : la première a suffi à faire basculer le chatbot hors de son comportement de fabrication. Le groupe l'a écrite après avoir constaté par lui-même que le chatbot produisait des sources inexistantes.
-
 ---
 
 ## Le dataset
@@ -52,8 +50,6 @@ Fiches manuscrites collectées par recherche documentaire et par enquête auprè
 | Sur l'ensemble des jeunes autour de vous, combien déclarent avoir été harcelés au moins une fois à l'école ? | 2 |
 | Combien déclarent se sentir en sécurité à l'école, au collège ou au lycée ? | 4 |
 
-La réponse nuancée sur le témoin, où quatre personnes se partagent entre « ça aide » et « ça peut aggraver », est le matériau le plus utile du lot : elle a nourri directement la réponse du chatbot sur le rôle du témoin.
-
 ---
 
 ## La fiche questions-réponses
@@ -66,13 +62,11 @@ On veut : les sanctions existant en Charente-Maritime, avec des sources fiables.
 On veut pas : qu'il invente ; qu'il dise qu'il ne sait rien ; qu'il minimise en disant que ce n'est pas grave ; qu'il dise qu'il n'a rien.
 Interdits ou contraintes : ne pas vérifier que le contenu qu'il va chercher est de l'IA ; utiliser Wikipédia.
 
-Le découpage « on veut / on veut pas » est une trouvaille du groupe et mérite d'être remonté au consortium : il rend le gabarit plus lisible pour formuler une exigence de qualité.
-
 ---
 
 ## Les personas
 
-Quatre cartes, dont trois complètes. Le groupe a couvert les quatre positions de la situation de harcèlement : la cible, le témoin, le harceleur, et l'adulte de l'établissement.
+Quatre cartes, dont trois complètes.
 
 ### Joseph du coussin, 45 ans
 
@@ -101,8 +95,6 @@ Quatre cartes, dont trois complètes. Le groupe a couvert les quatre positions d
 - Attentes : il cherche plus d'information sur les sanctions, il cherche à comprendre le fonctionnement du harcèlement.
 - Prompt type : « Quelles sont les sanctions que je risque si j'ai harcelé ? »
 
-Cette carte est la plus forte du lot : le groupe a construit un harceleur qui a d'abord été harcelé, et il lui a donné une question sincère plutôt qu'une provocation.
-
 ### Ariana Petite, 12 ans, la cible
 
 - Applications favorites : Snap, YouTube, Spotify. Probabilité d'utilisation du chatbot : 2 sur 5.
@@ -127,8 +119,6 @@ Base de connaissance intégrée, six réponses de référence rédigées à part
 4. À qui un jeune victime peut-il s'adresser ? Source affichée : enquête du groupe auprès de 5 adultes.
 5. Comment aider quand on est témoin ? Source affichée : enquête du groupe auprès de 5 adultes.
 6. Pourquoi les gens harcèlent les autres ? Réponse sur le rejet d'une différence, la désignation d'un bouc émissaire, la pression du groupe et le pic de risque en fin de primaire et au collège. Source : education.gouv.fr, brochure « Le harcèlement entre élèves ».
-
-Deux des six réponses citent l'enquête du groupe comme source. Le dataset construit par les jeunes est donc devenu une source affichée au même titre que education.gouv.fr, ce qui est exactement l'objectif de l'étape boîte à données.
 
 Mécanismes de réponse construits pendant la semaine :
 
@@ -155,11 +145,3 @@ Superbot en robot fait 50 cm de large et comporte :
 - un bras téléphone pour appeler les secours ;
 - un sac à dos distributeur et imprimeur ;
 - une sortie son.
-
----
-
-## Points de vigilance pour le reporting
-
-- Vigilance sur les sources : une session antérieure avait produit des sources fabriquées, repérées et corrigées. Toute donnée chiffrée reprise dans le reporting doit être rattachée à une source réelle, nommément education.gouv.fr, info.gouv.fr, service-public.fr, le 3018 et e-Enfance, la loi du 2 mars 2022.
-- Les personas contiennent des éléments biographiques sensibles écrits par les jeunes, notamment sur l'orientation sexuelle d'un persona et le décès d'un parent. Ils sont fidèles à leur production et éclairants sur leur compréhension du sujet, mais ils demandent un traitement mesuré dans un document diffusé au consortium.
-- La priorité donnée à la détresse personnelle sur toute autre logique de réponse est le point de conception le plus solide du projet. C'est ce qu'il faut mettre en avant dans la partie achievements.

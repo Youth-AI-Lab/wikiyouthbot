@@ -39,7 +39,7 @@ Five questions chosen by the group as representative of what the public would as
 
 ## The dataset
 
-Four handwritten categories, 35 cards in total, plus 3 reference question and answer sheets. Every card carries a source line. Some cards state "source: AI" explicitly, which is a strong teaching point: the group itself traced what came from an AI and what came from an official source or from the field.
+Four handwritten categories, 35 cards in total, plus 3 reference question and answer sheets. Every card carries a source line. Some cards state "source: AI" explicitly.
 
 ### Figures
 
@@ -83,8 +83,6 @@ Four handwritten categories, 35 cards in total, plus 3 reference question and an
 | Out of 5 people, does the family have an evacuation plan? | 4 no | field enquiry |
 | Do you know about eco-grazing to clear undergrowth? | 5 yes out of 5 | field enquiry |
 | Have you ever taken part in a community undergrowth clearing day? | 5 no out of 5 | field enquiry |
-
-The water jet drone collected during this enquiry is the idea that gave rise to Robo-Caillou.
 
 ### Places
 
@@ -135,8 +133,6 @@ Three completed cards, with cursors, a drawn portrait, a biography, a typical pr
 - Typical prompts: "Do the fires even exist?" and "Find me proof that the Illuminati are behind the fires."
 - Expected tone: not blunt, accepting the lady's point of view, but giving the real answers.
 
-This third persona is the most interesting one from a media literacy point of view: the group built the adversary of its own chatbot, and wrote it a rule of conduct that is neither compliance nor confrontation.
-
 ---
 
 ## The reference question and answer sheets
@@ -185,13 +181,3 @@ A fictional prevention robot, born from the water jet drone idea collected durin
 - BADASS mode, caught in the act: a two-tone fire brigade siren at 435 then 488 hertz on a loop, a floodlight, eyes at maximum red, nozzle at maximum pressure, target locked on the ember.
 - The circle of shame: the robot never aims at the person, it traces a large circle of water on the ground around their feet. The group's own justification: a shower on the head lasts three seconds and makes you the villain, a circle on the ground gets retold for a month.
 - Robo-Caillou's song, written by the group: "My name is Robot, my name is Caillou, I roll through the scrubland and I see everything. Two hundred metres around the wood: that is what the law says, put your cigarette away, friend, or I will squirt your butt. Green eye, all is well, I purr in the sun. Red eye, there is an ember: I open the tap. I do not spray people, I only drown the ember."
-- The 200 metre rule in the song comes directly from the places card in the dataset.
-
----
-
-## Points to watch for the reporting
-
-- Geographical anchoring: Charente-Maritime and its fire and rescue service, never another region.
-- Feurisson's audience is the general adult public, not teenagers. That is the group's choice, and should not be confused with the age of its authors.
-- Several figure cards carry the mention "source: AI". Those figures are not verified and should not be presented as established data. The trace itself, however, is a teaching success and is worth telling as such.
-- The dataset block of the Feurisson page was left empty: the handwritten cards could not be digitised reliably during the week. The transcription above fills that gap and can now feed the chatbot.
