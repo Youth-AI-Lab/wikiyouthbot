@@ -50,7 +50,7 @@ Handwritten cards gathered through documentary research and by interviewing the 
 | Ask adults whether they have ever faced a bullying problem, and how they reacted | no, alert the police; yes, in the street, reaction: ignore it; yes, went with their child to see the person responsible in the school; yes, alert the adults |
 | Out of 5 people, how many think a witness who reacts helps? | yes, because if the person does not care it can go further (2 people); yes it can help, but also no, because it can push the bully to bully more (2 people) |
 | Out of all the young people around you, how many say they have been bullied at least once at school? | 2 |
-| How many say they have faced mockery or racism [?] at primary, lower or upper secondary school? | 4 |
+| How many say they feel safe at primary, lower or upper secondary school? | 4 |
 
 The nuanced answer about the witness, where four people split between "it helps" and "it can make things worse", is the most useful material of the set: it fed the chatbot's answer on the role of the witness directly.
 
@@ -74,12 +74,12 @@ The what we want and what we don't want split is the group's own find, and is wo
 
 Four cards, three of them complete. The group covered the four positions of a bullying situation: the target, the witness, the bully, and the adult in the school.
 
-### Joseph [surname illegible], 45
+### Joseph du coussin, 45
 
 - Occupation: school supervisor. He lives with his parents.
 - Favourite apps: McDonald's, Facebook, WhatsApp. Likelihood of using the chatbot: 2 out of 5.
 - Cursors: knowledge of the cause 5 out of 5, civic engagement 0 out of 5, patience 0 out of 5, perception of technology 0 out of 5.
-- History: he lives in Margny [?], he does not earn enough, he is bullied.
+- History: he lives in Margh [?], he does not earn enough, he is bullied.
 - Expectations: he does not want to be a bully and he cannot understand bullying.
 - Typical prompt and expected tone: boxes left blank.
 

@@ -91,7 +91,7 @@ Le drone à jet d'eau recueilli lors de cette enquête est l'idée qui a directe
 | Question de la fiche | Ce que le groupe a noté | Source notée |
 | --- | --- | --- |
 | Une forêt ou un massif classé à risque près de chez vous | secteur 1 : îles et littoral ; secteur 2 : Saintonge et Aunis ; secteur 3 : forêt de la Lande et estuaire ; secteur 4 : Double Saintongeaise | Préfet de la Charente-Maritime |
-| Autres zones classées à risque incendie, hors forêt et massif | espaces agricoles et travaux agricoles ; spectacles pyrotechniques ; barbecues à parties privées [?] | Préfet de la Charente-Maritime |
+| Autres zones classées à risque incendie, hors forêt et massif | espaces agricoles et travaux agricoles ; spectacles pyrotechniques ; barbecues à jardins privés | Préfet de la Charente-Maritime |
 | Zones soumises à débroussaillement | à La Rochelle : les terrains situés à moins de 200 mètres des bois et forêts. Autres régions : l'obligation légale de débroussaillement concerne plus de 50 départements exposés aux feux de forêts | ligne source laissée vide |
 | Incendies réels des 5 dernières années | La Rochelle : 4 ; Nouvelle-Aquitaine : 6 ; France hors Nouvelle-Aquitaine : 13 | IA |
 | Demandez à 5 personnes leur souvenir de feu le plus marquant | incendie à proximité de la maison et évacuation ; incendie de La Palmyre ; incendie chez la famille, dans la maison ; incendie à Narbonne en 2025 | enquête de terrain |

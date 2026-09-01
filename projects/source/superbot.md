@@ -50,7 +50,7 @@ Fiches manuscrites collectées par recherche documentaire et par enquête auprè
 | Questionnez les adultes : ont-ils déjà fait face à un problème de harcèlement, quelle a été leur réaction ? | non, prévenir la police ; oui, dans la rue, réaction : ignorer ; oui, accompagnement de son enfant pour voir le responsable dans l'établissement ; oui, prévenir les adultes |
 | Sur 5 personnes, combien pensent qu'un témoin qui réagit aide ? | oui, parce que si la personne s'en fout, ça peut partir plus loin (2 personnes) ; oui, ça peut aider, mais non aussi, parce que ça peut pousser le harceleur à harceler plus (2 personnes) |
 | Sur l'ensemble des jeunes autour de vous, combien déclarent avoir été harcelés au moins une fois à l'école ? | 2 |
-| Combien déclarent avoir subi des moqueries ou du racisme [?] à l'école, au collège ou au lycée ? | 4 |
+| Combien déclarent se sentir en sécurité à l'école, au collège ou au lycée ? | 4 |
 
 La réponse nuancée sur le témoin, où quatre personnes se partagent entre « ça aide » et « ça peut aggraver », est le matériau le plus utile du lot : elle a nourri directement la réponse du chatbot sur le rôle du témoin.
 
@@ -74,12 +74,12 @@ Le découpage « on veut / on veut pas » est une trouvaille du groupe et mérit
 
 Quatre cartes, dont trois complètes. Le groupe a couvert les quatre positions de la situation de harcèlement : la cible, le témoin, le harceleur, et l'adulte de l'établissement.
 
-### Joseph [nom de famille illisible], 45 ans
+### Joseph du coussin, 45 ans
 
 - Métier : surveillant. Il vit chez ses parents.
 - Applications favorites : McDonald's, Facebook, WhatsApp. Probabilité d'utilisation du chatbot : 2 sur 5.
 - Curseurs : connaissance de la cause 5 sur 5, engagement citoyen 0 sur 5, patience 0 sur 5, perception des technologies 0 sur 5.
-- Histoire : il vit à Margny [?], il ne gagne pas assez d'argent, il se fait harceler.
+- Histoire : il vit à Margh [?], il ne gagne pas assez d'argent, il se fait harceler.
 - Attentes : il ne veut pas être un harceleur et il ne peut pas comprendre le harcèlement.
 - Prompt type et ton attendu : cases laissées vides.
 

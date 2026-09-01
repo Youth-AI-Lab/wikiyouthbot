@@ -91,7 +91,7 @@ The water jet drone collected during this enquiry is the idea that gave rise to 
 | Question on the card | What the group wrote | Source stated |
 | --- | --- | --- |
 | A forest or a wooded area classified at risk near you | sector 1: islands and coastline; sector 2: Saintonge and Aunis; sector 3: forest of la Lande and estuary; sector 4: Double Saintongeaise | Prefect of Charente-Maritime |
-| Other zones classified at fire risk, outside forests and wooded areas | farmland and farm work; firework displays; barbecues on private property [?] | Prefect of Charente-Maritime |
+| Other zones classified at fire risk, outside forests and wooded areas | farmland and farm work; firework displays; barbecues in private gardens | Prefect of Charente-Maritime |
 | Zones subject to undergrowth clearing | in La Rochelle: land within 200 metres of woods and forests. Other regions: the legal clearing obligation covers more than 50 departments exposed to forest fires | source line left blank |
 | Real fires over the last 5 years | La Rochelle: 4; Nouvelle-Aquitaine: 6; France outside Nouvelle-Aquitaine: 13 | AI |
 | Ask 5 people about their most striking fire memory | a fire close to the house, with evacuation; the La Palmyre fire; a fire at a relative's, in the house; the Narbonne fire in 2025 | field enquiry |
