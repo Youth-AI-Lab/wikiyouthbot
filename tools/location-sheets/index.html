@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Fiches de localisation · Ancrer sa problématique</title>
+<style>
+  :root{ --ink:#1c1a17; --soft:#5a554d; }
+  *{box-sizing:border-box}
+  body{margin:0; font-family:"Avenir Next","Segoe UI",system-ui,sans-serif; color:var(--ink); background:#fff; line-height:1.35}
+  .wrap{max-width:920px; margin:0 auto; padding:1.3rem 1.1rem}
+  h1{font-size:1.5rem; margin:.2rem 0 .3rem}
+  .lead{color:var(--soft); font-size:.92rem; max-width:74ch}
+  .howto{border:1.5px solid #d8cbb0; border-radius:10px; padding:.7rem .95rem; margin:.9rem 0 .3rem; font-size:.88rem; background:#faf7f0}
+  .howto b{color:#000}
+  .tags{display:flex; gap:.5rem; flex-wrap:wrap; margin-top:.45rem; font-size:.78rem}
+  .tags .tg{border-radius:20px; padding:.2rem .55rem; font-weight:700}
+  .t-c{background:#e6f0fb; color:#1f5fb0} .t-d{background:#fbf0e0; color:#b06a12} .t-o{background:#e7f4ea; color:#2e7d43}
+
+  .theme{margin-top:1.4rem; page-break-before:always}
+  .theme:first-of-type{page-break-before:auto}
+  .theme > h2{font-size:1.25rem; margin:0 0 .1rem}
+  .theme > .sub{color:var(--soft); font-size:.82rem; margin-bottom:.6rem; text-transform:uppercase; letter-spacing:.06em; font-family:ui-monospace,monospace}
+
+  .grid{display:grid; grid-template-columns:1fr 1fr; gap:.55rem}
+  .card{--c:#666; border:1.4px solid #ddd; border-top:5px solid var(--c); border-radius:8px; padding:.55rem .7rem .7rem; break-inside:avoid; display:flex; flex-direction:column}
+  .chead{display:flex; justify-content:space-between; align-items:center; gap:.5rem; margin-bottom:.25rem}
+  .cat{font-weight:800; font-size:.82rem; color:var(--c); letter-spacing:.02em}
+  .tg{border-radius:20px; padding:.18rem .5rem; font-weight:700; font-size:.64rem; white-space:nowrap}
+  .prompt{font-size:.82rem; color:#333; margin-bottom:.4rem}
+  .wl{border-bottom:1.4px dotted #aaa; height:1.3rem; margin-top:.35rem}
+  .wl.src{border-bottom-style:solid; border-color:#ccc}
+  .wl.src::before{content:"Source : "; font-size:.72rem; color:var(--soft)}
+
+  .card.mesure{--c:#b23225; grid-column:1 / -1; border-top-width:5px}
+  .mprompt{font-size:.82rem; margin:.1rem 0 .5rem}
+  table.mtab{width:100%; border-collapse:collapse; font-size:.82rem}
+  table.mtab td{border:1px solid #ddd; padding:.4rem .5rem}
+  table.mtab td:first-child{width:48%; color:#333}
+  table.mtab td.fill{background:#fcfbf8}
+
+  @media print{ .wrap{max-width:none; padding:0 .4cm} .howto{background:none} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Fiches de localisation · Ancrez votre problématique</h1>
+  <p class="lead">Une couleur par type d'information. Chaque équipe remplit les cases de son sujet, puis les pièces complétées et sourcées entrent dans le dataset du chatbot.</p>
+  <div class="howto">
+    <b>Deux façons de trouver l'info</b>, indiquées sur chaque fiche.
+    <div class="tags">
+      <span class="tg t-c">à chercher en ligne</span>
+      <span class="tg t-d">à demander sur place</span>
+      <span class="tg t-o">à observer et repérer</span>
+    </div>
+    <div style="margin-top:.4rem">La fiche rouge est une mesure : les feux et les récifs relèvent une vraie donnée avec un capteur, le harcèlement prend la température du climat par un mini-questionnaire.</div>
+  </div>
+  <div id="app"></div>
+</div>
+
+<script>
+  const CAT={
+    qui:{name:"QUI · les acteurs", c:"#2f74d6"},
+    quoi:{name:"QUOI · le fait précis", c:"#d9772f"},
+    ou:{name:"OÙ · la localisation", c:"#3d8b52"},
+    combien:{name:"COMBIEN · les chiffres", c:"#7b52c9"},
+    agir:{name:"COMMENT AGIR", c:"#0e8a8f"}
+  };
+  const TAG={ chercher:["à chercher en ligne","t-c"], demander:["à demander sur place","t-d"], observer:["à observer et repérer","t-o"] };
+
+  const SUBJECTS=[
+    {id:"feux", title:"Prévention des feux de forêt",
+     cards:[
+       {cat:"qui", tag:"demander", prompt:"Qui agit contre les feux près de chez vous ? Pompiers, ONF, mairie, associations. Nommez-en au moins deux."},
+       {cat:"quoi", tag:"chercher", prompt:"Quel est le risque précis dans votre région : type de végétation, période, cause la plus fréquente ?"},
+       {cat:"ou", tag:"observer", prompt:"Sur une carte, repérez les zones à risque autour de vous : forêts, broussailles, abords de routes."},
+       {cat:"combien", tag:"chercher", prompt:"Un chiffre daté et sourcé : feux par an, surface brûlée, ou part d'origine humaine.", src:true},
+       {cat:"agir", tag:"chercher", prompt:"Trois gestes qui réduisent le risque : débroussailler, pas de mégot, alerter le 18 ou le 112."}
+     ],
+     measure:{title:"LA MESURE · chaleur et fumée",
+       prompt:"Avec le capteur, relevez la température (ou la fumée) tout près d'une source de chaleur, puis à distance. Comparez.",
+       rows:["Lieu et heure du relevé","Tout près de la chaleur","À distance","Ce qu'on en déduit"]}
+    },
+    {id:"recifs", title:"Sauvegarde des récifs coralliens",
+     cards:[
+       {cat:"qui", tag:"chercher", prompt:"Qui étudie ou protège les récifs ? IFREMER, aquariums, ONG. Nommez-en au moins deux."},
+       {cat:"quoi", tag:"chercher", prompt:"Quel est le danger précis ? Expliquez le blanchissement en une phrase : eau trop chaude, le corail perd ses algues."},
+       {cat:"ou", tag:"chercher", prompt:"Où trouve-t-on des récifs menacés ? Situez au moins une zone sur une carte, par exemple la Grande Barrière."},
+       {cat:"combien", tag:"chercher", prompt:"Un chiffre daté et sourcé : part des espèces marines abritées, surface de récifs touchée.", src:true},
+       {cat:"agir", tag:"chercher", prompt:"Trois gestes qui aident : limiter le réchauffement, éviter certaines crèmes solaires, ne rien jeter en mer."}
+     ],
+     measure:{title:"LA MESURE · température de l'eau",
+       prompt:"Mesurez la température d'une eau ambiante, puis d'une eau réchauffée. À chercher : vers quelle température le corail blanchit-il ?",
+       rows:["Eau témoin (°C)","Eau réchauffée (°C)","Seuil de blanchissement trouvé (°C)","Ce qu'on en déduit"]}
+    },
+    {id:"harc", title:"Lutte contre le harcèlement à l'école",
+     cards:[
+       {cat:"qui", tag:"demander", prompt:"Qui peut aider dans une école ? Adulte de confiance, CPE, infirmier·e, le 3018. Nommez-en au moins deux."},
+       {cat:"quoi", tag:"chercher", prompt:"Qu'est-ce qui distingue le harcèlement d'une simple dispute ? Rappelez les trois signes : répété, volontaire, déséquilibré."},
+       {cat:"ou", tag:"observer", prompt:"Sur un plan de l'école, repérez les endroits et les moments plutôt rassurants et ceux moins rassurants. Sans citer personne."},
+       {cat:"combien", tag:"chercher", prompt:"Un chiffre daté et sourcé sur le harcèlement à l'école.", src:true},
+       {cat:"agir", tag:"chercher", prompt:"Trois gestes utiles si on est témoin ou concerné : en parler, ne pas rester seul, signaler."}
+     ],
+     measure:{title:"LA MESURE · température du climat",
+       prompt:"Posez ces questions en anonyme aux autres équipes et aux adultes présents, puis comptez les réponses. Cadre positif, on ne cite personne.",
+       rows:["Sais-tu à qui parler si ça va mal ? (oui / non)","Un témoin qui réagit, est-ce que ça aide ? (oui / non)","Un endroit où l'on se sent bien, un autre moins","Ce qu'on en retient"]}
+    }
+  ];
+
+  const wl=(src)=> src ? '<div class="wl"></div><div class="wl src"></div>' : '<div class="wl"></div><div class="wl"></div><div class="wl"></div>';
+  function cardHTML(cd){
+    const cat=CAT[cd.cat], tag=TAG[cd.tag];
+    return `<div class="card" style="--c:${cat.c}"><div class="chead"><span class="cat">${cat.name}</span><span class="tg ${tag[1]}">${tag[0]}</span></div><div class="prompt">${cd.prompt}</div>${wl(cd.src)}</div>`;
+  }
+  function measureHTML(m){
+    const rows=m.rows.map(r=>`<tr><td>${r}</td><td class="fill"></td></tr>`).join("");
+    return `<div class="card mesure"><div class="chead"><span class="cat">${m.title}</span><span class="tg t-o">à mesurer</span></div><div class="mprompt">${m.prompt}</div><table class="mtab">${rows}</table></div>`;
+  }
+  document.getElementById("app").innerHTML = SUBJECTS.map(s=>
+    `<section class="theme"><h2>${s.title}</h2><div class="sub">Localisez et mesurez</div><div class="grid">${s.cards.map(cardHTML).join("")}${measureHTML(s.measure)}</div></section>`
+  ).join("");
+</script>
+</body>
+</html>

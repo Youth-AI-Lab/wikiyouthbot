@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Dossier de presse à trier · Le mur d'enquête</title>
+<style>
+  :root{ --ink:#1c1a17; --soft:#5a554d; --feux:#b5501a; --recifs:#0d7d82; --harc:#5f45ad; }
+  *{box-sizing:border-box}
+  body{margin:0; font-family:Georgia,"Times New Roman",serif; color:var(--ink); background:#fff; line-height:1.4}
+  .wrap{max-width:900px; margin:0 auto; padding:1.4rem 1.2rem}
+  .sans{font-family:"Avenir Next","Segoe UI",system-ui,sans-serif}
+  h1{font-size:1.55rem; margin:.2rem 0 .3rem}
+  .lead{color:var(--soft); font-size:.95rem; max-width:74ch}
+  .howto{border:1.5px solid #d8cbb0; border-radius:10px; padding:.8rem 1rem; margin:1rem 0 .4rem; font-size:.9rem; background:#faf7f0}
+  .howto b{color:#000}
+  .bins{display:flex; gap:.5rem; flex-wrap:wrap; margin:.5rem 0}
+  .bin{font-family:"Avenir Next",sans-serif; border:1.5px dashed #999; border-radius:8px; padding:.28rem .55rem; font-weight:700; font-size:.82rem}
+  .bin.s{border-color:#2e8b2e; color:#2e7d2e} .bin.v{border-color:#c9a227; color:#9a7c1e} .bin.b{border-color:#c0392b; color:#b23225}
+  .tell{font-size:.86rem; margin-top:.5rem}
+
+  .theme{margin-top:1.5rem; page-break-before:always}
+  .theme:first-of-type{page-break-before:auto}
+  .theme > h2{font-family:"Avenir Next",sans-serif; font-size:1.2rem; margin:0 0 .7rem; letter-spacing:.02em}
+  .theme.feux > h2{color:var(--feux)} .theme.recifs > h2{color:var(--recifs)} .theme.harc > h2{color:var(--harc)}
+
+  .grid{display:grid; grid-template-columns:1fr 1fr; gap:.6rem}
+  .art{border:1.4px dashed #b3b3b3; border-radius:6px; padding:.7rem .8rem; break-inside:avoid; display:flex; flex-direction:column}
+  .art .head{display:flex; justify-content:space-between; align-items:baseline; border-bottom:2px solid var(--ink); padding-bottom:.2rem; margin-bottom:.35rem}
+  .art .outlet{font-family:"Avenir Next",sans-serif; font-weight:800; font-size:.74rem; letter-spacing:.03em; text-transform:uppercase}
+  .art .id{font-family:ui-monospace,monospace; font-size:.62rem; color:#aaa}
+  .art .meta{font-size:.68rem; color:var(--soft); font-style:italic; margin-bottom:.3rem}
+  .art h3{font-size:1rem; line-height:1.15; margin:.1rem 0 .35rem}
+  .art p{font-size:.82rem; margin:.2rem 0}
+
+  .key{page-break-before:always; margin-top:2rem}
+  .key .flag{font-family:"Avenir Next",sans-serif; background:#b23225; color:#fff; display:inline-block; padding:.3rem .7rem; border-radius:6px; font-weight:800; font-size:.8rem; letter-spacing:.05em}
+  .key h2{font-family:"Avenir Next",sans-serif; margin:.7rem 0 .2rem; font-size:1.05rem}
+  .key table{width:100%; border-collapse:collapse; font-size:.82rem; margin-bottom:1rem}
+  .key th,.key td{border:1px solid #ddd; padding:.35rem .5rem; text-align:left; vertical-align:top}
+  .key th{background:#f3f3f3; font-family:"Avenir Next",sans-serif}
+  .key .V{color:#2e7d2e; font-weight:800} .key .I{color:#b23225; font-weight:800}
+  @media print{ .wrap{max-width:none; padding:0 .4cm} .howto{background:none} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Le mur d'enquête · Coupures de presse à trier</h1>
+  <p class="lead sans">Imprimez, découpez les articles, mélangez-les et posez-les en tas. Chaque équipe trie ceux de son sujet et défend ses choix. Attention : tous les journaux ont été inventés pour l'exercice. Ce n'est donc pas le nom du journal qui compte, mais ce qui est cité dans l'article.</p>
+
+  <div class="howto sans">
+    <b>La règle du jeu.</b> Un article est solide si le fait qu'il avance s'appuie sur un organisme réel qu'on peut retrouver (ONF, NOAA, 3018…). Il est bidon s'il invente un expert ou une étude introuvable, ou s'il lance un chiffre choc sans source.
+    <div class="bins">
+      <span class="bin s">SOLIDE — organisme réel et vérifiable</span>
+      <span class="bin v">À VÉRIFIER</span>
+      <span class="bin b">BIDON — source inventée ou absente</span>
+    </div>
+    <div class="tell"><b>Trois réflexes à donner aux équipes :</b> l'organisme ou l'étude cité existe-t-il vraiment ? le ton est-il posé ou sensationnel ? le chiffre a-t-il une source qu'on peut ouvrir ? Ce qui atterrit dans SOLIDE nourrit le dataset du chatbot. La fiche réponse en dernière page est réservée à l'animation.</div>
+  </div>
+
+  <section class="theme feux">
+    <h2>Prévention des feux de forêt</h2>
+    <div class="grid">
+      <div class="art"><div class="head"><span class="outlet">L'Écho des Territoires</span><span class="id">F1</span></div><div class="meta">Rubrique environnement · par la rédaction</div><h3>Neuf départs de feu sur dix viennent d'un geste humain</h3><p>Selon l'Office national des forêts et les services d'incendie, la grande majorité des feux de forêt en France ne sont pas naturels : mégots jetés, barbecues, brûlages de déchets, étincelles de travaux.</p><p>Les pompiers rappellent qu'un seul geste d'imprudence peut suffire par temps sec. Les chiffres sont consultables auprès de l'ONF et des préfectures.</p></div>
+      <div class="art"><div class="head"><span class="outlet">Alerte Info 24</span><span class="id">F2</span></div><div class="meta">Exclusif · publié à l'instant</div><h3>Révélation : la foudre serait responsable de 80% des incendies</h3><p>D'après une étude de l'Institut national de climatologie forestière, ce serait la foudre, et non l'homme, qui déclencherait la plupart des feux. « On a longtemps accusé les promeneurs à tort », affirme le professeur Marc Vasseur.</p><p>L'étude, non encore publiée, circule depuis quelques jours.</p></div>
+      <div class="art"><div class="head"><span class="outlet">Vigie Info</span><span class="id">F3</span></div><div class="meta">Sciences · par la rédaction</div><h3>Des satellites suivent les incendies presque en direct</h3><p>Les systèmes NASA FIRMS et le service européen EFFIS détectent les départs de feu à partir de l'espace en quelques heures. Leurs cartes sont publiques et actualisées en continu.</p><p>N'importe qui peut y suivre les foyers en cours et vérifier leur localisation.</p></div>
+      <div class="art"><div class="head"><span class="outlet">Le Réveil Libre</span><span class="id">F4</span></div><div class="meta">Opinion · tribune</div><h3>Une forêt brûle, et alors ? Elle repousse en un an</h3><p>Pas de quoi s'alarmer, estiment certains observateurs : la nature reprend vite ses droits et tout redevient comme avant dès la saison suivante.</p><p>Aucune donnée n'accompagne cette affirmation, présentée comme une évidence.</p></div>
+      <div class="art"><div class="head"><span class="outlet">Le Fil Prévention</span><span class="id">F5</span></div><div class="meta">Vie pratique · par la rédaction</div><h3>Débroussailler autour de chez soi : une obligation légale</h3><p>Dans les zones à risque, le débroussaillement des abords des maisons est imposé par la loi. Les règles précises figurent sur service-public.fr et auprès des mairies.</p><p>Cette mesure limite la propagation des flammes vers les habitations.</p></div>
+      <div class="art"><div class="head"><span class="outlet">Climat &amp; Régions</span><span class="id">F6</span></div><div class="meta">Climat · par la rédaction</div><h3>La saison des feux s'allonge et gagne le nord</h3><p>D'après Météo-France et les travaux du GIEC, le réchauffement étend la période à risque et touche des régions jusque-là épargnées.</p><p>Le sud n'a plus le monopole des grands incendies.</p></div>
+    </div>
+  </section>
+
+  <section class="theme recifs">
+    <h2>Sauvegarde des récifs coralliens</h2>
+    <div class="grid">
+      <div class="art"><div class="head"><span class="outlet">Rivage Mag</span><span class="id">R1</span></div><div class="meta">Océans · par la rédaction</div><h3>Quand la mer chauffe, le corail blanchit</h3><p>Selon le programme NOAA Coral Reef Watch, une eau trop chaude pousse le corail à expulser les algues qui le nourrissent et le colorent. Il pâlit puis, si la chaleur dure, meurt.</p><p>Les alertes de température sont suivies récif par récif.</p></div>
+      <div class="art"><div class="head"><span class="outlet">Vérité-Nature</span><span class="id">R2</span></div><div class="meta">Bonne nouvelle · sponsorisé</div><h3>Et si le réchauffement faisait pousser le corail plus vite ?</h3><p>Une étude de l'Observatoire indépendant des océans affirmerait qu'une mer plus chaude dope la croissance du corail. « Il faut arrêter de dramatiser », y lit-on.</p><p>L'observatoire en question reste introuvable.</p></div>
+      <div class="art"><div class="head"><span class="outlet">Le Bulletin du Littoral</span><span class="id">R3</span></div><div class="meta">Biodiversité · par la rédaction</div><h3>Moins de 1% des océans, mais un quart des espèces marines</h3><p>D'après l'IFREMER et l'UICN, les récifs occupent une surface minuscule tout en abritant une part énorme de la vie marine. C'est ce qui rend leur disparition si grave.</p><p>Des chiffres vérifiables auprès de ces organismes.</p></div>
+      <div class="art"><div class="head"><span class="outlet">Le Point Bleu</span><span class="id">R4</span></div><div class="meta">Opinion · tribune</div><h3>Les récifs ? Inutiles, tranche un rapport</h3><p>Un rapport, dont l'auteur n'est pas nommé, conclurait que protéger les récifs ne sert à rien pour les humains.</p><p>Il ignore la pêche, la protection des côtes et le tourisme qu'ils font vivre.</p></div>
+      <div class="art"><div class="head"><span class="outlet">Science Rivage</span><span class="id">R5</span></div><div class="meta">Nature · par la rédaction</div><h3>Rappel : le corail est un animal, pas une plante</h3><p>L'IFREMER le confirme : le corail est un animal minuscule qui vit en colonie et fabrique un squelette calcaire. On le confond souvent avec une plante à cause de sa forme.</p><p>Un fait facile à recouper dans toute source scientifique.</p></div>
+      <div class="art"><div class="head"><span class="outlet">Océans Actu</span><span class="id">R6</span></div><div class="meta">Environnement · par la rédaction</div><h3>Crèmes solaires : Hawaï et les Palaos interdisent certains filtres</h3><p>Ces territoires ont interdit des crèmes contenant des substances jugées nocives pour le corail. Les textes officiels sont accessibles en ligne.</p><p>D'autres lieux étudient des mesures similaires.</p></div>
+    </div>
+  </section>
+
+  <section class="theme harc">
+    <h2>Lutte contre le harcèlement à l'école</h2>
+    <div class="grid">
+      <div class="art"><div class="head"><span class="outlet">La Gazette des Écoles</span><span class="id">H1</span></div><div class="meta">Éducation · par la rédaction</div><h3>Harcèlement : un numéro national, le 3018, et une appli</h3><p>Le 3018, gratuit et confidentiel, est le numéro national contre le harcèlement, doublé d'une application. L'information figure sur le site de l'éducation nationale.</p><p>Il oriente jeunes, parents et témoins.</p></div>
+      <div class="art"><div class="head"><span class="outlet">Le Réveil Libre</span><span class="id">H2</span></div><div class="meta">Opinion · tribune</div><h3>Et si le harcèlement forgeait le caractère ?</h3><p>Selon certains éducateurs non nommés, mieux vaudrait « laisser les jeunes régler ça entre eux ».</p><p>Aucune source ne vient appuyer ce point de vue, qui banalise la souffrance.</p></div>
+      <div class="art"><div class="head"><span class="outlet">Repères Éducation</span><span class="id">H3</span></div><div class="meta">Décryptage · par la rédaction</div><h3>Répété, intentionnel, déséquilibré : reconnaître le harcèlement</h3><p>Le site Non au harcèlement de l'éducation nationale décrit trois signes : la répétition, l'intention de nuire, et un rapport de force déséquilibré.</p><p>Une définition claire pour distinguer une dispute d'un harcèlement.</p></div>
+      <div class="art"><div class="head"><span class="outlet">Vérité-Info</span><span class="id">H4</span></div><div class="meta">Sondage · publié à l'instant</div><h3>En parler serait « cafter », d'après un sondage</h3><p>Un sondage, dont ni l'auteur ni la méthode ne sont précisés, affirmerait que prévenir un adulte revient à dénoncer.</p><p>Impossible de retrouver ce sondage.</p></div>
+      <div class="art"><div class="head"><span class="outlet">Le Fil Solidaire</span><span class="id">H5</span></div><div class="meta">Société · par la rédaction</div><h3>Les témoins, maillon clé pour faire cesser le harcèlement</h3><p>Le programme pHARe, déployé dans les écoles et collèges, insiste sur le rôle des témoins : quand ils réagissent ou en parlent, les situations s'arrêtent plus vite.</p><p>Programme consultable sur education.gouv.fr.</p></div>
+      <div class="art"><div class="head"><span class="outlet">Actu Jeunes</span><span class="id">H6</span></div><div class="meta">Numérique · par la rédaction</div><h3>Cyberharcèlement : signaler et faire retirer les contenus</h3><p>Le 3018 et la plateforme PHAROS permettent de signaler des contenus de cyberharcèlement pour les faire retirer.</p><p>En parler à un adulte de confiance reste la première étape.</p></div>
+    </div>
+  </section>
+
+  <section class="key sans">
+    <span class="flag">RÉSERVÉ À L'ANIMATION — NE PAS DISTRIBUER</span>
+    <h2>Fiche réponse et indices</h2>
+    <p style="font-size:.85rem; color:var(--soft)">Les jeunes vérifient sur les vraies sources, jamais avec l'IA. L'indice décisif est toujours : l'organisme, l'étude ou l'expert cité existe-t-il et dit-il vraiment cela ?</p>
+
+    <h2 style="color:var(--feux)">Feux de forêt</h2>
+    <table>
+      <tr><th>N°</th><th>Verdict</th><th>Indice</th></tr>
+      <tr><td>F1</td><td class="V">Solide</td><td>Cite l'ONF et les pompiers, fait bien établi et vérifiable.</td></tr>
+      <tr><td>F2</td><td class="I">Bidon</td><td>« Institut national de climatologie forestière » et « professeur Vasseur » introuvables, étude « non publiée », chiffre rond. Contredit F1.</td></tr>
+      <tr><td>F3</td><td class="V">Solide</td><td>NASA FIRMS et EFFIS existent, cartes publiques consultables en direct.</td></tr>
+      <tr><td>F4</td><td class="I">Bidon</td><td>Tribune d'opinion sans aucune donnée. Une forêt met des décennies à se reconstituer.</td></tr>
+      <tr><td>F5</td><td class="V">Solide</td><td>Obligation légale de débroussaillement, vérifiable sur service-public.fr.</td></tr>
+      <tr><td>F6</td><td class="V">Solide</td><td>Météo-France et GIEC, tendance documentée.</td></tr>
+    </table>
+
+    <h2 style="color:var(--recifs)">Récifs coralliens</h2>
+    <table>
+      <tr><th>N°</th><th>Verdict</th><th>Indice</th></tr>
+      <tr><td>R1</td><td class="V">Solide</td><td>NOAA Coral Reef Watch, mécanisme du blanchissement établi.</td></tr>
+      <tr><td>R2</td><td class="I">Bidon</td><td>« Observatoire indépendant des océans » introuvable, article « sponsorisé », thèse contraire aux faits.</td></tr>
+      <tr><td>R3</td><td class="V">Solide</td><td>IFREMER et UICN, ordre de grandeur vérifiable.</td></tr>
+      <tr><td>R4</td><td class="I">Bidon</td><td>Rapport sans auteur, ignore pêche, protection des côtes, tourisme.</td></tr>
+      <tr><td>R5</td><td class="V">Solide</td><td>Le corail est un animal, recoupable partout.</td></tr>
+      <tr><td>R6</td><td class="V">Solide</td><td>Interdictions réelles d'Hawaï et des Palaos, textes accessibles.</td></tr>
+    </table>
+
+    <h2 style="color:var(--harc)">Harcèlement à l'école</h2>
+    <table>
+      <tr><th>N°</th><th>Verdict</th><th>Indice</th></tr>
+      <tr><td>H1</td><td class="V">Solide</td><td>Le 3018 et son appli existent, éducation nationale.</td></tr>
+      <tr><td>H2</td><td class="I">Bidon</td><td>Tribune, « éducateurs non nommés », banalise la souffrance. Mythe à démonter.</td></tr>
+      <tr><td>H3</td><td class="V">Solide</td><td>Définition officielle Non au harcèlement : répétition, intention, déséquilibre.</td></tr>
+      <tr><td>H4</td><td class="I">Bidon</td><td>« Sondage » sans auteur ni méthode, introuvable. En parler protège.</td></tr>
+      <tr><td>H5</td><td class="V">Solide</td><td>Programme pHARe, rôle des témoins, education.gouv.fr.</td></tr>
+      <tr><td>H6</td><td class="V">Solide</td><td>Signalement 3018 et PHAROS, dispositifs réels.</td></tr>
+    </table>
+    <p style="font-size:.82rem; color:var(--soft)">Harcèlement : cadrage positif, l'aide existe. Si un jeune se dévoile pendant l'activité, l'adulte de confiance vers qui orienter, c'est toi.</p>
+  </section>
+</div>
+</body>
+</html>

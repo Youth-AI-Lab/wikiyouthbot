@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;700;800&family=Manrope:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #f7f4e8;
+  --ink: #1a1a1a;
+  --soft: #6c6c6c;
+  --green-soft: #dbffcb;
+  --pink-soft: #ffd9f2;
+  --yellow-soft: #f9eecd;
+  --orange-soft: #ffd5c1;
+  --blue-soft: #cbecff;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: var(--bg);
+  font-family: 'Manrope', system-ui, sans-serif;
+  color: var(--ink);
+}
+
+.wrap { max-width: 1040px; margin: 0 auto; padding: 56px 24px 80px; }
+
+header { margin-bottom: 44px; }
+
+.kicker {
+  font-size: .82rem; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--soft); margin-bottom: 14px;
+}
+
+h1 {
+  font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+  font-size: clamp(2.1rem, 5vw, 3.2rem); font-weight: 800;
+  line-height: 1.05; margin-bottom: 18px;
+}
+
+.lede { font-size: 1.06rem; line-height: 1.65; max-width: 62ch; color: #2c2c2c; }
+.lede + .lede { margin-top: 14px; }
+
+h2 {
+  font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+  font-size: 1.55rem; font-weight: 700; margin: 52px 0 6px;
+}
+
+.sub { color: var(--soft); font-size: .95rem; margin-bottom: 24px; max-width: 68ch; line-height: 1.6; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(272px, 1fr)); gap: 20px; }
+
+.card {
+  display: block; text-decoration: none; color: inherit; background: #fff;
+  border: 2px solid var(--ink); border-radius: 18px; padding: 22px;
+  box-shadow: 5px 5px 0 var(--ink);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.card:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 var(--ink); }
+
+.card .tag {
+  display: inline-block; font-size: .72rem; font-weight: 700; letter-spacing: .08em;
+  text-transform: uppercase; padding: 5px 11px; border-radius: 999px; margin-bottom: 13px;
+}
+.t-fire { background: var(--orange-soft); }
+.t-bully { background: var(--blue-soft); }
+.t-robot { background: var(--yellow-soft); }
+.t-doc { background: var(--pink-soft); }
+.t-kit { background: var(--green-soft); }
+
+.card h3 {
+  font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+  font-size: 1.24rem; font-weight: 700; margin-bottom: 8px;
+}
+.card p { font-size: .94rem; line-height: 1.6; color: #333; }
+.card .note { display: block; margin-top: 10px; font-size: .84rem; color: var(--soft); }
+.card .more { margin-top: 14px; display: block; font-weight: 700; font-size: .9rem; }
+
+footer {
+  margin-top: 68px; padding-top: 26px; border-top: 2px solid var(--ink);
+  font-size: .88rem; color: var(--soft); line-height: 1.65;
+}
+footer p + p { margin-top: 8px; }
+footer a { color: inherit; }
+
+@media (max-width: 640px) { .wrap { padding: 36px 18px 60px; } }

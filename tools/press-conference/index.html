@@ -1,0 +1,1449 @@
+<!doctype html>
+<html lang="fr">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Conférence de presse IA</title>
+<style>
+  :root{
+    --nuit:#101C33;
+    --nuit-2:#182948;
+    --nuit-3:#26406B;
+    --lampe:#F2C879;
+    --rouge:#E23E36;
+    --papier:#EDEEE9;
+    --craie:#F7F6F2;
+    --encre:#0C1626;
+    --gris:#8FA3C2;
+    --trait:rgba(143,163,194,.28);
+    --mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+    --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --serif: Georgia, "Iowan Old Style", "Times New Roman", serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{
+    background:var(--nuit) var(--mur, none) repeat;
+    color:var(--papier);font-family:var(--sans);
+    display:flex;flex-direction:column;min-height:100vh;
+  }
+  button{font:inherit;cursor:pointer;border:0}
+  button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{
+    outline:3px solid var(--lampe);outline-offset:2px;
+  }
+  .masque{display:none !important}
+
+  /* ============ AMBIANCE DE SALLE ============ */
+  /* Profondeur de champ construite en d'egrad'es : projecteurs de tribune,
+     flashs de photographes dans la fosse, vignettage sur les bords. */
+  #salle{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+  #salle::before{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(115% 65% at 50% -18%, rgba(242,200,121,.17), transparent 62%),
+      radial-gradient(55% 42% at 10% 6%, rgba(61,108,168,.24), transparent 72%),
+      radial-gradient(55% 42% at 90% 2%, rgba(61,108,168,.19), transparent 72%);
+  }
+  #salle::after{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(circle 4px at 11% 84%, rgba(255,255,255,.55), rgba(255,255,255,0)),
+      radial-gradient(circle 6px at 23% 91%, rgba(242,200,121,.45), rgba(242,200,121,0)),
+      radial-gradient(circle 3px at 34% 79%, rgba(255,255,255,.42), rgba(255,255,255,0)),
+      radial-gradient(circle 7px at 47% 94%, rgba(255,255,255,.3), rgba(255,255,255,0)),
+      radial-gradient(circle 4px at 61% 81%, rgba(242,200,121,.5), rgba(242,200,121,0)),
+      radial-gradient(circle 5px at 72% 89%, rgba(255,255,255,.38), rgba(255,255,255,0)),
+      radial-gradient(circle 3px at 84% 77%, rgba(255,255,255,.45), rgba(255,255,255,0)),
+      radial-gradient(circle 6px at 93% 93%, rgba(242,200,121,.35), rgba(242,200,121,0)),
+      radial-gradient(135% 105% at 50% 42%, transparent 44%, rgba(4,9,19,.78) 100%);
+    animation:respirer 11s ease-in-out infinite;
+  }
+  @keyframes respirer{50%{opacity:.72}}
+
+  /* Accueil presse : lumiere egale de hall, ni projecteur ni flash. */
+  body[data-lieu="attente"] #salle::before{
+    background:
+      linear-gradient(180deg, rgba(38,64,107,.30), transparent 46%),
+      radial-gradient(85% 50% at 50% 0%, rgba(143,163,194,.10), transparent 72%);
+  }
+  body[data-lieu="attente"] #salle::after{opacity:.22;animation:none}
+
+  #reglages,#tribune,#cr{position:relative;z-index:1}
+
+  /* ============ ACCREDITATION ============ */
+  #reglages{max-width:780px;margin:0 auto;padding:44px 24px 72px;width:100%}
+  .entete{border-bottom:1px solid var(--nuit-3);padding-bottom:16px;margin-bottom:8px}
+
+  /* ============ ACCUEIL PRESSE ============ */
+  /* Le badge qu'on vous tend au comptoir avant d'entrer. */
+  .badge{
+    background:var(--craie);color:var(--encre);border-radius:3px;padding:26px 24px 18px;
+    position:relative;margin:22px 0 18px;box-shadow:0 14px 34px rgba(0,0,0,.35);
+  }
+  .badge .cordon{
+    position:absolute;top:11px;left:50%;transform:translateX(-50%);
+    width:74px;height:9px;border-radius:5px;background:var(--nuit);
+    box-shadow:inset 0 1px 2px rgba(0,0,0,.6);
+  }
+  .badge-haut{
+    display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+    font-family:var(--mono);font-size:10px;letter-spacing:.24em;text-transform:uppercase;
+    margin-bottom:14px;
+  }
+  .badge-haut span:first-child{color:var(--rouge);font-weight:700}
+  .badge-haut span:last-child{color:#6E7378}
+  .badge h1{color:var(--encre)}
+  .badge-bas{
+    display:flex;align-items:center;gap:16px;margin-top:18px;
+    border-top:1px solid #C9CBC3;padding-top:14px;
+  }
+  .codebarre{
+    flex:1;height:26px;opacity:.75;
+    background:repeating-linear-gradient(90deg,
+      var(--encre) 0 2px, transparent 2px 5px, var(--encre) 5px 6px, transparent 6px 10px,
+      var(--encre) 10px 13px, transparent 13px 15px, var(--encre) 15px 16px, transparent 16px 21px);
+  }
+  .mention{font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:#6E7378;white-space:nowrap}
+
+  /* Signaletique directionnelle du hall. */
+  .panneau{
+    display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+    background:var(--nuit-2);border:1px solid var(--nuit-3);border-left:6px solid var(--lampe);
+    padding:13px 16px;margin:0 0 26px;border-radius:0 2px 2px 0;
+  }
+  .panneau .fleche{color:var(--lampe);font-size:19px;line-height:1;flex:none}
+  .panneau .destination{font-weight:700;font-size:15.5px;letter-spacing:.01em}
+  .panneau .detail{
+    margin-left:auto;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--gris);text-align:right;
+  }
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--lampe);margin:0 0 10px;font-weight:700}
+  h1{font-family:var(--sans);font-weight:800;font-size:clamp(28px,4.6vw,46px);line-height:1.04;
+    margin:0;text-transform:uppercase;letter-spacing:-.02em;color:var(--papier)}
+  .chapo{color:var(--gris);font-size:15px;line-height:1.6;margin:18px 0 34px;max-width:58ch}
+
+  .section{margin:0 0 30px}
+  .section > legend, .titre-section{
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;
+    color:var(--lampe);font-weight:700;padding:0 0 10px;margin:0 0 16px;width:100%;
+    border-bottom:1px solid var(--trait);display:block;
+  }
+  fieldset{border:0;padding:0;margin:0 0 30px}
+  .champ{margin:0 0 18px}
+  label{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--gris);margin:0 0 6px}
+  input[type=text],select,textarea{
+    width:100%;background:var(--nuit-2);border:1px solid var(--nuit-3);
+    color:var(--papier);border-radius:2px;padding:11px 12px;font-size:15px;font-family:var(--sans);
+  }
+  input[type=text]::placeholder,textarea::placeholder{color:rgba(143,163,194,.6)}
+  textarea{min-height:84px;resize:vertical;line-height:1.5;font-family:var(--sans)}
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .aide{color:var(--gris);font-size:12.5px;line-height:1.55;margin:7px 0 0}
+  .ligne{display:flex;gap:10px;align-items:flex-end}
+  .ligne > div{flex:1;min-width:0}
+
+  .avis{background:rgba(242,200,121,.09);border-left:4px solid var(--lampe);padding:14px 16px;
+    font-size:13px;line-height:1.6;margin:0 0 30px;color:#F6E7C7;border-radius:0 2px 2px 0}
+  .avis b{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;
+    text-transform:uppercase;margin-bottom:8px;color:var(--lampe)}
+  .avis code{background:rgba(0,0,0,.3);padding:1px 5px;font-size:12px;border-radius:2px}
+
+  .switch{display:flex;gap:12px;align-items:flex-start;border-top:1px solid var(--trait);
+    padding:14px 0 4px}
+  .switch input{margin:2px 0 0;width:17px;height:17px;accent-color:var(--rouge);flex:none}
+  .switch b{display:block;font-size:14.5px;font-weight:600;margin-bottom:3px}
+  .switch span{color:var(--gris);font-size:12.5px;line-height:1.5}
+
+  .encart{background:var(--nuit-2);border:1px solid var(--nuit-3);padding:16px;margin-top:14px;border-radius:2px}
+  .journal-etat{font-family:var(--mono);font-size:12px;color:var(--gris);margin:10px 0 0;min-height:1.3em}
+  .journal-etat.ko{color:#FF8A80}
+  .journal-etat.ok{color:#7FD1A0}
+
+  .primaire{background:var(--rouge);color:#fff;padding:15px 28px;font-weight:700;
+    letter-spacing:.06em;text-transform:uppercase;font-size:14px;width:100%;border-radius:2px}
+  .primaire:hover{background:#C8332C}
+  .secondaire{background:var(--nuit-3);color:var(--papier);padding:11px 15px;font-family:var(--mono);
+    font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;white-space:nowrap;border-radius:2px}
+  .secondaire:hover{background:#31518A}
+
+  /* ============ TRIBUNE ============ */
+  #tribune{display:none;flex:1;flex-direction:column;min-height:0}
+
+  #bandeau{display:flex;align-items:center;gap:20px;padding:14px 22px;
+    background:linear-gradient(180deg, rgba(24,41,72,.96), rgba(16,28,51,.96));
+    border-bottom:1px solid var(--nuit-3);flex:none}
+
+  /* le micro et sa plaque : signature de la page */
+  .micro{display:flex;align-items:center;gap:0;flex:none}
+  .micro svg{display:block;width:19px;height:29px;color:var(--papier);transition:color .25s}
+  .plaque{
+    font-family:var(--mono);font-size:clamp(12px,1.5vw,15px);letter-spacing:.2em;font-weight:700;
+    text-transform:uppercase;background:transparent;color:var(--papier);padding:0 0 0 12px;
+    border:0;white-space:nowrap;
+  }
+  body[data-etat="ecoute"] .plaque{color:var(--rouge)}
+  body[data-etat="reflexion"] .plaque{color:var(--lampe)}
+  body[data-etat="reponse"] .plaque{color:var(--lampe)}
+  body[data-etat="ecoute"] .micro svg{color:var(--rouge)}
+  body[data-etat="reflexion"] .micro svg{color:var(--lampe)}
+
+  .temoin{width:11px;height:11px;border-radius:50%;background:rgba(143,163,194,.35);flex:none;margin-left:10px}
+  body[data-etat="ecoute"] .temoin{background:var(--rouge);animation:pouls 1.05s infinite}
+  body[data-etat="reflexion"] .temoin{background:var(--lampe);animation:pouls 1.7s infinite}
+  @keyframes pouls{50%{opacity:.2}}
+
+  .compteur{margin-left:auto;display:flex;gap:10px;align-items:center}
+  .numero{font-family:var(--mono);font-size:13px;letter-spacing:.14em;padding-right:6px;color:var(--gris)}
+  .horloge{font-family:var(--mono);font-size:13px;letter-spacing:.14em;color:var(--gris);
+    padding-right:14px;border-right:1px solid var(--nuit-3)}
+  .mini{background:transparent;color:var(--gris);border:1px solid var(--nuit-3);border-radius:2px;
+    padding:7px 11px;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase}
+  .mini:hover{color:var(--papier);border-color:var(--gris)}
+
+  #scene{flex:1;display:flex;flex-direction:column;min-height:0;padding:20px 22px;gap:16px}
+
+  #question{
+    font-family:var(--mono);font-size:clamp(14px,1.9vw,21px);line-height:1.45;flex:none;
+    background:var(--nuit-2);border-left:5px solid var(--rouge);padding:12px 16px;
+    min-height:3em;white-space:pre-wrap;color:var(--lampe);border-radius:0 2px 2px 0;
+  }
+  #question.vide{color:var(--gris);border-left-color:var(--nuit-3)}
+
+  /* Decompte avant envoi automatique, lisible du fond de la salle. */
+  #jauge{height:4px;background:var(--nuit-2);flex:none;margin-top:-10px;overflow:hidden;opacity:0;transition:opacity .2s}
+  #jauge.actif{opacity:1}
+  #jauge i{display:block;height:100%;width:100%;background:var(--rouge);transform-origin:left center}
+
+  /* La d'eclaration reste sur fond clair : une feuille 'eclair'ee dans une salle sombre,
+     c'est ce qui se lit le mieux au fond de la salle. */
+  #communique{
+    flex:1;overflow-y:auto;background:var(--craie);color:var(--encre);
+    padding:clamp(18px,3vw,34px);min-height:0;position:relative;border-radius:2px;
+    box-shadow:0 18px 50px rgba(0,0,0,.5), 0 0 0 1px rgba(242,200,121,.16), 0 0 70px rgba(242,200,121,.10);
+  }
+  #bloc-reponse{flex:1;display:flex;gap:14px;min-height:0}
+  #bloc-reponse #communique{flex:1;min-width:0}
+  #ondes{
+    flex:none;width:92px;display:flex;flex-direction:column;align-items:center;gap:8px;
+    background:rgba(24,41,72,.55);border:1px solid var(--nuit-3);border-radius:2px;padding:10px 0;
+  }
+  #onde{flex:1;width:100%;min-height:0;display:block}
+  #ondes .etiquette{
+    font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--gris);flex:none;
+  }
+  #reponse{font-family:var(--serif);font-size:clamp(16px,2vw,24px);line-height:1.5}
+  #reponse:empty::before{content:"En attente de la première question.";color:#8A8F86;
+    font-family:var(--sans);font-size:16px}
+  #reponse .souci{font-family:var(--sans);font-size:16px;color:#A02015;line-height:1.5}
+  #sources{font-family:var(--mono);font-size:12.5px;margin-top:26px;border-top:1px solid #C9CBC3;
+    padding-top:14px;color:#5C6068}
+  #sources b{display:block;letter-spacing:.2em;text-transform:uppercase;font-size:10px;margin-bottom:8px;color:var(--encre)}
+  #sources a{color:#17427A;word-break:break-all;display:block;margin-bottom:4px}
+
+  /* La table de tribune : plan sombre sous une arete eclairee, avec le chevalet dessus. */
+  #table{
+    flex:none;padding:0 22px 20px;
+    background:linear-gradient(180deg, rgba(10,18,33,.75), rgba(6,12,24,.92));
+    border-top:1px solid rgba(242,200,121,.28);
+  }
+  #chevalet{display:flex;justify-content:center;margin:-13px 0 16px}
+  #chevalet span{
+    background:var(--craie);color:var(--encre);font-family:var(--mono);
+    font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;
+    padding:7px 22px;border-radius:1px;box-shadow:0 5px 14px rgba(0,0,0,.5);
+    border-bottom:3px solid var(--rouge);max-width:80vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  }
+  #pupitre{display:flex;gap:10px;flex:none;flex-wrap:wrap;align-items:stretch}
+  #micro-btn{background:var(--rouge);color:#fff;padding:16px 26px;font-weight:700;
+    font-size:15px;letter-spacing:.08em;text-transform:uppercase;flex:none;min-width:230px;border-radius:2px}
+  #micro-btn[data-on="1"]{background:var(--papier);color:var(--encre)}
+  #micro-btn:disabled{opacity:.35;cursor:not-allowed}
+  #secours{flex:1;min-width:230px}
+  #poser-btn{background:var(--nuit-3);color:var(--papier);padding:0 20px;font-family:var(--mono);
+    font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;border-radius:2px}
+  #poser-btn:hover{background:#31518A}
+  #couper{background:transparent;color:var(--gris);border:1px solid var(--nuit-3);border-radius:2px;
+    padding:0 16px;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase}
+  #couper:hover{color:var(--papier);border-color:var(--gris)}
+
+  /* flash d'appareil photo 'a chaque d'eclaration */
+  #flash{position:fixed;inset:0;background:#fff;opacity:0;pointer-events:none;z-index:50}
+  #flash.tire{animation:bloom .45s ease-out}
+  @keyframes bloom{0%{opacity:.34}100%{opacity:0}}
+  @media (prefers-reduced-motion:reduce){
+    #flash.tire{animation:none}
+    .temoin{animation:none !important}
+    #salle::after{animation:none}
+  }
+
+  /* ============ COMPTE RENDU ============ */
+  #cr{position:fixed;inset:0;background:rgba(10,18,33,.96);display:none;overflow-y:auto;padding:36px 24px;z-index:20}
+  #cr.ouvert{display:block}
+  .cr-inner{max-width:840px;margin:0 auto}
+  .tour{border-top:2px solid var(--nuit-3);padding:16px 0 24px}
+  .tour .num{font-family:var(--mono);font-size:11px;color:var(--lampe);letter-spacing:.18em}
+  .tour .num span{font-family:var(--mono);font-size:11px;color:var(--gris);letter-spacing:.14em;margin-left:8px}
+  .tour .q{font-family:var(--mono);font-size:14px;line-height:1.55;margin:10px 0 12px;color:var(--papier)}
+  .tour .r{font-family:var(--serif);font-size:16.5px;line-height:1.6;color:#D6DCE6}
+  .tour .liens{font-family:var(--mono);font-size:11.5px;color:var(--gris);margin-top:10px;word-break:break-all}
+  .barre{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+  .barre .mini{color:var(--papier);border-color:var(--gris)}
+  .barre .mini:hover{background:var(--papier);color:var(--encre)}
+
+  @media (max-width:860px){
+    #bloc-reponse{flex-direction:column}
+    #ondes{width:100%;height:64px;flex-direction:row;padding:0 10px;gap:12px}
+    #onde{height:100%}
+  }
+  @media (max-width:640px){
+    .duo{grid-template-columns:1fr}
+    .plaque{font-size:15px}
+    #micro-btn{min-width:100%}
+  }
+</style>
+
+<div id="salle" aria-hidden="true"></div>
+
+<!-- ============ ACCRÉDITATION ============ -->
+<section id="reglages">
+  <div class="badge">
+    <span class="cordon" aria-hidden="true"></span>
+    <div class="badge-haut">
+      <span>Accès presse</span>
+      <span>Youth AI Lab &middot; étape 3</span>
+    </div>
+    <h1>Conférence<br>de presse</h1>
+    <div class="badge-bas">
+      <span class="codebarre" aria-hidden="true"></span>
+      <span class="mention">Valable pour la session</span>
+    </div>
+  </div>
+
+  <div class="panneau">
+    <span class="fleche" aria-hidden="true">&rarr;</span>
+    <span class="destination" id="sig-salle">Salle du Local Ouest</span>
+    <span class="detail" id="sig-detail"></span>
+  </div>
+
+  <p class="chapo">Dispositif vocal central. Les groupes posent leurs questions au micro, l'IA répond à voix haute, tout est consigné pour le débriefing.</p>
+
+  <div class="avis" id="avis"></div>
+
+  <fieldset class="section">
+    <legend>Salle et sujet</legend>
+    <div class="champ">
+      <label for="ville">Ville</label>
+      <input type="text" id="ville" placeholder="ex. La Rochelle">
+    </div>
+    <div class="champ">
+      <label for="sujet">Sujet annoncé</label>
+      <input type="text" id="sujet" value="les enjeux de société qui nous concernent">
+      <p class="aide">Le territoire n'est pas fixé ici : les jeunes le précisent eux-mêmes dans leurs questions, et le porte-parole reprend ce qu'ils annoncent.</p>
+    </div>
+    <div class="champ">
+      <label for="silence">Envoi automatique de la question</label>
+      <select id="silence">
+        <option value="0">Désactivé, on ferme le micro à la main</option>
+        <option value="1500">Après 1,5 seconde de silence</option>
+        <option value="2000" selected>Après 2 secondes de silence</option>
+        <option value="3000">Après 3 secondes de silence</option>
+        <option value="4000">Après 4 secondes de silence</option>
+      </select>
+      <p class="aide">Le micro se ferme et la question part dès que le journaliste se tait. En salle bruyante, allongez le délai ou désactivez : le brouhaha empêche la détection du silence.</p>
+    </div>
+    <div class="champ">
+      <label for="relance">Réouverture du micro après la réponse</label>
+      <select id="relance">
+        <option value="0">Désactivée, on rouvre à la main</option>
+        <option value="1500">Après 1,5 seconde</option>
+        <option value="2500" selected>Après 2,5 secondes</option>
+        <option value="4000">Après 4 secondes</option>
+      </select>
+      <p class="aide">Le micro se rouvre seul dès que l'IA a fini de parler, la parole passe au groupe suivant sans manipulation. Le délai laisse la sono se taire et l'animateur passer l'appareil.</p>
+    </div>
+    <div class="champ">
+      <label for="langue">Langue de la conférence</label>
+      <select id="langue">
+        <option value="fr-FR">Français</option>
+        <option value="es-ES">Español</option>
+        <option value="it-IT">Italiano</option>
+        <option value="nl-BE">Nederlands</option>
+        <option value="en-GB">English</option>
+      </select>
+    </div>
+    <div class="champ">
+      <label for="registre">Registre de l'IA</label>
+      <select id="registre">
+        <option value="neutre">Assistant IA ordinaire</option>
+        <option value="portevoix">Porte-parole institutionnel</option>
+      </select>
+      <p class="aide">Le registre « porte-parole » ajoute de la langue de bois et des formules d'évitement, bon terrain d'entraînement à la relance. Gardez l'essentiel de la séance en registre ordinaire : c'est le comportement réel que les groupes doivent observer.</p>
+    </div>
+    <div class="champ">
+      <label for="contexte">Consignes complémentaires</label>
+      <textarea id="contexte" placeholder="Thème de la campagne des groupes, angle à privilégier, éléments à ne pas aborder…"></textarea>
+    </div>
+  </fieldset>
+
+  <fieldset class="section">
+    <legend>Intelligence artificielle interrogée</legend>
+    <div class="champ">
+      <label for="fournisseur">Fournisseur</label>
+      <select id="fournisseur">
+        <option value="gemini">Google Gemini, clé gratuite via AI Studio</option>
+        <option value="claude">Anthropic Claude, crédits prépayés</option>
+      </select>
+    </div>
+
+    <div class="encart" id="bloc-gemini">
+      <label for="cle-gemini">Clé API Gemini</label>
+      <div class="ligne">
+        <div><input type="text" id="cle-gemini" placeholder="AIza…" autocomplete="off" spellcheck="false"></div>
+        <button class="secondaire" id="charger-gemini">Charger les modèles</button>
+      </div>
+      <p class="aide">Clé à créer sur aistudio.google.com, sans carte bancaire. Elle reste en mémoire le temps de l'onglet et n'est écrite nulle part.</p>
+      <div style="margin-top:14px">
+        <label for="modele-gemini">Modèle</label>
+        <select id="modele-gemini">
+          <option value="gemini-3.5-flash-lite">gemini-3.5-flash-lite</option>
+          <option value="gemini-3.1-flash-lite">gemini-3.1-flash-lite</option>
+          <option value="gemini-3.6-flash">gemini-3.6-flash</option>
+        </select>
+      </div>
+      <p class="journal-etat" id="etat-gemini"></p>
+    </div>
+
+    <div class="encart masque" id="bloc-claude">
+      <label for="cle-claude">Clé API Anthropic</label>
+      <div class="ligne">
+        <div><input type="text" id="cle-claude" placeholder="sk-ant-…" autocomplete="off" spellcheck="false"></div>
+        <button class="secondaire" id="charger-claude">Charger les modèles</button>
+      </div>
+      <p class="aide" id="aide-claude"></p>
+      <div style="margin-top:14px">
+        <label for="modele-claude">Modèle</label>
+        <select id="modele-claude">
+          <option value="claude-haiku-4-5-20251001">claude-haiku-4-5</option>
+          <option value="claude-sonnet-5">claude-sonnet-5</option>
+          <option value="claude-opus-4-8">claude-opus-4-8</option>
+        </select>
+      </div>
+      <p class="journal-etat" id="etat-claude"></p>
+    </div>
+
+    <div class="switch" style="margin-top:22px">
+      <input type="checkbox" id="recherche">
+      <div>
+        <b>Autoriser la recherche web</b>
+        <span>Sans recherche, l'IA répond de mémoire : elle est vague ou inventive sur le local, ce qui rend le télescopage plus parlant. Avec recherche, elle cite des sources et devient difficile à prendre en défaut. Basculer l'interrupteur au milieu de la séance rend la démonstration très nette.</span>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset class="section">
+    <legend>Voix</legend>
+    <div class="champ">
+      <label for="moteur">Moteur de synthèse</label>
+      <select id="moteur">
+        <option value="navigateur">Synthèse du navigateur, gratuite</option>
+        <option value="eleven">ElevenLabs, naturelle, sur clé API</option>
+        <option value="aucune">Aucune, projection seule</option>
+      </select>
+    </div>
+
+    <div class="encart" id="bloc-navigateur">
+      <label for="voix-nav">Voix installée sur cette machine</label>
+      <div class="ligne">
+        <div><select id="voix-nav"></select></div>
+        <button class="secondaire" id="test-nav">Écouter</button>
+      </div>
+      <p class="aide">Sous Edge, les voix nommées « Natural » sont bien meilleures que les autres et ne coûtent rien. Cherchez Denise, Henri ou Vivienne pour le français.</p>
+    </div>
+
+    <div class="encart masque" id="bloc-eleven">
+      <label for="cle-eleven">Clé API ElevenLabs</label>
+      <div class="ligne">
+        <div><input type="text" id="cle-eleven" placeholder="sk_…" autocomplete="off" spellcheck="false"></div>
+        <button class="secondaire" id="charger-voix">Charger les voix</button>
+      </div>
+      <div style="margin-top:14px">
+        <label for="voix-el">Voix</label>
+        <div class="ligne">
+          <div><select id="voix-el"><option value="">Chargez les voix d'abord</option></select></div>
+          <button class="secondaire" id="test-el">Écouter</button>
+        </div>
+      </div>
+      <div style="margin-top:14px">
+        <label for="modele-el">Modèle</label>
+        <select id="modele-el">
+          <option value="eleven_flash_v2_5">Flash v2.5, réponse quasi immédiate</option>
+          <option value="eleven_multilingual_v2">Multilingual v2, meilleure diction, plus lent</option>
+        </select>
+      </div>
+      <p class="journal-etat" id="etat-el"></p>
+    </div>
+  </fieldset>
+
+  <fieldset class="section">
+    <legend>Mémoire de cette machine</legend>
+    <div class="switch" style="border-top:0;padding-top:0">
+      <input type="checkbox" id="retenir">
+      <div>
+        <b>Retenir mes clés et mes réglages sur cet ordinateur</b>
+        <span>Les clés sont conservées par le navigateur, pour ce site uniquement. Elles ne sont pas écrites dans le fichier, qui reste diffusable tel quel. À éviter sur un poste partagé de l'IUT.</span>
+      </div>
+    </div>
+    <div class="ligne" style="margin-top:12px">
+      <button class="secondaire" id="oublier">Oublier les clés</button>
+      <p class="journal-etat" id="etat-memoire" style="margin:0;flex:1;text-align:right"></p>
+    </div>
+  </fieldset>
+
+  <button class="primaire" id="ouvrir">Entrer en salle</button>
+</section>
+
+<!-- ============ TRIBUNE ============ -->
+<main id="tribune">
+  <header id="bandeau">
+    <div class="micro">
+      <svg width="34" height="52" viewBox="0 0 34 52" fill="none" aria-hidden="true">
+        <rect x="11" y="2" width="12" height="21" rx="6" fill="currentColor"/>
+        <path d="M6 19a11 11 0 0 0 22 0" stroke="currentColor" stroke-width="2.6" fill="none"/>
+        <path d="M17 30v9" stroke="currentColor" stroke-width="2.6"/>
+        <path d="M17 39v11" stroke="currentColor" stroke-width="1.6"/>
+      </svg>
+      <span class="plaque" id="plaque">En attente</span>
+      <span class="temoin"></span>
+    </div>
+    <div class="compteur">
+      <span class="horloge" id="horloge">00:00</span>
+      <span class="numero" id="numero">Q00</span>
+      <button class="mini" id="voir-cr">Compte rendu</button>
+      <button class="mini" id="plein">Plein écran</button>
+      <button class="mini" id="retour">Réglages</button>
+    </div>
+  </header>
+
+  <div id="scene">
+    <div id="question" class="vide">Aucune question posée pour l'instant.</div>
+    <div id="jauge" aria-hidden="true"><i></i></div>
+    <div id="bloc-reponse">
+      <div id="communique"><div id="reponse"></div></div>
+      <aside id="ondes"><canvas id="onde"></canvas><span class="etiquette" id="onde-titre">Silence</span></aside>
+    </div>
+  </div>
+
+  <div id="table">
+    <div id="chevalet"><span id="chevalet-nom">Porte-parole</span></div>
+    <div id="pupitre">
+      <button id="micro-btn" data-on="0">Ouvrir le micro</button>
+      <input type="text" id="secours" placeholder="Question tapée, si le micro décroche">
+      <button id="poser-btn">Poser</button>
+      <button id="couper">Couper la voix</button>
+    </div>
+  </div>
+</main>
+
+<div id="flash"></div>
+
+<!-- ============ COMPTE RENDU ============ -->
+<div id="cr">
+  <div class="cr-inner">
+    <div class="entete">
+      <p class="eyebrow">Compte rendu de séance</p>
+      <h1>Verbatim</h1>
+    </div>
+    <div id="cr-liste" style="margin-top:26px"></div>
+    <div class="barre">
+      <button class="mini" id="telecharger">Télécharger en .md</button>
+      <button class="mini" id="copier">Copier</button>
+      <button class="mini" id="nouvelle">Nouvelle séquence</button>
+      <button class="mini" id="fermer-cr">Retour à la conférence</button>
+    </div>
+    <p class="aide" style="margin-top:16px">« Nouvelle séquence » efface la mémoire de l'IA. Tant que vous ne l'utilisez pas, elle se souvient de tout ce qu'elle a dit, ce qui permet de la confronter à ses propres contradictions.</p>
+  </div>
+</div>
+
+<script>
+(function(){
+  const $ = id => document.getElementById(id);
+  const Reco = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const autonome = (window.self === window.top);
+  let conf = {}, historique = [], journal = [], reco = null, ecoute = false, occupe = false;
+
+  function echapper(s){ const d = document.createElement('div'); d.textContent = s == null ? '' : s; return d.innerHTML; }
+
+  /* ---------- memoire locale des cles et des reglages ---------- */
+  /* Rien ne quitte la machine : le navigateur garde ces valeurs pour cette page seulement.
+     Le fichier HTML, lui, ne contient aucune cle et reste partageable. */
+  const CASIER = 'conference-presse-ia';
+  const A_RETENIR = ['cle-gemini','cle-claude','cle-eleven','fournisseur','modele-gemini',
+                     'modele-claude','moteur','voix-nav','voix-el','modele-el','langue','silence','relance'];
+
+  function direMemoire(texte, classe){
+    const e = $('etat-memoire');
+    e.className = 'journal-etat' + (classe ? ' ' + classe : '');
+    e.textContent = texte;
+  }
+
+  function sauverMemoire(){
+    if(!$('retenir').checked) return;
+    try{
+      const paquet = {};
+      A_RETENIR.forEach(id => { const el = $(id); if(el) paquet[id] = el.value; });
+      localStorage.setItem(CASIER, JSON.stringify(paquet));
+      direMemoire('Réglages retenus.', 'ok');
+    }catch(err){
+      direMemoire("Le navigateur refuse d'enregistrer (navigation privée ?).", 'ko');
+    }
+  }
+
+  function chargerMemoire(){
+    let paquet;
+    try{
+      const brut = localStorage.getItem(CASIER);
+      if(!brut) return;
+      paquet = JSON.parse(brut);
+    }catch(err){ return; }
+    Object.keys(paquet).forEach(id => {
+      const el = $(id), val = paquet[id];
+      if(!el || val == null || val === '') return;
+      // Les listes de modeles et de voix se remplissent apres coup : on reinjecte l'option manquante.
+      if(el.tagName === 'SELECT' && !Array.prototype.some.call(el.options, o => o.value === val)){
+        const o = document.createElement('option');
+        o.value = val; o.textContent = val;
+        el.appendChild(o);
+      }
+      el.value = val;
+    });
+    $('retenir').checked = true;
+    const f = $('fournisseur').value, m = $('moteur').value;
+    $('bloc-gemini').classList.toggle('masque', f !== 'gemini');
+    $('bloc-claude').classList.toggle('masque', f !== 'claude');
+    $('bloc-navigateur').classList.toggle('masque', m !== 'navigateur');
+    $('bloc-eleven').classList.toggle('masque', m !== 'eleven');
+    direMemoire('Clés retrouvées sur cette machine.', 'ok');
+  }
+
+  function oublierMemoire(){
+    try{ localStorage.removeItem(CASIER); }catch(err){}
+    ['cle-gemini','cle-claude','cle-eleven'].forEach(id => { if($(id)) $(id).value = ''; });
+    $('retenir').checked = false;
+    direMemoire('Clés effacées de cette machine.', '');
+  }
+
+  $('oublier').onclick = oublierMemoire;
+  $('retenir').onchange = () => {
+    if($('retenir').checked) sauverMemoire();
+    else oublierMemoire();
+  };
+  A_RETENIR.forEach(id => {
+    const el = $(id);
+    if(el) el.addEventListener('change', sauverMemoire);
+  });
+
+  /* ---------- on commence dans le hall ---------- */
+  document.body.dataset.lieu = 'attente';
+
+  /* La signaletique reprend ce qui est saisi, comme un panneau d'affichage de hall. */
+  function majPanneau(){
+    const v = $('ville').value.trim();
+    $('sig-salle').textContent = v
+      ? 'Conférence de presse \u00b7 ' + v
+      : 'Salle de conférence de presse';
+    const ia = $('fournisseur').value === 'gemini' ? $('modele-gemini').value : $('modele-claude').value;
+    const voix = {navigateur:'Voix navigateur', eleven:'Voix ElevenLabs', aucune:'Sans voix'}[$('moteur').value];
+    $('sig-detail').textContent = [
+      $('langue').selectedOptions[0].textContent,
+      ia,
+      voix
+    ].join(' \u00b7 ');
+  }
+  ['ville','langue','fournisseur','moteur','modele-gemini','modele-claude'].forEach(id => {
+    const el = $(id);
+    if(el) el.addEventListener(el.tagName === 'SELECT' ? 'change' : 'input', majPanneau);
+  });
+  chargerMemoire();
+  majPanneau();
+
+  /* ---------- horloge de session ---------- */
+  let debutSession = null, minuteur = null;
+  function demarrerHorloge(){
+    debutSession = Date.now();
+    clearInterval(minuteur);
+    minuteur = setInterval(() => {
+      const t = Math.floor((Date.now() - debutSession) / 1000);
+      $('horloge').textContent =
+        String(Math.floor(t / 60)).padStart(2,'0') + ':' + String(t % 60).padStart(2,'0');
+    }, 1000);
+  }
+  function arreterHorloge(){ clearInterval(minuteur); minuteur = null; }
+
+  /* ---------- diagnostic d'ouverture ---------- */
+  const soucis = [];
+  if(!Reco) soucis.push("Ce navigateur ne gère pas la reconnaissance vocale. Utilisez Chrome ou Edge. La saisie texte reste disponible.");
+  if(!window.isSecureContext && location.protocol !== 'file:') soucis.push("Page non servie en HTTPS. Le micro est bloqué hors contexte sécurisé.");
+  if(location.protocol === 'file:') soucis.push("Page ouverte en fichier local. Le navigateur redemandera le micro à chaque ouverture, et cette page n'y peut rien. Fermez cet onglet, lancez \"Conférence de presse IA\" depuis la liste des applications, et travaillez sur http://localhost:8000/conference-de-presse-ia.html : l'autorisation ne sera demandée qu'une fois.");
+  if(!autonome) soucis.push("Page affichée dans un cadre intégré, qui n'a pas l'autorisation micro. Téléchargez le fichier et ouvrez-le dans un onglet à part.");
+  if(soucis.length){
+    $('avis').innerHTML = "<b>À corriger avant la séance</b>" + soucis.join("<br><br>");
+  } else {
+    $('avis').classList.add('masque');
+  }
+
+  $('aide-claude').textContent = autonome
+    ? "Clé à créer sur console.anthropic.com, section API Keys, après avoir chargé des crédits. Elle reste en mémoire le temps de l'onglet."
+    : "Laissez vide dans l'aperçu Claude, l'appel est authentifié automatiquement.";
+
+  /* ---------- bascules d'affichage ---------- */
+  $('fournisseur').onchange = () => {
+    const f = $('fournisseur').value;
+    $('bloc-gemini').classList.toggle('masque', f !== 'gemini');
+    $('bloc-claude').classList.toggle('masque', f !== 'claude');
+  };
+  $('moteur').onchange = () => {
+    const m = $('moteur').value;
+    $('bloc-navigateur').classList.toggle('masque', m !== 'navigateur');
+    $('bloc-eleven').classList.toggle('masque', m !== 'eleven');
+  };
+
+  /* ---------- ouverture de la conférence ---------- */
+  $('ouvrir').onclick = () => {
+    conf = {
+      ville:$('ville').value.trim(),
+      sujet:$('sujet').value.trim(), langue:$('langue').value,
+      registre:$('registre').value, contexte:$('contexte').value.trim(),
+      recherche:$('recherche').checked,
+      silence:parseInt($('silence').value, 10) || 0,
+      relance:parseInt($('relance').value, 10) || 0,
+      fournisseur:$('fournisseur').value,
+      cleGemini:$('cle-gemini').value.trim(), modeleGemini:$('modele-gemini').value,
+      cleClaude:$('cle-claude').value.trim(), modeleClaude:$('modele-claude').value,
+      moteur:$('moteur').value, voixNav:$('voix-nav').value,
+      cleEleven:$('cle-eleven').value.trim(), voixEl:$('voix-el').value, modeleEl:$('modele-el').value
+    };
+    conf.voix = conf.moteur !== 'aucune';
+    if(!autonome && conf.fournisseur === 'claude' && !conf.cleClaude) conf.modeleClaude = 'claude-sonnet-4-6';
+    sauverMemoire();
+    poserLeMur();
+    $('chevalet-nom').textContent = conf.ville || 'Porte-parole';
+    document.body.dataset.lieu = 'salle';
+    $('horloge').textContent = '00:00';
+    demarrerHorloge();
+    $('reglages').style.display = 'none';
+    $('tribune').style.display = 'flex';
+    if(Reco) preparerReco();
+    ouvrirFluxMicro();
+    requestAnimationFrame(() => modeOndeVers('repos', 'Silence'));
+  };
+  $('retour').onclick = () => {
+    arreterEcoute(); parler.stop(); arreterHorloge(); fermerMicro(); arreterOnde(); annulerRelance();
+    document.body.dataset.lieu = 'attente';
+    document.body.style.removeProperty('--mur');
+    $('tribune').style.display = 'none'; $('reglages').style.display = 'block';
+    majPanneau();
+  };
+  $('plein').onclick = () => {
+    if(document.fullscreenElement) document.exitFullscreen();
+    else document.documentElement.requestFullscreen().catch(()=>{});
+  };
+
+  /* ---------- fond de scène répété, comme un mur d'accréditation ---------- */
+  function poserLeMur(){
+    const mots = [(conf.ville || 'Conférence de presse').toUpperCase(), 'YOUTH AI LAB'];
+    const svg = '<svg xmlns="http://www.w3.org/2000/svg" width="440" height="150" viewBox="0 0 440 150">'+
+      '<g font-family="Impact, sans-serif" font-size="21" fill="#EDEEE9" fill-opacity="0.07" letter-spacing="1.5">'+
+      '<text x="10" y="34">'+echapper(mots[0])+'</text>'+
+      '<text x="200" y="86">'+echapper(mots[1])+'</text>'+
+      '<text x="30" y="134">'+echapper(mots[0])+'</text>'+
+      '</g></svg>';
+    document.body.style.setProperty('--mur', 'url("data:image/svg+xml,' + encodeURIComponent(svg) + '")');
+  }
+
+  /* ---------- consigne système ---------- */
+  function nomLangue(l){
+    return {'fr-FR':'français','es-ES':'espagnol','it-IT':'italien','nl-BE':'néerlandais','en-GB':'anglais'}[l] || 'français';
+  }
+  function systeme(){
+    const lieu = conf.ville
+      ? 'La conférence se tient à ' + conf.ville + '.'
+      : '';
+    const ton = conf.registre === 'portevoix'
+      ? "Tu adoptes le registre d'un porte-parole institutionnel : formulations prudentes, éléments de langage, renvois à des travaux en cours. Tu ne mens jamais et tu n'inventes aucun chiffre, mais tu ne devances pas les questions."
+      : "Tu réponds comme un assistant IA grand public le ferait, sans posture particulière.";
+    return [
+      "Tu réponds aux questions d'une conférence de presse sur " + (conf.sujet || 'les enjeux de société qui nous concernent') + '.',
+      lieu, ton,
+      "Aucun territoire ne t'est imposé. Ce sont les journalistes qui situent leurs questions : un pays, une ville, un quartier, leur école, leur rue, ou rien du tout. Tu réponds à l'échelle qu'ils posent, sans la rétrécir ni l'élargir de toi-même, et sans supposer un quartier dont ils n'ont pas parlé.",
+      "Tu ne t'appuies que sur des informations vérifiables, issues de sources réelles. Tu n'inventes jamais un chiffre, une étude, un rapport, une date ni une institution : si tu n'es pas certain qu'une source existe et dit bien cela, tu ne la cites pas. Quand une donnée précise te manque, tu le dis franchement et tu indiques où elle se vérifierait, plutôt que de combler le vide.",
+      "Tes réponses sont lues à voix haute : 80 mots maximum, phrases parlées, aucun titre, aucune puce, aucun formatage. Réponds en " + nomLangue(conf.langue) + '.',
+      "Des journalistes te relanceront sur tes propres déclarations précédentes. Assume-les ou corrige-toi explicitement.",
+      conf.contexte ? 'Contexte transmis par l\'organisation : ' + conf.contexte : ''
+    ].filter(Boolean).join('\n');
+  }
+
+  /* ---------- états ---------- */
+  function etat(e, texte){ document.body.dataset.etat = e; $('plaque').textContent = texte; }
+  etat('attente','En attente');
+
+  /* ---------- reconnaissance vocale ---------- */
+  function preparerReco(){
+    reco = new Reco();
+    reco.lang = conf.langue; reco.continuous = true; reco.interimResults = true;
+    let acquis = '';
+    reco.onstart = () => { acquis = ''; desarmerSilence(); etat('ecoute','Micro ouvert'); };
+    reco.onresult = ev => {
+      let provisoire = '';
+      for(let i = ev.resultIndex; i < ev.results.length; i++){
+        const t = ev.results[i][0].transcript;
+        if(ev.results[i].isFinal) acquis += t + ' '; else provisoire += t;
+      }
+      const dit = (acquis + provisoire).trim();
+      afficherQuestion(dit);
+      // Deux conditions avant d'armer le compte a rebours : que quelqu'un ait parle,
+      // et que ce soit une vraie phrase. Un raclement de gorge ou un « euh » capte
+      // par un micro laisse ouvert ne doit pas expedier une question vide.
+      if(assezLong(dit)) armerSilence(); else desarmerSilence();
+    };
+    reco.onerror = ev => {
+      if(ev.error === 'no-speech' || ev.error === 'aborted') return;
+      const causes = {
+        'not-allowed':"Le navigateur a refusé le micro. Cliquez sur le cadenas dans la barre d'adresse, autorisez le microphone, puis rechargez.",
+        'service-not-allowed':"Service de reconnaissance bloqué, souvent parce que la page n'est pas en HTTPS ou tourne dans un cadre intégré.",
+        'audio-capture':"Aucun micro détecté. Vérifiez le périphérique d'entrée dans les réglages système.",
+        'network':"Pas de réseau. La reconnaissance de Chrome passe par les serveurs de Google.",
+        'language-not-supported':"Langue non gérée par la reconnaissance sur cette machine."
+      };
+      afficherQuestion(causes[ev.error] || ('Micro indisponible (' + ev.error + '). Utilisez la saisie texte.'));
+      arreterEcoute(); etat('attente','En attente');
+    };
+    reco.onend = () => {
+      desarmerSilence();
+      if(!ecoute) return;
+      ecoute = false; majMicro();
+      const q = acquis.trim();
+      if(q) poser(q); else etat('attente','En attente');
+    };
+  }
+  /* ---------- visualisation sonore ----------
+     Le trace suit du signal reel quand il y en a : le micro pendant la question,
+     le flux ElevenLabs pendant la reponse. La synthese du navigateur n'expose
+     aucun flux audio : dans ce mode seul, le trace est simule. */
+  const NIVEAUX = 72;
+  let ctxAudio = null, analyseurEntree = null, analyseurSortie = null;
+  let tampon = null, traces = new Array(NIVEAUX).fill(0);
+  let boucleOnde = null, sourceSimulee = 0, modeOnde = 'repos';
+  const sobre = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function audio(){
+    if(!ctxAudio){
+      const C = window.AudioContext || window.webkitAudioContext;
+      if(!C) return null;
+      ctxAudio = new C();
+    }
+    if(ctxAudio.state === 'suspended') ctxAudio.resume();
+    return ctxAudio;
+  }
+
+  function brancherEntree(flux){
+    const c = audio();
+    if(!c) return;
+    try{
+      analyseurEntree = c.createAnalyser();
+      analyseurEntree.fftSize = 512;
+      c.createMediaStreamSource(flux).connect(analyseurEntree);
+      tampon = new Uint8Array(analyseurEntree.fftSize);
+    }catch(e){ analyseurEntree = null; }
+  }
+
+  function brancherSortie(element){
+    const c = audio();
+    if(!c) return;
+    try{
+      analyseurSortie = c.createAnalyser();
+      analyseurSortie.fftSize = 512;
+      const src = c.createMediaElementSource(element);
+      src.connect(analyseurSortie);
+      analyseurSortie.connect(c.destination);
+      tampon = new Uint8Array(analyseurSortie.fftSize);
+    }catch(e){ analyseurSortie = null; }
+  }
+
+  function mesurer(an){
+    if(!an || !tampon) return 0;
+    an.getByteTimeDomainData(tampon);
+    let somme = 0;
+    for(let i = 0; i < tampon.length; i++){
+      const v = (tampon[i] - 128) / 128;
+      somme += v * v;
+    }
+    return Math.min(1, Math.sqrt(somme / tampon.length) * 3.2);
+  }
+
+  function dessinerOnde(){
+    const c = $('onde');
+    if(!c) return;
+    const r = c.getBoundingClientRect();
+    if(!r.width || !r.height) return;
+    const d = window.devicePixelRatio || 1;
+    if(c.width !== Math.round(r.width * d) || c.height !== Math.round(r.height * d)){
+      c.width = Math.round(r.width * d); c.height = Math.round(r.height * d);
+    }
+    const g = c.getContext('2d');
+    const L = r.width, H = r.height;
+    g.setTransform(d, 0, 0, d, 0, 0);
+    g.clearRect(0, 0, L, H);
+
+    const style = getComputedStyle(document.body);
+    const teinte = modeOnde === 'question' ? style.getPropertyValue('--rouge')
+                 : modeOnde === 'reponse'  ? style.getPropertyValue('--lampe')
+                 : style.getPropertyValue('--nuit-3');
+    g.fillStyle = teinte.trim() || '#8FA3C2';
+
+    // Colonne verticale : trace symetrique autour de l'axe, le plus recent en haut.
+    const vertical = L < H;
+    const n = traces.length;
+    for(let i = 0; i < n; i++){
+      const a = Math.max(0.035, traces[i]);
+      if(vertical){
+        const pas = H / n, y = i * pas, ep = Math.max(1.5, pas - 1.6);
+        const larg = a * (L - 16);
+        g.fillRect((L - larg) / 2, y, larg, ep);
+      } else {
+        const pas = L / n, x = L - (i + 1) * pas, ep = Math.max(1.5, pas - 1.6);
+        const haut = a * (H - 12);
+        g.fillRect(x, (H - haut) / 2, ep, haut);
+      }
+    }
+  }
+
+  function tempsOnde(){
+    let niveau = 0;
+    if(modeOnde === 'question') niveau = mesurer(analyseurEntree);
+    else if(modeOnde === 'reponse'){
+      niveau = mesurer(analyseurSortie);
+      // Aucun analyseur en synthese navigateur : on anime sans pretendre mesurer.
+      if(!analyseurSortie){
+        sourceSimulee += 0.28;
+        niveau = 0.34 + 0.3 * Math.abs(Math.sin(sourceSimulee)) + 0.16 * Math.random();
+      }
+    } else {
+      niveau = Math.max(0, traces[0] * 0.86);
+    }
+    traces.unshift(niveau);
+    traces.length = NIVEAUX;
+    dessinerOnde();
+    if(modeOnde === 'repos' && traces.every(v => v < 0.01)){
+      boucleOnde = null;
+      return;
+    }
+    boucleOnde = requestAnimationFrame(tempsOnde);
+  }
+
+  function modeOndeVers(m, titre){
+    modeOnde = m;
+    const t = $('onde-titre');
+    if(t) t.textContent = titre;
+    if(sobre){ dessinerOnde(); return; }
+    if(!boucleOnde) boucleOnde = requestAnimationFrame(tempsOnde);
+  }
+  function arreterOnde(){
+    if(boucleOnde){ cancelAnimationFrame(boucleOnde); boucleOnde = null; }
+    traces = new Array(NIVEAUX).fill(0);
+    modeOnde = 'repos';
+    const t = $('onde-titre'); if(t) t.textContent = 'Silence';
+    dessinerOnde();
+  }
+  window.addEventListener('resize', dessinerOnde);
+
+  /* ---------- envoi automatique apres un silence ---------- */
+  function assezLong(t){
+    return t.length >= 12 && t.split(/\s+/).filter(Boolean).length >= 3;
+  }
+
+  let minuterieSilence = null, animationSilence = null;
+  function armerSilence(){
+    if(!conf.silence) return;
+    desarmerSilence();
+    const debut = Date.now(), duree = conf.silence, jauge = $('jauge'), barre = jauge.firstElementChild;
+    jauge.classList.add('actif');
+    animationSilence = setInterval(() => {
+      const reste = Math.max(0, 1 - (Date.now() - debut) / duree);
+      barre.style.transform = 'scaleX(' + reste + ')';
+    }, 60);
+    minuterieSilence = setTimeout(() => { if(ecoute) arreterEcoute(); }, duree);
+  }
+  function desarmerSilence(){
+    clearTimeout(minuterieSilence); minuterieSilence = null;
+    clearInterval(animationSilence); animationSilence = null;
+    const jauge = $('jauge');
+    jauge.classList.remove('actif');
+    jauge.firstElementChild.style.transform = 'scaleX(1)';
+  }
+
+  function majMicro(){
+    const b = $('micro-btn');
+    b.dataset.on = ecoute ? '1' : '0';
+    b.textContent = ecoute ? (conf.silence ? 'Envoyer maintenant' : 'Fermer et envoyer') : 'Ouvrir le micro';
+  }
+  /* ---------- reouverture automatique du micro ---------- */
+  let relanceEnCours = null;
+  function programmerRelance(){
+    annulerRelance();
+    if(!conf.relance || !Reco) return;
+    etat('attente', 'Micro dans un instant');
+    relanceEnCours = setTimeout(() => {
+      relanceEnCours = null;
+      // On ne rouvre que si la salle est encore a l'ecran, libre, et le compte rendu ferme.
+      if(occupe || ecoute) return;
+      if($('tribune').style.display !== 'flex') return;
+      if($('cr').classList.contains('ouvert')) return;
+      demarrerEcoute();
+    }, conf.relance);
+  }
+  function annulerRelance(){
+    if(relanceEnCours){ clearTimeout(relanceEnCours); relanceEnCours = null; }
+  }
+
+  /* Le micro est pris une fois pour toute la seance, pas a chaque question.
+     Chrome ne redemande alors l'autorisation qu'une seule fois, et encore
+     seulement si la page est servie depuis une origine stable (http://localhost).
+     En file:// il n'y a pas d'origine a laquelle rattacher l'autorisation :
+     la question revient a chaque prise, quoi que fasse cette page. */
+  let fluxMicro = null;
+  function microVivant(){
+    return !!fluxMicro && fluxMicro.getTracks().some(t => t.readyState === 'live');
+  }
+  async function ouvrirFluxMicro(){
+    if(microVivant()) return true;
+    if(!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) return true;
+    try{
+      fluxMicro = await navigator.mediaDevices.getUserMedia({audio:true});
+      brancherEntree(fluxMicro);
+      return true;
+    }catch(err){
+      fluxMicro = null;
+      afficherQuestion(err.name === 'NotAllowedError'
+        ? "Autorisation micro refusée. Cliquez sur le cadenas dans la barre d'adresse, autorisez le microphone, puis rechargez."
+        : "Micro inaccessible (" + err.name + "). Si la page est ouverte en file:// ou dans un cadre intégré, servez-la depuis http://localhost.");
+      return false;
+    }
+  }
+  function fermerMicro(){
+    if(fluxMicro){ fluxMicro.getTracks().forEach(t => t.stop()); fluxMicro = null; }
+    analyseurEntree = null;
+  }
+  async function demarrerEcoute(){
+    if(!reco || occupe) return;
+    annulerRelance();
+    parler.stop(); $('reponse').innerHTML = '';
+    if(!await ouvrirFluxMicro()) return;
+    ecoute = true; majMicro();
+    modeOndeVers('question', 'Question');
+    try{ reco.start(); }
+    catch(e){ ecoute = false; majMicro(); afficherQuestion("La reconnaissance n'a pas démarré (" + e.message + ")."); }
+  }
+  function arreterEcoute(){ if(reco && ecoute){ try{ reco.stop(); }catch(e){} } }
+  $('micro-btn').onclick = () => ecoute ? arreterEcoute() : demarrerEcoute();
+  if(!Reco) $('micro-btn').disabled = true;
+
+  document.addEventListener('keydown', e => {
+    if(e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    if($('tribune').style.display !== 'flex') return;
+    if(e.code === 'Space'){ e.preventDefault(); ecoute ? arreterEcoute() : demarrerEcoute(); }
+    if(e.code === 'Escape') parler.stop();
+  });
+
+  $('poser-btn').onclick = envoyerTexte;
+  $('secours').addEventListener('keydown', e => { if(e.key === 'Enter') envoyerTexte(); });
+  function envoyerTexte(){
+    const q = $('secours').value.trim();
+    if(!q || occupe) return;
+    $('secours').value = ''; annulerRelance(); afficherQuestion(q); poser(q);
+  }
+  function afficherQuestion(t){
+    const el = $('question');
+    el.textContent = t || "Aucune question posée pour l'instant.";
+    el.classList.toggle('vide', !t);
+  }
+
+  /* ---------- interrogation des IA ---------- */
+  async function interrogerClaude(){
+    const corps = {
+      model: conf.modeleClaude, max_tokens: 700,
+      system: systeme(), messages: historique
+    };
+    if(conf.recherche) corps.tools = [{type:'web_search_20250305', name:'web_search'}];
+    const entetes = {'Content-Type':'application/json'};
+    if(conf.cleClaude){
+      entetes['x-api-key'] = conf.cleClaude;
+      entetes['anthropic-version'] = '2023-06-01';
+      entetes['anthropic-dangerous-direct-browser-access'] = 'true';
+    }
+    const rep = await fetch('https://api.anthropic.com/v1/messages', {
+      method:'POST', headers:entetes, body:JSON.stringify(corps)
+    });
+    const data = await rep.json();
+    if(data.error) throw new Error(data.error.message || 'erreur API');
+    return {
+      texte:(data.content||[]).filter(b => b.type === 'text').map(b => b.text).join(' ').trim(),
+      sources:extraireLiens(data.content || [])
+    };
+  }
+
+  async function interrogerGemini(){
+    const corps = {
+      system_instruction:{parts:[{text:systeme()}]},
+      contents: historique.map(m => ({role: m.role === 'assistant' ? 'model' : 'user', parts:[{text:m.content}]})),
+      generationConfig:{maxOutputTokens:700, temperature:1}
+    };
+    if(conf.recherche) corps.tools = [{google_search:{}}];
+    const url = 'https://generativelanguage.googleapis.com/v1beta/models/' + conf.modeleGemini + ':generateContent';
+    const options = {
+      method:'POST',
+      headers:{'Content-Type':'application/json','x-goog-api-key':conf.cleGemini},
+      body:JSON.stringify(corps)
+    };
+    let rep = await fetch(url, options);
+    // 429 : souvent une limite par minute. On laisse passer l'orage une fois avant d'abandonner.
+    if(rep.status === 429){
+      await new Promise(r => setTimeout(r, 20000));
+      rep = await fetch(url, options);
+    }
+    const data = await rep.json();
+    if(data.error || !rep.ok){
+      const brut = (data.error && data.error.message) || ('erreur HTTP ' + rep.status);
+      const lever = texte => { const e = new Error(texte + ' [Google dit : ' + brut + ']'); e.traduit = true; throw e; };
+      if(rep.status === 429)
+        lever("Quota Gemini atteint. Limite par minute : attendez une minute. Limite du jour : elle repart à 9 h heure française. Vos limites réelles sont sur aistudio.google.com/rate-limit");
+      if(/no longer available|has been retired/i.test(brut))
+        lever("Google a retiré « " + conf.modeleGemini + " ». Le modèle figure encore dans la liste mais ne répond plus. Prenez gemini-3.5-flash-lite dans les réglages.");
+      if(rep.status === 404)
+        lever("Modèle « " + conf.modeleGemini + " » introuvable. Rechargez la liste des modèles dans les réglages.");
+      if(conf.recherche)
+        lever("Échec avec la recherche web activée. Sur une clé Gemini gratuite, la recherche n'est plus disponible depuis le retrait de la famille 2.5. Décochez la recherche dans les réglages.");
+      lever("Appel refusé par Gemini.");
+    }
+    const cand = (data.candidates || [])[0] || {};
+    const texte = ((cand.content && cand.content.parts) || []).map(p => p.text || '').join(' ').trim();
+    const puces = (cand.groundingMetadata && cand.groundingMetadata.groundingChunks) || [];
+    const sources = puces.filter(p => p.web).map(p => ({url:p.web.uri, title:p.web.title})).slice(0,6);
+    return {texte, sources};
+  }
+
+  function extraireLiens(blocs){
+    const out = [], vus = new Set();
+    (function scan(x){
+      if(Array.isArray(x)) return x.forEach(scan);
+      if(x && typeof x === 'object'){
+        if(typeof x.url === 'string' && !vus.has(x.url)){ vus.add(x.url); out.push({url:x.url, title:x.title}); }
+        Object.values(x).forEach(scan);
+      }
+    })(blocs);
+    return out.slice(0,6);
+  }
+
+  async function poser(question){
+    occupe = true;
+    etat('reflexion','Rédaction'); $('reponse').innerHTML = '';
+    modeOndeVers('repos', 'Rédaction');
+    historique.push({role:'user', content:question});
+
+    let res;
+    try{
+      res = conf.fournisseur === 'gemini' ? await interrogerGemini() : await interrogerClaude();
+    }catch(err){
+      historique.pop();
+      $('reponse').innerHTML = '<div class="souci">' + echapper(diagnostiquer(err)) + " La question n'a pas été enregistrée, vous pouvez la reposer.</div>";
+      etat('attente','En attente'); occupe = false; return;
+    }
+
+    historique.push({role:'assistant', content: res.texte || '(pas de réponse)'});
+    const n = journal.length + 1;
+    journal.push({n, heure:new Date().toLocaleTimeString(conf.langue, {hour:'2-digit', minute:'2-digit'}),
+      q:question, r:res.texte, s:res.sources});
+    $('numero').textContent = 'Q' + String(n).padStart(2,'0');
+
+    $('reponse').textContent = res.texte;
+    if(res.sources.length){
+      const d = document.createElement('div');
+      d.id = 'sources';
+      d.innerHTML = '<b>Sources citées</b>' + res.sources.map(s =>
+        '<a href="' + echapper(s.url) + '" target="_blank" rel="noopener">' + echapper(s.title || s.url) + '</a>').join('');
+      $('reponse').appendChild(d);
+    }
+    declencherFlash();
+
+    occupe = false;
+    if(conf.voix && res.texte){
+      etat('reponse','Déclaration');
+      modeOndeVers('reponse', 'Déclaration');
+      parler.dire(res.texte, conf.langue, () => {
+        etat('attente','En attente'); arreterOnde(); programmerRelance();
+      });
+    } else {
+      etat('attente','En attente');
+      arreterOnde();
+      programmerRelance();
+    }
+  }
+
+  function diagnostiquer(err){
+    if(err instanceof TypeError){
+      const hote = conf.fournisseur === 'gemini' ? 'generativelanguage.googleapis.com' : 'api.anthropic.com';
+      if(conf.fournisseur === 'claude' && !conf.cleClaude && autonome)
+        return "La requête n'est jamais partie et aucune clé Anthropic n'a été saisie. Hors de l'aperçu Claude, la page doit fournir sa propre clé.";
+      return "La requête n'est jamais partie : réseau coupé, proxy de l'établissement qui bloque " + hote + ", ou extension du navigateur qui filtre.";
+    }
+    const m = err.message || '';
+    // Message déjà mis en forme plus haut dans la chaîne : on le laisse tel quel.
+    if(err.traduit) return m;
+    let tete;
+    if(/no longer available|has been retired|is not supported for generateContent/i.test(m))
+      tete = "Ce modèle a été retiré par Google. Il apparaît encore dans la liste mais ne répond plus. Prenez gemini-3.5-flash-lite dans les réglages.";
+    else if(/quota|RESOURCE_EXHAUSTED/i.test(m))
+      tete = "Quota atteint. Limite par minute : attendez une minute. Limite du jour : elle repart à 9 h heure française.";
+    else if(/credit|billing/i.test(m))
+      tete = "Crédits épuisés sur ce compte.";
+    else if(/api.?key|authentication|API_KEY_INVALID|PERMISSION_DENIED/i.test(m))
+      tete = "Clé refusée. Vérifiez qu'elle est complète et sans espace parasite.";
+    else if(/not found|NOT_FOUND/i.test(m))
+      tete = "Modèle introuvable. Rechargez la liste des modèles dans les réglages.";
+    else if(/search|grounding|tool/i.test(m) && conf.recherche)
+      tete = "La recherche web n'est pas offerte sur ce modèle avec une clé gratuite. Décochez la recherche dans les réglages.";
+    else
+      return m;
+    // Le message d'origine reste affiché : c'est lui qui permet de trancher en cas de doute.
+    return tete + ' [Google dit : ' + m + ']';
+  }
+
+  function declencherFlash(){
+    const f = $('flash');
+    f.classList.remove('tire');
+    void f.offsetWidth;
+    f.classList.add('tire');
+  }
+
+  /* ---------- chargement des modèles ---------- */
+  function remplir(sel, liste, garder){
+    const el = $(sel), avant = el.value;
+    el.innerHTML = liste.map(x => '<option value="' + echapper(x) + '">' + echapper(x) + '</option>').join('');
+    if(garder && liste.indexOf(avant) >= 0) el.value = avant;
+  }
+
+  $('charger-gemini').onclick = async () => {
+    const cle = $('cle-gemini').value.trim(), e = $('etat-gemini');
+    if(!cle){ e.className = 'journal-etat ko'; e.textContent = "Saisissez d'abord la clé."; return; }
+    e.className = 'journal-etat'; e.textContent = 'Chargement…';
+    try{
+      const rep = await fetch('https://generativelanguage.googleapis.com/v1beta/models', {headers:{'x-goog-api-key':cle}});
+      const data = await rep.json();
+      if(data.error) throw new Error(data.error.message);
+      const noms = (data.models || [])
+        .filter(m => (m.supportedGenerationMethods || []).indexOf('generateContent') >= 0)
+        .map(m => m.name.replace('models/',''))
+        .filter(n => /flash/.test(n))
+        .filter(n => !/embedding|image|vision|tts|audio|live|omni|robotics|computer-use|pro|preview|2\.0|2\.5/.test(n));
+      if(!noms.length) throw new Error('aucun modèle de texte utilisable sur ce compte');
+      remplir('modele-gemini', noms, true);
+      // La famille 2.5 est exclue : Google l'a coupée en juillet 2026 alors qu'elle
+      // figure toujours dans cette liste. Flash-Lite d'abord, pour les quotas.
+      const choix = noms.find(n => /3\.5-flash-lite/.test(n))
+        || noms.find(n => /flash-lite/.test(n))
+        || noms.find(n => /3\.6-flash/.test(n))
+        || noms[0];
+      if(choix) $('modele-gemini').value = choix;
+      e.className = 'journal-etat ok';
+      e.textContent = noms.length + ' modèles retenus, ' + $('modele-gemini').value + ' présélectionné.';
+    }catch(err){
+      e.className = 'journal-etat ko';
+      e.textContent = err instanceof TypeError
+        ? "La requête n'est jamais partie : réseau, proxy de l'établissement ou extension du navigateur."
+        : 'Échec : ' + err.message;
+    }
+  };
+
+  $('charger-claude').onclick = async () => {
+    const cle = $('cle-claude').value.trim(), e = $('etat-claude');
+    if(!cle){ e.className = 'journal-etat ko'; e.textContent = "Saisissez d'abord la clé."; return; }
+    e.className = 'journal-etat'; e.textContent = 'Chargement…';
+    try{
+      const rep = await fetch('https://api.anthropic.com/v1/models', {
+        headers:{'x-api-key':cle, 'anthropic-version':'2023-06-01', 'anthropic-dangerous-direct-browser-access':'true'}
+      });
+      const data = await rep.json();
+      if(data.error) throw new Error(data.error.message);
+      const noms = (data.data || []).map(m => m.id);
+      if(!noms.length) throw new Error('aucun modèle disponible');
+      remplir('modele-claude', noms, true);
+      const petit = noms.find(n => /haiku/.test(n));
+      if(petit) $('modele-claude').value = petit;
+      e.className = 'journal-etat ok'; e.textContent = noms.length + ' modèles disponibles.';
+    }catch(err){
+      e.className = 'journal-etat ko';
+      e.textContent = err instanceof TypeError
+        ? "La requête n'est jamais partie : réseau, proxy de l'établissement ou extension du navigateur."
+        : 'Échec : ' + err.message;
+    }
+  };
+
+  /* ---------- synthèse vocale ---------- */
+  let audioEnCours = null;
+  const PHRASE = {
+    'fr-FR':"Mesdames, messieurs, je vous remercie pour cette question.",
+    'es-ES':"Señoras y señores, gracias por su pregunta.",
+    'it-IT':"Signore e signori, grazie per la domanda.",
+    'nl-BE':"Dames en heren, dank u voor uw vraag.",
+    'en-GB':"Ladies and gentlemen, thank you for your question."
+  };
+
+  const parler = {
+    dire(texte, langue, fin){
+      this.stop();
+      analyseurSortie = null;
+      if(conf.moteur === 'eleven') return this.eleven(texte, langue, fin);
+      return this.navigateur(texte, langue, fin);
+    },
+    navigateur(texte, langue, fin){
+      if(!window.speechSynthesis) return fin && fin();
+      const u = new SpeechSynthesisUtterance(texte);
+      u.lang = langue;
+      const toutes = speechSynthesis.getVoices();
+      let v = conf.voixNav ? toutes.find(x => x.voiceURI === conf.voixNav) : null;
+      if(!v){
+        const ok = toutes.filter(x => x.lang && x.lang.replace('_','-').startsWith(langue.slice(0,2)));
+        v = ok.find(x => /natural/i.test(x.name)) || ok.find(x => x.localService) || ok[0];
+      }
+      if(v) u.voice = v;
+      u.onend = () => fin && fin();
+      u.onerror = () => fin && fin();
+      speechSynthesis.speak(u);
+    },
+    async eleven(texte, langue, fin){
+      try{
+        const rep = await fetch('https://api.elevenlabs.io/v1/text-to-speech/' + conf.voixEl, {
+          method:'POST',
+          headers:{'xi-api-key':conf.cleEleven, 'Content-Type':'application/json', 'Accept':'audio/mpeg'},
+          body:JSON.stringify({
+            text:texte, model_id:conf.modeleEl,
+            language_code: conf.modeleEl === 'eleven_multilingual_v2' ? undefined : langue.slice(0,2),
+            voice_settings:{stability:.45, similarity_boost:.75, speed:1}
+          })
+        });
+        if(!rep.ok) throw new Error(rep.status === 401 ? 'clé refusée' : rep.status === 429 ? 'crédits épuisés' : 'erreur ' + rep.status);
+        const url = URL.createObjectURL(await rep.blob());
+        const a = new Audio(url);
+        audioEnCours = a;
+        brancherSortie(a);
+        a.onended = () => { URL.revokeObjectURL(url); audioEnCours = null; fin && fin(); };
+        a.onerror = () => { audioEnCours = null; fin && fin(); };
+        a.play();
+      }catch(err){
+        const d = document.createElement('div');
+        d.className = 'souci';
+        d.style.marginTop = '18px';
+        d.textContent = 'ElevenLabs indisponible (' + (err.message || 'réseau') + '), bascule sur la voix du navigateur.';
+        $('reponse').appendChild(d);
+        this.navigateur(texte, langue, fin);
+      }
+    },
+    stop(){
+      if(window.speechSynthesis) speechSynthesis.cancel();
+      if(audioEnCours){ audioEnCours.pause(); audioEnCours = null; }
+    }
+  };
+  $('couper').onclick = () => { parler.stop(); annulerRelance(); etat('attente','En attente'); arreterOnde(); };
+
+  function remplirVoixNav(){
+    if(!window.speechSynthesis) return;
+    const sel = $('voix-nav'), avant = sel.value, langue = $('langue').value.slice(0,2);
+    const v = speechSynthesis.getVoices()
+      .filter(x => x.lang && x.lang.replace('_','-').toLowerCase().startsWith(langue))
+      .sort((a,b) => (/natural/i.test(b.name) ? 1 : 0) - (/natural/i.test(a.name) ? 1 : 0));
+    sel.innerHTML = v.length
+      ? v.map(x => '<option value="' + echapper(x.voiceURI) + '">' + echapper(x.name) + '</option>').join('')
+      : '<option value="">Aucune voix installée pour cette langue</option>';
+    if(avant) sel.value = avant;
+  }
+  if(window.speechSynthesis){ remplirVoixNav(); speechSynthesis.onvoiceschanged = remplirVoixNav; }
+  $('langue').addEventListener('change', remplirVoixNav);
+
+  $('test-nav').onclick = () => {
+    const langue = $('langue').value;
+    conf.moteur = 'navigateur'; conf.voixNav = $('voix-nav').value;
+    parler.navigateur(PHRASE[langue] || PHRASE['fr-FR'], langue);
+  };
+  $('test-el').onclick = () => {
+    const langue = $('langue').value, e = $('etat-el');
+    conf.moteur = 'eleven';
+    conf.cleEleven = $('cle-eleven').value.trim();
+    conf.voixEl = $('voix-el').value; conf.modeleEl = $('modele-el').value;
+    if(!conf.cleEleven || !conf.voixEl){ e.className = 'journal-etat ko'; e.textContent = 'Clé et voix requises.'; return; }
+    e.className = 'journal-etat'; e.textContent = '';
+    parler.eleven(PHRASE[langue] || PHRASE['fr-FR'], langue);
+  };
+  $('charger-voix').onclick = async () => {
+    const cle = $('cle-eleven').value.trim(), e = $('etat-el');
+    if(!cle){ e.className = 'journal-etat ko'; e.textContent = "Saisissez d'abord la clé."; return; }
+    e.className = 'journal-etat'; e.textContent = 'Chargement…';
+    try{
+      const rep = await fetch('https://api.elevenlabs.io/v1/voices', {headers:{'xi-api-key':cle}});
+      if(!rep.ok) throw new Error(rep.status === 401 ? 'clé refusée, ou permission Voices manquante' : 'erreur ' + rep.status);
+      const d = await rep.json(), v = d.voices || [];
+      $('voix-el').innerHTML = v.map(x =>
+        '<option value="' + echapper(x.voice_id) + '">' +
+        echapper(x.name + (x.labels && x.labels.accent ? ' · ' + x.labels.accent : '')) + '</option>').join('');
+      e.className = 'journal-etat ok'; e.textContent = v.length + " voix chargées. Écoutez-en une avant d'ouvrir la conférence.";
+    }catch(err){
+      e.className = 'journal-etat ko';
+      e.textContent = err instanceof TypeError
+        ? "La requête n'est jamais partie : réseau, proxy de l'établissement ou extension du navigateur."
+        : 'Échec : ' + err.message;
+    }
+  };
+
+  /* ---------- compte rendu ---------- */
+  $('voir-cr').onclick = () => { annulerRelance(); rendreCR(); $('cr').classList.add('ouvert'); };
+  $('fermer-cr').onclick = () => $('cr').classList.remove('ouvert');
+  function rendreCR(){
+    const l = $('cr-liste');
+    if(!journal.length){ l.innerHTML = '<p class="aide">Aucune question posée pour l\'instant.</p>'; return; }
+    l.innerHTML = journal.map(t =>
+      '<div class="tour"><div class="num">Q' + String(t.n).padStart(2,'0') + '<span>' + echapper(t.heure) + '</span></div>' +
+      '<div class="q">' + echapper(t.q) + '</div><div class="r">' + echapper(t.r) + '</div>' +
+      (t.s.length ? '<div class="liens">' + t.s.map(s => echapper(s.url)).join('<br>') + '</div>' : '') +
+      '</div>').join('');
+  }
+  function markdown(){
+    const ia = conf.fournisseur === 'gemini' ? conf.modeleGemini : conf.modeleClaude;
+    return '# Conférence de presse IA\n\n' +
+      '- Ville : ' + (conf.ville || 'non précisée') + '\n' +
+      '- Sujet annoncé : ' + (conf.sujet || 'non précisé') + '\n' +
+      '- IA interrogée : ' + ia + '\n' +
+      '- Registre : ' + conf.registre + '\n' +
+      '- Recherche web : ' + (conf.recherche ? 'activée' : 'désactivée') + '\n' +
+      '- Date : ' + new Date().toLocaleString(conf.langue) + '\n\n' +
+      journal.map(t => '## Q' + String(t.n).padStart(2,'0') + ' (' + t.heure + ')\n\n' +
+        '**Question.** ' + t.q + '\n\n**Réponse.** ' + t.r +
+        (t.s.length ? '\n\n_Sources citées :_\n' + t.s.map(s => '- ' + s.url).join('\n') : '') + '\n').join('\n');
+  }
+  $('telecharger').onclick = () => {
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([markdown()], {type:'text/markdown'}));
+    a.download = 'conference-de-presse.md'; a.click();
+  };
+  $('copier').onclick = async e => {
+    try{ await navigator.clipboard.writeText(markdown()); e.target.textContent = 'Copié'; }
+    catch(err){ e.target.textContent = 'Copie refusée'; }
+    setTimeout(() => e.target.textContent = 'Copier', 1800);
+  };
+  $('nouvelle').onclick = () => {
+    historique = []; journal = [];
+    $('numero').textContent = 'Q00'; $('reponse').innerHTML = ''; afficherQuestion(''); rendreCR();
+  };
+})();
+</script>
+
+</html>

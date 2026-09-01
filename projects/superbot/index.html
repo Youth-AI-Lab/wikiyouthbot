@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Superbot · Claude Project documenté</title>
+<link rel="icon" href="../../cornicello.svg">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;700;800&family=Manrope:wght@400;500;600;700&display=swap');
+  :root { --bg:#f7f4e8; --ink:#1a1a1a; --soft:#6c6c6c; --accent:#38b6ff; --accent-soft:#cbecff; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html, body { background:var(--bg); color:var(--ink); font-family:'Manrope',system-ui,sans-serif; }
+  .wrap { max-width:900px; margin:0 auto; padding:44px 24px 90px; }
+  .back { display:inline-block; font-size:.9rem; font-weight:700; text-decoration:none; color:var(--ink);
+          background:var(--accent-soft); border:2px solid var(--ink); border-radius:999px; padding:6px 14px; margin-bottom:30px; }
+  h1 { font-family:'Bricolage Grotesque',system-ui,sans-serif; font-size:clamp(1.9rem,4.4vw,2.7rem); font-weight:800; line-height:1.1; margin-bottom:22px; }
+  h2 { font-family:'Bricolage Grotesque',system-ui,sans-serif; font-size:1.5rem; font-weight:700; margin:44px 0 14px; padding-bottom:8px; border-bottom:3px solid var(--accent); }
+  h3 { font-family:'Bricolage Grotesque',system-ui,sans-serif; font-size:1.16rem; font-weight:700; margin:30px 0 10px; }
+  p { line-height:1.7; margin:0 0 14px; }
+  ul, ol { margin:0 0 16px 22px; }
+  li { line-height:1.7; margin-bottom:6px; }
+  hr { border:0; border-top:2px solid #ddd6c4; margin:34px 0; }
+  code { background:#efe9d8; padding:1px 5px; border-radius:5px; font-size:.92em; }
+  a { color:#1a1a1a; }
+  .tablewrap { overflow-x:auto; margin:0 0 22px; border:2px solid var(--ink); border-radius:14px; background:#fff; }
+  table { border-collapse:collapse; width:100%; min-width:520px; font-size:.94rem; }
+  th, td { text-align:left; padding:11px 14px; border-bottom:1px solid #e4ddcb; vertical-align:top; line-height:1.55; }
+  th { background:var(--accent-soft); font-weight:700; }
+  tbody tr:last-child td { border-bottom:0; }
+  @media (max-width:640px) { .wrap { padding:28px 16px 70px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+<a class="back" href="../">← Retour</a>
+<h1>Superbot, le chatbot du groupe harcèlement scolaire</h1>
+<p>Semaine intensive WikiYouthBot, La Rochelle, juillet 2026. Document de travail : transcription intégrale de ce que le groupe a produit, à partir des fiches manuscrites, des cartes personas, de la fiche Q&amp;R, des dessins de mascotte et des artefacts numériques. Rédigé en français, à traduire au moment du reporting.</p>
+<p>Lecture des manuscrits : les passages incertains sont signalés par [?].</p>
+<hr>
+<h2>Identité du chatbot</h2>
+<ul><li>Nom : Superbot.</li><li>Thématique imposée au chatbot : l&#x27;accompagnement des élèves face aux problématiques de harcèlement.</li><li>Périmètre géographique écrit par le groupe : la France hexagonale et l&#x27;outre-mer.</li><li>Mascotte : Bouclebot, personnage debout portant un grand bouclier rouge, bleu et jaune frappé d&#x27;un chevron, dessiné et colorié au feutre, avec la mention « notre mascotte ». Une première proposition nommée Jean-Pierre a été barrée par le groupe.</li></ul>
+<p>Consignes de comportement écrites par le groupe, dans leurs mots :</p>
+<ul><li>Arrêter d&#x27;inventer des sources.</li><li>Tenir une liste de sources fiables.</li><li>Rester sur la France hexagonale et l&#x27;outre-mer.</li></ul>
+<p>Ces trois consignes sont brèves, et c&#x27;est significatif : la première a suffi à faire basculer le chatbot hors de son comportement de fabrication. Le groupe l&#x27;a écrite après avoir constaté par lui-même que le chatbot produisait des sources inexistantes.</p>
+<hr>
+<h2>Le dataset</h2>
+<p>Fiches manuscrites collectées par recherche documentaire et par enquête auprès des personnes présentes autour du lieu d&#x27;animation.</p>
+<h3>Ce qui vient de sources officielles</h3>
+<div class="tablewrap"><table>
+<thead><tr><th>Question de la fiche</th><th>Ce que le groupe a noté</th><th>Source notée</th></tr></thead>
+<tbody>
+<tr><td>Depuis quand le programme pHARe est-il généralisé ?</td><td>rentrée 2022 : généralisation aux écoles élémentaires et aux collèges. Rentrée 2023 : extension aux lycées, avec obligation pour tous les établissements</td><td>education.gouv.fr</td></tr>
+<tr><td>Depuis quand existe le 3018 ?</td><td>le 3018 existe depuis le 27 septembre 2023</td><td>ligne source laissée vide</td></tr>
+<tr><td>Quel dispositif permet de recueillir la parole, et quel pourcentage d&#x27;établissements sont équipés ?</td><td>primaire : pHARe et questionnaire. Collège : pHARe et élèves ambassadeurs. Lycée : pHARe et questionnaire. Le pourcentage est de 96 % des établissements équipés de ces dispositifs</td><td>info.gouv.fr et DEPP</td></tr>
+<tr><td>Quels dispositifs permettent de recueillir la parole ?</td><td>le 3018, numéro gratuit ; le tchat de l&#x27;application ; un coffre-fort numérique pour stocker des preuves du harcèlement ; une auto-évaluation, un questionnaire pour encourager les gens à en parler</td><td>info.gouv.fr</td></tr>
+</tbody></table></div>
+<h3>Ce qui vient de l&#x27;enquête de terrain</h3>
+<div class="tablewrap"><table>
+<thead><tr><th>Question de la fiche</th><th>Ce que le groupe a noté</th></tr></thead>
+<tbody>
+<tr><td>Sur 5 personnes autour de vous, combien connaissent le 3018 ?</td><td>3 oui, 1 non</td></tr>
+<tr><td>Demandez à 10 personnes si elles connaissent le 3018</td><td>relevé en bâtons, dépouillement à confirmer</td></tr>
+<tr><td>Demandez à 5 adultes un geste simple qui aide</td><td>écrire ce qui arrive ; en parler (2 réponses) ; en parler et chercher quoi faire pour éviter ça ; rassurer la cible du harcèlement, lui rendre confiance en soi, lui donner des clés pour répondre au harcèlement et pour ne pas avoir peur des autres et des adultes ; former les jeunes et les adultes</td></tr>
+<tr><td>Sur 5 personnes, combien ont déjà vu quelqu&#x27;un être mis à l&#x27;écart ?</td><td>5 sur 5</td></tr>
+<tr><td>Demandez à 5 adultes vers qui ils orienteraient un jeune victime de harcèlement</td><td>vers un parent, ou un adulte de manière générale ; la police, une association ; d&#x27;abord vers un responsable de l&#x27;établissement ; le psychologue scolaire, l&#x27;infirmier ou l&#x27;infirmière scolaire</td></tr>
+<tr><td>Sur 5 personnes, combien savent à qui parler en cas de harcèlement ?</td><td>sortir le téléphone et appeler le 118 [?] ; mes parents (2 réponses) ; non, je ne sais pas ; mon psy</td></tr>
+<tr><td>Questionnez les adultes : ont-ils déjà fait face à un problème de harcèlement, quelle a été leur réaction ?</td><td>non, prévenir la police ; oui, dans la rue, réaction : ignorer ; oui, accompagnement de son enfant pour voir le responsable dans l&#x27;établissement ; oui, prévenir les adultes</td></tr>
+<tr><td>Sur 5 personnes, combien pensent qu&#x27;un témoin qui réagit aide ?</td><td>oui, parce que si la personne s&#x27;en fout, ça peut partir plus loin (2 personnes) ; oui, ça peut aider, mais non aussi, parce que ça peut pousser le harceleur à harceler plus (2 personnes)</td></tr>
+<tr><td>Sur l&#x27;ensemble des jeunes autour de vous, combien déclarent avoir été harcelés au moins une fois à l&#x27;école ?</td><td>2</td></tr>
+<tr><td>Combien déclarent avoir subi des moqueries ou du racisme [?] à l&#x27;école, au collège ou au lycée ?</td><td>4</td></tr>
+</tbody></table></div>
+<p>La réponse nuancée sur le témoin, où quatre personnes se partagent entre « ça aide » et « ça peut aggraver », est le matériau le plus utile du lot : elle a nourri directement la réponse du chatbot sur le rôle du témoin.</p>
+<hr>
+<h2>La fiche questions-réponses</h2>
+<p>Une fiche remplie, avec une variante de format inventée par le groupe : la case réponse de référence a été coupée en deux colonnes, « on veut » et « on veut pas ».</p>
+<p>Thématique : harcèlement scolaire. Question : quelles sanctions existent à l&#x27;école contre les différents types de harcèlement ? On veut : les sanctions existant en Charente-Maritime, avec des sources fiables. On veut pas : qu&#x27;il invente ; qu&#x27;il dise qu&#x27;il ne sait rien ; qu&#x27;il minimise en disant que ce n&#x27;est pas grave ; qu&#x27;il dise qu&#x27;il n&#x27;a rien. Interdits ou contraintes : ne pas vérifier que le contenu qu&#x27;il va chercher est de l&#x27;IA ; utiliser Wikipédia.</p>
+<p>Le découpage « on veut / on veut pas » est une trouvaille du groupe et mérite d&#x27;être remonté au consortium : il rend le gabarit plus lisible pour formuler une exigence de qualité.</p>
+<hr>
+<h2>Les personas</h2>
+<p>Quatre cartes, dont trois complètes. Le groupe a couvert les quatre positions de la situation de harcèlement : la cible, le témoin, le harceleur, et l&#x27;adulte de l&#x27;établissement.</p>
+<h3>Joseph [nom de famille illisible], 45 ans</h3>
+<ul><li>Métier : surveillant. Il vit chez ses parents.</li><li>Applications favorites : McDonald&#x27;s, Facebook, WhatsApp. Probabilité d&#x27;utilisation du chatbot : 2 sur 5.</li><li>Curseurs : connaissance de la cause 5 sur 5, engagement citoyen 0 sur 5, patience 0 sur 5, perception des technologies 0 sur 5.</li><li>Histoire : il vit à Margny [?], il ne gagne pas assez d&#x27;argent, il se fait harceler.</li><li>Attentes : il ne veut pas être un harceleur et il ne peut pas comprendre le harcèlement.</li><li>Prompt type et ton attendu : cases laissées vides.</li></ul>
+<h3>Monsieur Non-Frus [?], 17 ans, le témoin</h3>
+<ul><li>Métier : travaille à l&#x27;école, il a redoublé. Sa maman est morte.</li><li>Applications favorites : YouTube, Snap, Spotify. Probabilité d&#x27;utilisation du chatbot : 2 sur 5.</li><li>Curseurs : connaissance de la cause 4 sur 5, engagement citoyen 5 sur 5, patience 5 sur 5, perception des technologies 2 sur 5.</li><li>Histoire : il a vu son copain se faire harceler.</li><li>Attentes : il cherche comment aider la personne harcelée.</li><li>Prompt type : « Que puis-je faire si je suis témoin, pour aider une personne harcelée ? »</li></ul>
+<h3>Valentin Amstar, 14 ans, le harceleur</h3>
+<ul><li>Métier : jeune sapeur-pompier volontaire et élève, il n&#x27;a pas redoublé. Il a perdu un grand-parent, ses parents sont ensemble.</li><li>Applications favorites : Snap, TikTok, Spotify. Probabilité d&#x27;utilisation du chatbot : 2 sur 5.</li><li>Curseurs : connaissance de la cause 3 sur 5, engagement citoyen 5 sur 5, patience 2 sur 5, perception des technologies 3 sur 5.</li><li>Histoire : il a fait toute sa scolarité entière, il s&#x27;est fait harceler, il n&#x27;a pas su le dire, et il est devenu harceleur. Il est gay.</li><li>Attentes : il cherche plus d&#x27;information sur les sanctions, il cherche à comprendre le fonctionnement du harcèlement.</li><li>Prompt type : « Quelles sont les sanctions que je risque si j&#x27;ai harcelé ? »</li></ul>
+<p>Cette carte est la plus forte du lot : le groupe a construit un harceleur qui a d&#x27;abord été harcelé, et il lui a donné une question sincère plutôt qu&#x27;une provocation.</p>
+<h3>Ariana Petite, 12 ans, la cible</h3>
+<ul><li>Applications favorites : Snap, YouTube, Spotify. Probabilité d&#x27;utilisation du chatbot : 2 sur 5.</li><li>Curseurs : connaissance de la cause 2 sur 5, engagement citoyen 4 sur 5, patience 1 sur 5, perception des technologies 2 sur 5.</li><li>Le reste de la carte, métier, situation familiale, histoire, attentes, prompt et ton, est resté vide.</li></ul>
+<hr>
+<h2>Les artefacts numériques</h2>
+<h3>Superbot, la page publique</h3>
+<p>Fichier : <a href="Chatbot_Superbot.html">Chatbot_Superbot.html</a>, page autonome.</p>
+<p>Phrase d&#x27;accueil écrite par le groupe : « Salut ! Je réponds aux questions sur le harcèlement scolaire en France : les dispositifs, le 3018, le programme pHARe, à qui en parler. Pose ta question. »</p>
+<p>Base de connaissance intégrée, six réponses de référence rédigées à partir du dataset, chacune avec sa source affichée :</p>
+<ol><li>C&#x27;est quoi le programme pHARe ? Source : education.gouv.fr.</li><li>Depuis quand existe le 3018 ? Réponse qui distingue l&#x27;existence antérieure du numéro pour le cyberharcèlement, le plan interministériel du 27 septembre 2023 qui en fait le numéro unique, et le remplacement du 3020 au 1er janvier 2024. Source : education.gouv.fr et e-Enfance.</li><li>Quels dispositifs permettent de recueillir la parole ? Avec le chiffre de 96 % des écoles, collèges et lycées engagés dans la labellisation pHARe au 30 juin 2025. Source : info.gouv.fr.</li><li>À qui un jeune victime peut-il s&#x27;adresser ? Source affichée : enquête du groupe auprès de 5 adultes.</li><li>Comment aider quand on est témoin ? Source affichée : enquête du groupe auprès de 5 adultes.</li><li>Pourquoi les gens harcèlent les autres ? Réponse sur le rejet d&#x27;une différence, la désignation d&#x27;un bouc émissaire, la pression du groupe et le pic de risque en fin de primaire et au collège. Source : education.gouv.fr, brochure « Le harcèlement entre élèves ».</li></ol>
+<p>Deux des six réponses citent l&#x27;enquête du groupe comme source. Le dataset construit par les jeunes est donc devenu une source affichée au même titre que education.gouv.fr, ce qui est exactement l&#x27;objectif de l&#x27;étape boîte à données.</p>
+<p>Mécanismes de réponse construits pendant la semaine :</p>
+<ul><li>Une liste DÉTRESSE de formulations de mal-être personnel, prioritaire sur toute autre classification : dès qu&#x27;une de ces formulations est reconnue, le chatbot sort de tout autre comportement et oriente vers un adulte de confiance.</li><li>Une liste HÉSITATION pour les blocages exprimés : je n&#x27;ose pas, j&#x27;ai honte, personne ne me croit, ça va empirer.</li><li>Une liste MÉPRIS, ajoutée après un test du groupe : elle attrape les formulations de supériorité sur les autres élèves, un cas que les jeunes ont trouvé eux-mêmes en testant le chatbot.</li><li>Une liste SALUTATIONS avec une réponse d&#x27;accueil dédiée.</li><li>Une reconnaissance approximative par distance de Levenshtein, avec des tolérances par longueur de mot, pour rattraper les fautes de frappe et l&#x27;orthographe hésitante.</li><li>Un parcours d&#x27;apprentissage quand une question n&#x27;est pas reconnue, avec classification puis rangement de la nouvelle entrée.</li><li>Un bouton « Copier ma base » pour exporter et enrichir la base de façon durable.</li><li>Une lecture à voix haute avec sélecteur de voix.</li><li>Un champ de connexion à l&#x27;IA par clé API, pour les questions libres, la clé restant sur l&#x27;appareil.</li><li>Un pied de page permanent : 3018, numéro gratuit contre le harcèlement et les violences en ligne ; 119, enfance en danger ; et l&#x27;invitation à parler à un adulte de confiance, parent, professeur, infirmière ou CPE.</li></ul>
+<h3>Le robot du futur</h3>
+<p>Section intégrée à la page publique, à partir du schéma dessiné par le groupe, avec vue de face, vue de côté et le choix entre roulettes ou roue d&#x27;hoverboard.</p>
+<p>Superbot en robot fait 50 cm de large et comporte :</p>
+<ul><li>des bras à câlins ;</li><li>une lumière veilleuse ;</li><li>une boîte à mouchoirs ;</li><li>un bras téléphone pour appeler les secours ;</li><li>un sac à dos distributeur et imprimeur ;</li><li>une sortie son.</li></ul>
+<hr>
+<h2>Points de vigilance pour le reporting</h2>
+<ul><li>Vigilance sur les sources : une session antérieure avait produit des sources fabriquées, repérées et corrigées. Toute donnée chiffrée reprise dans le reporting doit être rattachée à une source réelle, nommément education.gouv.fr, info.gouv.fr, service-public.fr, le 3018 et e-Enfance, la loi du 2 mars 2022.</li><li>Les personas contiennent des éléments biographiques sensibles écrits par les jeunes, notamment sur l&#x27;orientation sexuelle d&#x27;un persona et le décès d&#x27;un parent. Ils sont fidèles à leur production et éclairants sur leur compréhension du sujet, mais ils demandent un traitement mesuré dans un document diffusé au consortium.</li><li>La priorité donnée à la détresse personnelle sur toute autre logique de réponse est le point de conception le plus solide du projet. C&#x27;est ce qu&#x27;il faut mettre en avant dans la partie achievements.</li></ul>
+</div>
+</body>
+</html>

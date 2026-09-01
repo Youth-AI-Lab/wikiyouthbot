@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Bristols · Les données clés à trouver</title>
+<style>
+  :root{ --ink:#1c1a17; --soft:#5a554d; }
+  *{box-sizing:border-box}
+  body{margin:0; font-family:"Avenir Next","Segoe UI",system-ui,sans-serif; color:var(--ink); background:#fff; line-height:1.32}
+  .wrap{max-width:940px; margin:0 auto; padding:1.3rem 1.1rem}
+  h1{font-size:1.5rem; margin:.2rem 0 .3rem}
+  .lead{color:var(--soft); font-size:.92rem; max-width:78ch}
+  .howto{border:1.5px solid #d8cbb0; border-radius:10px; padding:.7rem .95rem; margin:.9rem 0 .3rem; font-size:.88rem; background:#faf7f0}
+  .howto b{color:#000}
+  .legend{display:flex; gap:.6rem; flex-wrap:wrap; margin-top:.5rem; font-size:.76rem}
+  .legend .lg{display:flex; align-items:center; gap:.35rem}
+  .legend .sw{width:14px; height:14px; border-radius:3px}
+  .modes{margin-top:.45rem; font-size:.8rem}
+  .modes .tg{font-size:.66rem}
+
+  .theme{margin-top:1.2rem; page-break-before:always}
+  .theme:first-of-type{page-break-before:auto}
+  .theme > h2{font-size:1.25rem; margin:0 0 .5rem}
+
+  .grp{margin-bottom:.55rem; break-inside:avoid}
+  .grp h3{font-size:.9rem; margin:0 0 .3rem; color:var(--c); letter-spacing:.03em}
+  .grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:.5rem}
+  .bristol{--c:#666; border:1.4px solid #e0e0e0; border-top:6px solid var(--c); border-radius:8px; padding:.5rem .6rem .6rem; break-inside:avoid; display:flex; flex-direction:column; min-height:158px}
+  .tg{align-self:flex-start; font-size:.6rem; font-weight:700; padding:.14rem .45rem; border-radius:20px; margin-bottom:.3rem}
+  .tg.tc{background:#e6f0fb; color:#1f5fb0} .tg.td{background:#fbf0e0; color:#b06a12}
+  .find{font-size:.8rem; font-weight:600; margin-bottom:.1rem}
+  .lab{font-size:.64rem; color:var(--soft); text-transform:uppercase; letter-spacing:.05em; margin-top:.38rem}
+  .wl{border-bottom:1.3px dotted #aaa; height:1.15rem}
+  .wl.solid{border-bottom-style:solid; border-color:#ccc}
+  .blank{display:inline-block; width:2.6rem; border-bottom:1.3px solid #bbb}
+  @media print{ .wrap{max-width:none; padding:0 .4cm} .howto{background:none} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Les données clés à trouver pour votre chatbot</h1>
+  <p class="lead">Une couleur par type de donnée, plusieurs pistes par couleur. Certaines pistes se cherchent en ligne, d'autres se récoltent en interrogeant les personnes présentes autour de vous. Un bristol par trouvaille.</p>
+  <div class="howto">
+    <b>Associez chaque couleur de bristol à un type.</b>
+    <div class="legend">
+      <span class="lg"><span class="sw" style="background:#e0559f"></span> Le chiffre</span>
+      <span class="lg"><span class="sw" style="background:#2f74d6"></span> L'acteur</span>
+      <span class="lg"><span class="sw" style="background:#3d8b52"></span> Le lieu ou le fait</span>
+      <span class="lg"><span class="sw" style="background:#bf9000"></span> Le geste utile</span>
+    </div>
+    <div class="modes"><b>Deux façons de récolter :</b> <span class="tg tc">à chercher en ligne</span> avec une source, ou <span class="tg td">à demander autour de toi</span> en interrogeant les personnes présentes et en comptant leurs réponses.</div>
+  </div>
+  <div id="app"></div>
+</div>
+
+<script>
+  const TYPES=[
+    {key:"chiffre", name:"LE CHIFFRE", c:"#e0559f"},
+    {key:"acteur",  name:"L'ACTEUR",  c:"#2f74d6"},
+    {key:"lieu",    name:"LE LIEU OU LE FAIT", c:"#3d8b52"},
+    {key:"geste",   name:"LE GESTE UTILE", c:"#bf9000"}
+  ];
+  const C="chercher", D="demander";
+  const SUBJECTS=[
+    {id:"feux", title:"Prévention des feux de forêt", find:{
+      chiffre:[{p:"La part des feux d'origine humaine en France.",m:C},{p:"Le nombre de feux ou la surface brûlée dans votre région, une année précise.",m:C},{p:"La part des départs de feu près des routes ou des habitations.",m:C},{p:"Quel appareil peut détecter un début d'incendie ? Capteur de fumée, de chaleur, caméra.",m:C},{p:"L'indice de risque incendie du jour dans votre région (météo des forêts).",m:C},{p:"Sur 5 personnes, combien ont déjà vu un départ de feu ?",m:D},{p:"Sur 5 personnes, combien savent quel numéro appeler en cas de feu ?",m:D},{p:"Sur 5 personnes, combien font attention aux mégots et barbecues en été ?",m:D},{p:"Sur 5 personnes, combien savent ce qu'est le débroussaillement ?",m:D},{p:"Demande à un adulte s'il a déjà été évacué ou alerté pour un feu.",m:D}],
+      acteur:[{p:"Le rôle de l'ONF dans la prévention des feux.",m:C},{p:"Le rôle des sapeurs-pompiers face aux feux de forêt.",m:C},{p:"Une association qui agit sur le risque incendie ou le reboisement.",m:C},{p:"Ce qu'est un comité communal des feux de forêt, s'il en existe un.",m:C},{p:"Le rôle de la protection civile en cas d'incendie.",m:C},{p:"Demande à 3 adultes s'ils connaissent quelqu'un chez les pompiers ou à la forêt.",m:D},{p:"Demande à quelqu'un s'il a déjà appelé les pompiers, et comment ça s'est passé.",m:D},{p:"Demande autour de toi qui prévenir en premier si on voit un feu.",m:D},{p:"Demande à un adulte s'il connaît un garde forestier ou un agent ONF.",m:D},{p:"Demande à 2 personnes quelle association nature elles connaissent près d'ici.",m:D}],
+      lieu:[{p:"Un incendie réel qui a eu lieu dans la région, avec sa date.",m:C},{p:"Une zone soumise à l'obligation de débroussaillement.",m:C},{p:"Un point de rassemblement ou une consigne d'évacuation en cas de feu.",m:C},{p:"Une forêt ou un massif classé à risque près de chez vous.",m:C},{p:"La période de l'année la plus à risque dans votre région.",m:C},{p:"Demande à 2 personnes un endroit qu'elles trouvent à risque près d'ici.",m:D},{p:"Demande à quelqu'un s'il se souvient d'un feu marquant dans le coin.",m:D},{p:"Demande à un adulte où se trouve la caserne la plus proche.",m:D},{p:"Demande autour de toi un endroit où il est interdit de faire du feu.",m:D},{p:"Demande à 2 personnes si elles savent où aller en cas d'évacuation.",m:D}],
+      geste:[{p:"Comment aménager un jardin qui brûle moins : plantes peu inflammables, arbres espacés.",m:C},{p:"Ce qu'est une bande coupe-feu, et à quoi elle sert.",m:C},{p:"Broyer ou composter les déchets verts au lieu de les brûler.",m:C},{p:"Le bon réflexe si un feu approche : prévenir, s'éloigner, ne pas filmer.",m:C},{p:"Une appli ou un service d'alerte pour être prévenu d'un risque de feu.",m:C},{p:"Demande à 2 personnes si leur famille a un plan et un sac prêt en cas d'évacuation.",m:D},{p:"Demande autour de toi une idée pour sensibiliser les vacanciers sans faire la morale.",m:D},{p:"Sur 5 personnes, combien connaissent l'éco-pâturage, des chèvres ou moutons pour débroussailler ?",m:D},{p:"Demande à un adulte s'il a déjà participé à un chantier de débroussaillage citoyen.",m:D},{p:"Demande à 2 personnes quel geste original elles ajouteraient pour protéger la forêt.",m:D}]
+    }},
+    {id:"harc", title:"Lutte contre le harcèlement à l'école", find:{
+      chiffre:[{p:"Un chiffre daté et sourcé sur le harcèlement à l'école.",m:C},{p:"La proportion d'élèves concernés par le harcèlement, avec la source.",m:C},{p:"Depuis quelle année existe le 3018.",m:C},{p:"Depuis quelle année le programme pHARe est généralisé.",m:C},{p:"En anonyme, sur 5 personnes, combien savent à qui parler en cas de harcèlement ?",m:D},{p:"En anonyme, sur 5 personnes, combien pensent qu'un témoin qui réagit, ça aide ?",m:D},{p:"En anonyme, sur 5 personnes, combien connaissent le 3018 ?",m:D},{p:"En anonyme, sur 5 personnes, combien se sentent en sécurité à l'école ?",m:D},{p:"En anonyme, sur 5 personnes, combien sauraient signaler un contenu en ligne ?",m:D},{p:"En anonyme, sur 5 personnes, combien ont déjà vu quelqu'un être mis à l'écart ?",m:D}],
+      acteur:[{p:"Ce que fait le 3018, et comment le joindre.",m:C},{p:"Ce qu'est le programme pHARe.",m:C},{p:"Le rôle d'un·e CPE dans une école.",m:C},{p:"Le rôle de l'infirmier·e scolaire.",m:C},{p:"Ce que fait un·e adulte référent·e harcèlement dans un établissement.",m:C},{p:"Ce qu'est un·e élève médiateur·rice ou une sentinelle.",m:C},{p:"Demande à 3 adultes vers qui ils orienteraient un jeune concerné.",m:D},{p:"Demande à un adulte quel a été son réflexe face à une situation de harcèlement.",m:D},{p:"Demande autour de toi quel adulte de l'école inspire confiance pour en parler.",m:D},{p:"Demande à 2 personnes si elles connaissent le 3018.",m:D}],
+      lieu:[{p:"Un moment de la journée souvent cité comme plus à risque.",m:C},{p:"Un lieu de l'école conçu pour aider ou écouter : infirmerie, vie scolaire.",m:C},{p:"Ce qu'est un temps ou un espace d'écoute dans un établissement.",m:C},{p:"Ce que dit la loi sur le harcèlement scolaire.",m:C},{p:"Demande à 3 personnes un endroit ou un moment où elles se sentaient bien, et un moins. Sans citer personne.",m:D},{p:"Demande à 2 personnes ce qui rendrait un endroit plus rassurant.",m:D},{p:"Demande autour de toi quel moment de la semaine est plus tendu.",m:D},{p:"Demande à quelqu'un un endroit de l'école où on peut parler tranquillement.",m:D},{p:"Demande à 2 personnes ce qui les aiderait à se sentir plus en sécurité.",m:D}],
+      geste:[{p:"Que faire quand on est témoin.",m:C},{p:"Comment signaler un contenu de cyberharcèlement.",m:C},{p:"Une phrase simple pour soutenir quelqu'un qui ne va pas bien.",m:C},{p:"Comment garder une preuve d'un message blessant, et à qui la montrer.",m:C},{p:"Ce que veut dire ne pas rester seul, et vers qui aller.",m:C},{p:"Quel dispositif permet de recueillir la parole ou de mesurer le climat ? Questionnaire anonyme, boîte à idées.",m:C},{p:"Demande à 3 personnes ce qu'un témoin peut faire d'utile.",m:D},{p:"Demande à 2 personnes une phrase qui fait du bien quand ça va mal.",m:D},{p:"Demande autour de toi ce qu'elles conseilleraient à un ami concerné.",m:D},{p:"Demande à un adulte un geste simple qui aide vraiment.",m:D},{p:"Demande à 2 personnes comment elles réagiraient en voyant une moquerie répétée.",m:D}]
+    }}
+  ];
+
+  function bristol(q,t){
+    const tag = q.m===D ? ["à demander autour de toi","td"] : ["à chercher en ligne","tc"];
+    const fill = q.m===D
+      ? `<div class="lab">Ce qu'on t'a répondu</div><div class="wl"></div><div class="wl"></div><div class="lab">Personnes interrogées : <span class="blank"></span></div>`
+      : `<div class="lab">Votre trouvaille</div><div class="wl"></div><div class="wl"></div><div class="lab">Source</div><div class="wl solid"></div>`;
+    return `<div class="bristol" style="--c:${t.c}"><span class="tg ${tag[1]}">${tag[0]}</span><div class="find">${q.p}</div>${fill}</div>`;
+  }
+  document.getElementById("app").innerHTML = SUBJECTS.map(s=>
+    `<section class="theme"><h2>${s.title}</h2>` +
+    TYPES.map(t=>`<div class="grp" style="--c:${t.c}"><h3>${t.name}</h3><div class="grid3">${s.find[t.key].map(q=>bristol(q,t)).join("")}</div></div>`).join("") +
+    `</section>`
+  ).join("");
+</script>
+</body>
+</html>

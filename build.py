@@ -1,0 +1,198 @@
+#!/usr/bin/env python3
+"""Build the documented Claude Project pages from the markdown sources.
+
+Usage:  python3 build.py
+
+Reads projects/source/*.md and writes projects/<name>/index.html.
+The markdown subset covered is the one used by those sources: headings,
+paragraphs, bullet and numbered lists, pipe tables, horizontal rules,
+bold, italics, inline code and links.
+"""
+
+import html
+import os
+import re
+
+ROOT = os.path.dirname(os.path.abspath(__file__))
+
+PAGES = [
+    {
+        "src": "projects/source/feurisson.md",
+        "out": "projects/feurisson/index.html",
+        "title": "Feurisson · Claude Project documenté",
+        "accent": "#f37030",
+        "accent_soft": "#ffd5c1",
+        "back": "../",
+    },
+    {
+        "src": "projects/source/superbot.md",
+        "out": "projects/superbot/index.html",
+        "title": "Superbot · Claude Project documenté",
+        "accent": "#38b6ff",
+        "accent_soft": "#cbecff",
+        "back": "../",
+    },
+]
+
+
+def inline(text):
+    """Render the inline markdown constructs, escaping everything else."""
+    out = []
+    pattern = re.compile(
+        r"\[([^\]]+)\]\(([^)]+)\)"          # link
+        r"|\*\*([^*]+)\*\*"                  # bold
+        r"|`([^`]+)`"                        # code
+        r"|\*([^*]+)\*"                      # italics
+    )
+    pos = 0
+    for m in pattern.finditer(text):
+        out.append(html.escape(text[pos:m.start()]))
+        if m.group(1) is not None:
+            out.append('<a href="%s">%s</a>' % (html.escape(m.group(2), True), html.escape(m.group(1))))
+        elif m.group(3) is not None:
+            out.append("<strong>%s</strong>" % html.escape(m.group(3)))
+        elif m.group(4) is not None:
+            out.append("<code>%s</code>" % html.escape(m.group(4)))
+        else:
+            out.append("<em>%s</em>" % html.escape(m.group(5)))
+        pos = m.end()
+    out.append(html.escape(text[pos:]))
+    return "".join(out)
+
+
+def split_row(line):
+    cells = line.strip().strip("|").split("|")
+    return [c.strip() for c in cells]
+
+
+def convert(md):
+    lines = md.split("\n")
+    out = []
+    i = 0
+    n = len(lines)
+    while i < n:
+        line = lines[i]
+        stripped = line.strip()
+
+        if not stripped:
+            i += 1
+            continue
+
+        if stripped.startswith("#"):
+            level = len(stripped) - len(stripped.lstrip("#"))
+            out.append("<h%d>%s</h%d>" % (level, inline(stripped[level:].strip()), level))
+            i += 1
+            continue
+
+        if re.fullmatch(r"-{3,}", stripped):
+            out.append("<hr>")
+            i += 1
+            continue
+
+        # table
+        if stripped.startswith("|") and i + 1 < n and re.fullmatch(r"\|[\s|:-]+\|", lines[i + 1].strip()):
+            head = split_row(stripped)
+            i += 2
+            rows = []
+            while i < n and lines[i].strip().startswith("|"):
+                rows.append(split_row(lines[i].strip()))
+                i += 1
+            out.append('<div class="tablewrap"><table>')
+            out.append("<thead><tr>%s</tr></thead>" % "".join("<th>%s</th>" % inline(c) for c in head))
+            out.append("<tbody>")
+            for r in rows:
+                out.append("<tr>%s</tr>" % "".join("<td>%s</td>" % inline(c) for c in r))
+            out.append("</tbody></table></div>")
+            continue
+
+        # bullet list
+        if stripped.startswith("- "):
+            items = []
+            while i < n and lines[i].strip().startswith("- "):
+                items.append(lines[i].strip()[2:])
+                i += 1
+            out.append("<ul>%s</ul>" % "".join("<li>%s</li>" % inline(it) for it in items))
+            continue
+
+        # numbered list
+        if re.match(r"\d+\.\s", stripped):
+            items = []
+            while i < n and re.match(r"\d+\.\s", lines[i].strip()):
+                items.append(re.sub(r"^\d+\.\s", "", lines[i].strip()))
+                i += 1
+            out.append("<ol>%s</ol>" % "".join("<li>%s</li>" % inline(it) for it in items))
+            continue
+
+        # paragraph, joining the following non-blank lines
+        para = [stripped]
+        i += 1
+        while i < n and lines[i].strip() and not re.match(r"^(#|-\s|\||\d+\.\s|-{3,})", lines[i].strip()):
+            para.append(lines[i].strip())
+            i += 1
+        out.append("<p>%s</p>" % inline(" ".join(para)))
+
+    return "\n".join(out)
+
+
+TEMPLATE = """<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{title}</title>
+<link rel="icon" href="../../cornicello.svg">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;700;800&family=Manrope:wght@400;500;600;700&display=swap');
+  :root {{ --bg:#f7f4e8; --ink:#1a1a1a; --soft:#6c6c6c; --accent:{accent}; --accent-soft:{accent_soft}; }}
+  * {{ box-sizing:border-box; margin:0; padding:0; }}
+  html, body {{ background:var(--bg); color:var(--ink); font-family:'Manrope',system-ui,sans-serif; }}
+  .wrap {{ max-width:900px; margin:0 auto; padding:44px 24px 90px; }}
+  .back {{ display:inline-block; font-size:.9rem; font-weight:700; text-decoration:none; color:var(--ink);
+          background:var(--accent-soft); border:2px solid var(--ink); border-radius:999px; padding:6px 14px; margin-bottom:30px; }}
+  h1 {{ font-family:'Bricolage Grotesque',system-ui,sans-serif; font-size:clamp(1.9rem,4.4vw,2.7rem); font-weight:800; line-height:1.1; margin-bottom:22px; }}
+  h2 {{ font-family:'Bricolage Grotesque',system-ui,sans-serif; font-size:1.5rem; font-weight:700; margin:44px 0 14px; padding-bottom:8px; border-bottom:3px solid var(--accent); }}
+  h3 {{ font-family:'Bricolage Grotesque',system-ui,sans-serif; font-size:1.16rem; font-weight:700; margin:30px 0 10px; }}
+  p {{ line-height:1.7; margin:0 0 14px; }}
+  ul, ol {{ margin:0 0 16px 22px; }}
+  li {{ line-height:1.7; margin-bottom:6px; }}
+  hr {{ border:0; border-top:2px solid #ddd6c4; margin:34px 0; }}
+  code {{ background:#efe9d8; padding:1px 5px; border-radius:5px; font-size:.92em; }}
+  a {{ color:#1a1a1a; }}
+  .tablewrap {{ overflow-x:auto; margin:0 0 22px; border:2px solid var(--ink); border-radius:14px; background:#fff; }}
+  table {{ border-collapse:collapse; width:100%; min-width:520px; font-size:.94rem; }}
+  th, td {{ text-align:left; padding:11px 14px; border-bottom:1px solid #e4ddcb; vertical-align:top; line-height:1.55; }}
+  th {{ background:var(--accent-soft); font-weight:700; }}
+  tbody tr:last-child td {{ border-bottom:0; }}
+  @media (max-width:640px) {{ .wrap {{ padding:28px 16px 70px; }} }}
+</style>
+</head>
+<body>
+<div class="wrap">
+<a class="back" href="{back}">← Retour</a>
+{body}
+</div>
+</body>
+</html>
+"""
+
+
+def main():
+    for page in PAGES:
+        src = os.path.join(ROOT, page["src"])
+        out = os.path.join(ROOT, page["out"])
+        with open(src, encoding="utf-8") as f:
+            md = f.read()
+        os.makedirs(os.path.dirname(out), exist_ok=True)
+        with open(out, "w", encoding="utf-8") as f:
+            f.write(TEMPLATE.format(
+                title=html.escape(page["title"]),
+                accent=page["accent"],
+                accent_soft=page["accent_soft"],
+                back=page["back"],
+                body=convert(md),
+            ))
+        print("built", page["out"])
+
+
+if __name__ == "__main__":
+    main()

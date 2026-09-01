@@ -5,58 +5,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Youth Ai Lab · WikiYouthBot</title>
 <link rel="icon" href="cornicello.svg">
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;700;800&family=Manrope:wght@400;500;600;700&display=swap');
-  :root {
-    --bg: #f7f4e8; --ink: #1a1a1a; --soft: #6c6c6c;
-    --green: #7ed957; --green-soft: #dbffcb;
-    --pink: #fa89d2; --pink-soft: #ffd9f2;
-    --yellow: #f9c724; --yellow-soft: #f9eecd;
-    --orange: #f37030; --orange-soft: #ffd5c1;
-    --blue: #38b6ff; --blue-soft: #cbecff;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body { background: var(--bg); font-family: 'Manrope', system-ui, sans-serif; color: var(--ink); }
-  .wrap { max-width: 1040px; margin: 0 auto; padding: 56px 24px 80px; }
-  header { margin-bottom: 48px; }
-  .kicker { font-size: .82rem; letter-spacing: .14em; text-transform: uppercase; color: var(--soft); margin-bottom: 14px; }
-  h1 { font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: clamp(2.1rem, 5vw, 3.2rem); font-weight: 800; line-height: 1.05; margin-bottom: 18px; }
-  .lede { font-size: 1.06rem; line-height: 1.65; max-width: 60ch; color: #2c2c2c; }
-  .lede + .lede { margin-top: 14px; }
-  h2 { font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 1.5rem; font-weight: 700; margin: 46px 0 6px; }
-  .sub { color: var(--soft); font-size: .95rem; margin-bottom: 24px; }
-  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-  .card { display: block; text-decoration: none; color: inherit; background: #fff; border: 2px solid var(--ink); border-radius: 18px; padding: 24px; box-shadow: 5px 5px 0 var(--ink); transition: transform .15s ease, box-shadow .15s ease; }
-  .card:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 var(--ink); }
-  .card .tag { display: inline-block; font-size: .74rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 5px 11px; border-radius: 999px; margin-bottom: 14px; }
-  .t-fire { background: var(--orange-soft); }
-  .t-bully { background: var(--blue-soft); }
-  .t-robot { background: var(--yellow-soft); }
-  .card h3 { font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 1.28rem; font-weight: 700; margin-bottom: 8px; }
-  .card p { font-size: .95rem; line-height: 1.6; color: #333; }
-  .card .more { margin-top: 14px; font-weight: 700; font-size: .9rem; }
-  footer { margin-top: 64px; padding-top: 26px; border-top: 2px solid var(--ink); font-size: .88rem; color: var(--soft); line-height: 1.65; }
-  footer a { color: inherit; }
-  @media (max-width: 640px) { .wrap { padding: 36px 18px 60px; } }
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="wrap">
   <header>
     <div class="kicker">Youth Ai Lab · WikiYouthBot</div>
-    <h1>Chatbots built by young people</h1>
+    <h1>Chatbots built by young people, and the kit that made them</h1>
     <p class="lede">WikiYouthBot is an intensive week in which small groups pick a societal cause, investigate it in their own neighbourhood, and turn what they gather into a chatbot that speaks about it.</p>
-    <p class="lede">The chatbot starts out as a confident fabricator. It only becomes reliable to the extent the group writes it so: rules, sources, local material, personas. Everything on this page was designed, written and tested by the participants themselves.</p>
+    <p class="lede">The chatbot starts out as a confident fabricator. It only becomes reliable to the extent the group writes it so: rules, sources, local material, personas. This site holds three things: what the participants produced, the documentation of how each chatbot was configured, and the full facilitation kit, ready to be reused by another lab.</p>
   </header>
 
-  <h2>France · Lab Les Pacman's, La Rochelle</h2>
-  <p class="sub">27 to 31 July 2026 · 11 participants aged 11 to 16 · two groups</p>
+  <h2>Productions · Lab Les Pacman's, La Rochelle</h2>
+  <p class="sub">27 to 31 July 2026. Eleven participants aged 11 to 16, in two groups. Published as the groups left them at the end of the week.</p>
 
   <div class="grid">
     <a class="card" href="france/feurisson/">
       <span class="tag t-fire">Wildfire prevention</span>
       <h3>Feurisson</h3>
       <p>A chatbot that answers only in verse, because a piece of advice that rhymes is easier to remember. Rhyming does not exempt it from being accurate, or from saying where it read something.</p>
+      <span class="note">Needs your own Anthropic API key to answer.</span>
       <span class="more">Open Feurisson →</span>
     </a>
 
@@ -64,6 +32,7 @@
       <span class="tag t-bully">School bullying</span>
       <h3>Superbot</h3>
       <p>A chatbot that answers on school bullying from reference answers with their sources displayed, and that drops everything else the moment someone says they are not doing well.</p>
+      <span class="note">Answers from the group's own base, no key needed.</span>
       <span class="more">Open Superbot →</span>
     </a>
 
@@ -71,13 +40,77 @@
       <span class="tag t-robot">Robot prototype</span>
       <h3>Robo-Caillou</h3>
       <p>The neighbourhood watcher. Its eyes follow the wildfire vigilance level, and it never sprays a person: it traces a circle of water on the ground around them and drowns the ember.</p>
+      <span class="note">Fully interactive, no key needed.</span>
       <span class="more">Open Robo-Caillou →</span>
     </a>
   </div>
 
+  <h2>Documented Claude Projects</h2>
+  <p class="sub">What each group actually wrote and gathered: the instructions given to the chatbot, the handwritten dataset transcribed card by card, the personas, the reference questions and answers, and the limits of the material.</p>
+
+  <div class="grid">
+    <a class="card" href="projects/feurisson/">
+      <span class="tag t-doc">Documentation</span>
+      <h3>Feurisson · the project behind the chatbot</h3>
+      <p>Thirty-five field cards on figures, actors, useful actions and places, three personas, three reference question and answer sheets, and the rules the group wrote after watching their AI invent sources.</p>
+      <span class="more">Read the documentation →</span>
+    </a>
+
+    <a class="card" href="projects/superbot/">
+      <span class="tag t-doc">Documentation</span>
+      <h3>Superbot · the project behind the chatbot</h3>
+      <p>The enquiry carried out at the social centre, four personas covering every position of the problem, the group's own question sheet format, and the distress rule that overrides everything else.</p>
+      <span class="more">Read the documentation →</span>
+    </a>
+  </div>
+
+  <h2>Facilitation kit</h2>
+  <p class="sub">The tools built for the week, published so that another lab can run the same sequence. Everything runs in a browser. Only the press conference needs an API key, and a free one is enough.</p>
+
+  <div class="grid">
+    <a class="card" href="tools/mission/">
+      <span class="tag t-kit">Tool</span>
+      <h3>Mission of the week</h3>
+      <p>The sealed envelope and the roadmap used to open each morning: the mission of the week, the teams, and the sixteen steps that take a generic AI to a specialised chatbot.</p>
+      <span class="more">Open the mission →</span>
+    </a>
+
+    <a class="card" href="tools/press-conference/">
+      <span class="tag t-kit">Tool</span>
+      <h3>AI press conference</h3>
+      <p>The central device that lets a whole group question an AI out loud, as journalists at a press conference. Choose the city, the topic, the register, and whether the AI speaks with the browser voice or a natural one.</p>
+      <span class="note">Needs a free Gemini key, or a Claude key. Runs best from a local server, for the microphone.</span>
+      <span class="more">Open the press conference →</span>
+    </a>
+
+    <a class="card" href="tools/key-data-cards/">
+      <span class="tag t-kit">Printable</span>
+      <h3>Key data cards</h3>
+      <p>The cards groups fill in during the field enquiry: one figure, one actor, one place, one useful action, and a source line for each.</p>
+      <span class="more">Open the cards →</span>
+    </a>
+
+    <a class="card" href="tools/location-sheets/">
+      <span class="tag t-kit">Printable</span>
+      <h3>Location sheets</h3>
+      <p>Colour sheets used to anchor a cause in a real place and decide what can actually be measured or observed on the ground.</p>
+      <span class="note">Prepared for the week, not used in this edition.</span>
+      <span class="more">Open the sheets →</span>
+    </a>
+
+    <a class="card" href="tools/evidence-wall/">
+      <span class="tag t-kit">Printable</span>
+      <h3>Evidence wall</h3>
+      <p>Press cuttings to sort into solid, to be checked, and bogus, with the rule that an organisation only counts if it is real and can be found again.</p>
+      <span class="note">Prepared for the week, not used in this edition.</span>
+      <span class="more">Open the evidence wall →</span>
+    </a>
+  </div>
+
   <footer>
-    <p>Youth Ai Lab is co-funded by the European Union. The productions on this page are the work of the young participants and are published as they were left at the end of the workshop week.</p>
-    <p>Neither Feurisson nor Superbot is an emergency service. In case of fire, call 18 or 112. For bullying, call 3018.</p>
+    <p>Youth Ai Lab is co-funded by the European Union. The productions on this site are the work of the young participants and are published as they were left at the end of the workshop week.</p>
+    <p>Neither Feurisson nor Superbot is an emergency service. In case of fire, call 18, or 112 in Europe, or 114 by SMS. For bullying, call 3018. For a child in danger, call 119.</p>
+    <p>Source and reuse: <a href="https://github.com/Youth-AI-Lab/wikiyouthbot">github.com/Youth-AI-Lab/wikiyouthbot</a></p>
   </footer>
 </div>
 </body>
