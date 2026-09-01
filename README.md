@@ -13,6 +13,10 @@ wikiyouthbot/
 ├── style.css                        Shared styles for the landing
 ├── cornicello.svg                   Lucky-charm icon shared by the pages
 ├── build.py                         Rebuilds the documentation pages from the markdown sources
+├── gallery/                         Photographs of the week
+│   ├── index.html                   Mosaic with click to enlarge
+│   ├── photos/                      Full-size images, metadata stripped
+│   └── thumbs/                      Thumbnails
 ├── france/                          Lab Les Pacman's, La Rochelle, 27 to 31 July 2026
 │   ├── feurisson/index.html         Fire prevention chatbot, answers only in verse
 │   ├── superbot/index.html          School bullying chatbot, answers from a sourced base
