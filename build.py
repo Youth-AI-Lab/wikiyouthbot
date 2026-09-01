@@ -142,10 +142,18 @@ TEMPLATE = """<!DOCTYPE html>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
-<link rel="icon" href="../../cornicello.svg">
+<link rel="icon" href="../../favicon.svg">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Youth Ai Lab">
+<meta property="og:title" content="{title}">
+<meta property="og:image" content="https://youth-ai-lab.github.io/wikiyouthbot/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://youth-ai-lab.github.io/wikiyouthbot/og.png">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;700;800&family=Manrope:wght@400;500;600;700&display=swap');
-  :root {{ --bg:#f7f4e8; --ink:#1a1a1a; --soft:#6c6c6c; --accent:{accent}; --accent-soft:{accent_soft}; }}
+  :root {{ --bg:#ffffff; --ink:#1a1a1a; --soft:#6c6c6c; --accent:{accent}; --accent-soft:{accent_soft}; }}
   * {{ box-sizing:border-box; margin:0; padding:0; }}
   html, body {{ background:var(--bg); color:var(--ink); font-family:'Manrope',system-ui,sans-serif; }}
   .wrap {{ max-width:900px; margin:0 auto; padding:44px 24px 90px; }}
@@ -157,12 +165,12 @@ TEMPLATE = """<!DOCTYPE html>
   p {{ line-height:1.7; margin:0 0 14px; }}
   ul, ol {{ margin:0 0 16px 22px; }}
   li {{ line-height:1.7; margin-bottom:6px; }}
-  hr {{ border:0; border-top:2px solid #ddd6c4; margin:34px 0; }}
-  code {{ background:#efe9d8; padding:1px 5px; border-radius:5px; font-size:.92em; }}
+  hr {{ border:0; border-top:2px solid #e6e6e6; margin:34px 0; }}
+  code {{ background:#f2f2f2; padding:1px 5px; border-radius:5px; font-size:.92em; }}
   a {{ color:#1a1a1a; }}
   .tablewrap {{ overflow-x:auto; margin:0 0 22px; border:2px solid var(--ink); border-radius:14px; background:#fff; }}
   table {{ border-collapse:collapse; width:100%; min-width:520px; font-size:.94rem; }}
-  th, td {{ text-align:left; padding:11px 14px; border-bottom:1px solid #e4ddcb; vertical-align:top; line-height:1.55; }}
+  th, td {{ text-align:left; padding:11px 14px; border-bottom:1px solid #e6e6e6; vertical-align:top; line-height:1.55; }}
   th {{ background:var(--accent-soft); font-weight:700; }}
   tbody tr:last-child td {{ border-bottom:0; }}
   .topbar {{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between; margin-bottom:28px; }}

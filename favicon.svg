@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="WikiYouthBot">
+  <path d="M8 12h48a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H30l-12 10V48H8a4 4 0 0 1-4-4V16a4 4 0 0 1 4-4z"
+        fill="#ffffff" stroke="#1a1a1a" stroke-width="4" stroke-linejoin="round"/>
+  <rect x="16" y="21" width="32" height="20" rx="6" fill="#f9eecd" stroke="#1a1a1a" stroke-width="3"/>
+  <path d="M32 21v-7" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="32" cy="12" r="3" fill="#f37030" stroke="#1a1a1a" stroke-width="2.5"/>
+  <circle cx="25" cy="30" r="3.4" fill="#38b6ff" stroke="#1a1a1a" stroke-width="2.5"/>
+  <circle cx="39" cy="30" r="3.4" fill="#f37030" stroke="#1a1a1a" stroke-width="2.5"/>
+  <path d="M25 37h14" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round"/>
+</svg>
