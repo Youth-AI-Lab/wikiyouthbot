@@ -162,9 +162,9 @@ TEMPLATE = """<!DOCTYPE html>
   h1 {{ font-family:'Bricolage Grotesque',system-ui,sans-serif; font-size:clamp(1.9rem,4.4vw,2.7rem); font-weight:800; line-height:1.1; margin-bottom:22px; }}
   h2 {{ font-family:'Bricolage Grotesque',system-ui,sans-serif; font-size:1.5rem; font-weight:700; margin:44px 0 14px; padding-bottom:8px; border-bottom:3px solid var(--accent); }}
   h3 {{ font-family:'Bricolage Grotesque',system-ui,sans-serif; font-size:1.16rem; font-weight:700; margin:30px 0 10px; }}
-  p {{ line-height:1.7; margin:0 0 14px; }}
+  p {{ line-height:1.7; margin:0 0 14px; text-align:justify; text-justify:inter-word; hyphens:auto; }}
   ul, ol {{ margin:0 0 16px 22px; }}
-  li {{ line-height:1.7; margin-bottom:6px; }}
+  li {{ line-height:1.7; margin-bottom:6px; text-align:justify; text-justify:inter-word; hyphens:auto; }}
   hr {{ border:0; border-top:2px solid #e6e6e6; margin:34px 0; }}
   code {{ background:#f2f2f2; padding:1px 5px; border-radius:5px; font-size:.92em; }}
   a {{ color:#1a1a1a; }}
