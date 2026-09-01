@@ -1,6 +1,6 @@
 # Youth Ai Lab — WikiYouthBot
 
-Everything produced around the WikiYouthBot intensive week: the chatbots and robot prototypes built by the participants, the documentation of the Claude Projects behind them, and the facilitation kit used to run the week.
+One local run of the WikiYouthBot activity, by the Les Pacman's lab in La Rochelle, over a single intensive week in July 2026: the chatbots and robot prototypes built by the participants, the documentation of the Claude Projects behind them, and the three tools the lab built and actually used.
 
 Production URL: <https://youth-ai-lab.github.io/wikiyouthbot/>
 
@@ -26,12 +26,10 @@ wikiyouthbot/
 │   │   └── feurisson-mascotte.png
 │   ├── feurisson/index.html         Generated, do not edit by hand
 │   └── superbot/index.html          Generated, do not edit by hand
-└── tools/                           Facilitation kit
+└── tools/                           Facilitation kit, the three tools actually used
     ├── mission/index.html           Mission of the week, sealed envelope and roadmap
     ├── press-conference/index.html  Voice AI press conference device
-    ├── key-data-cards/index.html    Printable field enquiry cards
-    ├── location-sheets/index.html   Printable location sheets
-    └── evidence-wall/index.html     Printable press cuttings to sort
+    └── key-data-cards/index.html    Printable field enquiry cards
 ```
 
 ## Languages
