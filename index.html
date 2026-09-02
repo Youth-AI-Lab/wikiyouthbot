@@ -177,6 +177,12 @@
   </footer>
 </div>
 
+<button class="haut" type="button">
+  <span class="horstexte" lang="en">Back to top</span>
+  <span class="horstexte" lang="fr">Haut de page</span>
+  <span aria-hidden="true">↑</span>
+</button>
+
 <script>
 (function(){
   var boutons = document.querySelectorAll('.langbar button');
@@ -194,6 +200,15 @@
   var memo;
   try { memo = localStorage.getItem('wyb-lang'); } catch (e) {}
   if (memo === 'fr' || memo === 'en') { appliquer(memo); }
+
+  var haut = document.querySelector('.haut');
+  if (haut) {
+    var basculer = function(){ haut.classList.toggle('visible', window.scrollY > 400); };
+    window.addEventListener('scroll', basculer, {passive:true});
+    basculer();
+    haut.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+  }
+
 })();
 </script>
 </body>

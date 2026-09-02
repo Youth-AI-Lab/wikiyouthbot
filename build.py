@@ -193,6 +193,33 @@ TEMPLATE = """<!DOCTYPE html>
   .langbar button[aria-pressed="true"] {{ background:var(--ink); color:#fff; }}
   .langnote {{ font-size:.86rem; color:var(--soft); margin:-10px 0 26px; }}
   body[data-lang="en"] [lang="fr"], body[data-lang="fr"] [lang="en"] {{ display:none; }}
+
+.haut {{
+  position: fixed; right: 20px; bottom: 20px; z-index: 50;
+  width: 46px; height: 46px; border-radius: 999px; cursor: pointer;
+  border: 2px solid var(--ink); background: #fff; color: var(--ink);
+  font: 700 1.15rem/1 'Manrope', system-ui, sans-serif;
+  box-shadow: 3px 3px 0 var(--ink);
+  opacity: 0; visibility: hidden; transform: translateY(8px);
+  transition: opacity .18s ease, transform .18s ease, visibility .18s;
+}}
+.haut.visible {{ opacity: 1; visibility: visible; transform: none; }}
+.haut:hover {{ box-shadow: 5px 5px 0 var(--ink); transform: translate(-2px, -2px); }}
+.horstexte {{
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}}
+@media (max-width: 620px) {{ .haut {{ right: 14px; bottom: 14px; }} }}
+
+dialog.visionneuse {{ border:0; padding:0; background:transparent; max-width:100vw; max-height:100vh; }}
+dialog.visionneuse::backdrop {{ background:rgba(0,0,0,.88); }}
+dialog.visionneuse .cadre {{ position:relative; line-height:0; }}
+dialog.visionneuse img {{ max-width:92vw; max-height:86vh; width:auto; height:auto; display:block; border-radius:12px; background:#fff; }}
+dialog.visionneuse .fermer {{
+  position:absolute; top:10px; right:10px; width:42px; height:42px; border-radius:999px; cursor:pointer;
+  border:2px solid #1a1a1a; background:#fff; color:#1a1a1a; font:700 1.05rem/1 system-ui, sans-serif;
+}}
+dialog.visionneuse .fermer:hover {{ background:#f2f2f2; }}
   @media (max-width:640px) {{ .wrap {{ padding:28px 16px 70px; }} }}
 </style>
 </head>
@@ -214,6 +241,24 @@ TEMPLATE = """<!DOCTYPE html>
 {body_fr}
 </div>
 </div>
+
+<dialog class="visionneuse">
+  <div class="cadre">
+    <img alt="">
+    <button class="fermer" type="button" autofocus>
+      <span class="horstexte" lang="en">Close</span>
+      <span class="horstexte" lang="fr">Fermer</span>
+      <span aria-hidden="true">✕</span>
+    </button>
+  </div>
+</dialog>
+
+<button class="haut" type="button">
+  <span class="horstexte" lang="en">Back to top</span>
+  <span class="horstexte" lang="fr">Haut de page</span>
+  <span aria-hidden="true">↑</span>
+</button>
+
 <script>
 (function(){{
   var boutons = document.querySelectorAll('.langbar button');
@@ -232,6 +277,31 @@ TEMPLATE = """<!DOCTYPE html>
     document.body.dataset.lang = memo;
     document.documentElement.lang = memo;
     boutons.forEach(function(o){{ o.setAttribute('aria-pressed', String(o.dataset.set === memo)); }});
+  }}
+
+  var haut = document.querySelector('.haut');
+  if (haut) {{
+    var basculer = function(){{ haut.classList.toggle('visible', window.scrollY > 400); }};
+    window.addEventListener('scroll', basculer, {{passive:true}});
+    basculer();
+    haut.addEventListener('click', function(){{ window.scrollTo({{top:0, behavior:'smooth'}}); }});
+  }}
+
+  var visionneuse = document.querySelector('dialog.visionneuse');
+  if (visionneuse) {{
+    var grande = visionneuse.querySelector('img');
+    document.querySelectorAll('a.vignette, button.shot').forEach(function(el){{
+      el.addEventListener('click', function(e){{
+        e.preventDefault();
+        grande.src = el.dataset.full || el.getAttribute('href');
+        var img = el.querySelector('img');
+        grande.alt = img ? img.alt : '';
+        visionneuse.showModal();
+      }});
+    }});
+    visionneuse.querySelector('.fermer').addEventListener('click', function(){{ visionneuse.close(); }});
+    visionneuse.addEventListener('click', function(e){{ if (e.target === visionneuse) visionneuse.close(); }});
+    visionneuse.addEventListener('close', function(){{ grande.removeAttribute('src'); }});
   }}
 }})();
 </script>

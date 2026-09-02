@@ -21,12 +21,6 @@
   .shot img { width:100%; height:auto; display:block; }
   .shot:hover { box-shadow:4px 4px 0 var(--ink); transform:translate(-2px,-2px); }
   .shot, .shot:hover { transition:transform .15s ease, box-shadow .15s ease; }
-  dialog.viewer { border:0; padding:0; background:transparent; max-width:96vw; max-height:96vh; }
-  dialog.viewer::backdrop { background:rgba(0,0,0,.86); }
-  dialog.viewer img { max-width:96vw; max-height:88vh; display:block; border-radius:10px; }
-  dialog.viewer .close { position:absolute; top:-6px; right:-6px; font:inherit; font-weight:700; border:2px solid var(--ink);
-          background:#fff; border-radius:999px; padding:4px 12px; cursor:pointer; }
-  .viewerwrap { position:relative; }
 </style>
 </head>
 <body data-lang="en">
@@ -79,10 +73,20 @@
   </footer>
 </div>
 
-<dialog class="viewer">
-  <div class="viewerwrap">
-    <button class="close" type="button" autofocus>✕</button>
+<button class="haut" type="button">
+  <span class="horstexte" lang="en">Back to top</span>
+  <span class="horstexte" lang="fr">Haut de page</span>
+  <span aria-hidden="true">↑</span>
+</button>
+
+<dialog class="visionneuse">
+  <div class="cadre">
     <img alt="">
+    <button class="fermer" type="button" autofocus>
+      <span class="horstexte" lang="en">Close</span>
+      <span class="horstexte" lang="fr">Fermer</span>
+      <span aria-hidden="true">✕</span>
+    </button>
   </div>
 </dialog>
 
@@ -104,14 +108,32 @@
   try { memo = localStorage.getItem('wyb-lang'); } catch (e) {}
   if (memo === 'fr' || memo === 'en') { appliquer(memo); }
 
-  var vue = document.querySelector('dialog.viewer');
-  var img = vue.querySelector('img');
-  document.querySelectorAll('.shot').forEach(function(b){
-    b.addEventListener('click', function(){ img.src = b.dataset.full; vue.showModal(); });
-  });
-  vue.querySelector('.close').addEventListener('click', function(){ vue.close(); });
-  vue.addEventListener('click', function(e){ if (e.target === vue) vue.close(); });
-  vue.addEventListener('close', function(){ img.removeAttribute('src'); });
+  var haut = document.querySelector('.haut');
+  if (haut) {
+    var basculer = function(){ haut.classList.toggle('visible', window.scrollY > 400); };
+    window.addEventListener('scroll', basculer, {passive:true});
+    basculer();
+    haut.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+  }
+
+
+
+  var visionneuse = document.querySelector('dialog.visionneuse');
+  if (visionneuse) {
+    var grande = visionneuse.querySelector('img');
+    document.querySelectorAll('a.vignette, button.shot').forEach(function(el){
+      el.addEventListener('click', function(e){
+        e.preventDefault();
+        grande.src = el.dataset.full || el.getAttribute('href');
+        var img = el.querySelector('img');
+        grande.alt = img ? img.alt : '';
+        visionneuse.showModal();
+      });
+    });
+    visionneuse.querySelector('.fermer').addEventListener('click', function(){ visionneuse.close(); });
+    visionneuse.addEventListener('click', function(e){ if (e.target === visionneuse) visionneuse.close(); });
+    visionneuse.addEventListener('close', function(){ grande.removeAttribute('src'); });
+  }
 })();
 </script>
 </body>
