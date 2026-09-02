@@ -76,6 +76,8 @@ Quatre cartes, dont trois complètes.
 - Attentes : il ne veut pas être un harceleur et il ne peut pas comprendre le harcèlement.
 - Prompt type et ton attendu : cases laissées vides.
 
+![Carte persona de Joseph du coussin](../personas/superbot-joseph.jpg)
+
 ### Monsieur Non-Frus [?], 17 ans, le témoin
 
 - Métier : travaille à l'école, il a redoublé. Sa maman est morte.
@@ -84,6 +86,8 @@ Quatre cartes, dont trois complètes.
 - Histoire : il a vu son copain se faire harceler.
 - Attentes : il cherche comment aider la personne harcelée.
 - Prompt type : « Que puis-je faire si je suis témoin, pour aider une personne harcelée ? »
+
+![Carte persona du témoin](../personas/superbot-temoin.jpg)
 
 ### Valentin Amstar, 14 ans, le harceleur
 
@@ -94,11 +98,15 @@ Quatre cartes, dont trois complètes.
 - Attentes : il cherche plus d'information sur les sanctions, il cherche à comprendre le fonctionnement du harcèlement.
 - Prompt type : « Quelles sont les sanctions que je risque si j'ai harcelé ? »
 
+![Carte persona de Valentin Amstar](../personas/superbot-valentin.jpg)
+
 ### Ariana Petite, 12 ans, la cible
 
 - Applications favorites : Snap, YouTube, Spotify. Probabilité d'utilisation du chatbot : 2 sur 5.
 - Curseurs : connaissance de la cause 2 sur 5, engagement citoyen 4 sur 5, patience 1 sur 5, perception des technologies 2 sur 5.
 - Le reste de la carte, métier, situation familiale, histoire, attentes, prompt et ton, est resté vide.
+
+![Carte persona d'Ariana Petite](../personas/superbot-ariana.jpg)
 
 ---
 

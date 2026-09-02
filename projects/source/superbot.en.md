@@ -76,6 +76,8 @@ Four cards, three of them complete.
 - Expectations: he does not want to be a bully and he cannot understand bullying.
 - Typical prompt and expected tone: boxes left blank.
 
+![Persona card for Joseph du coussin](../personas/superbot-joseph.jpg)
+
 ### Monsieur Non-Frus [?], 17, the witness
 
 - Occupation: works at the school, he has repeated a year. His mother has died.
@@ -84,6 +86,8 @@ Four cards, three of them complete.
 - History: he saw his friend being bullied.
 - Expectations: he is looking for how to help the person being bullied.
 - Typical prompt: "What can I do, as a witness, to help someone who is being bullied?"
+
+![Persona card for the witness](../personas/superbot-temoin.jpg)
 
 ### Valentin Amstar, 14, the bully
 
@@ -94,11 +98,15 @@ Four cards, three of them complete.
 - Expectations: he is looking for more information on sanctions, and to understand how bullying works.
 - Typical prompt: "What sanctions do I risk if I have bullied someone?"
 
+![Persona card for Valentin Amstar](../personas/superbot-valentin.jpg)
+
 ### Ariana Petite, 12, the target
 
 - Favourite apps: Snap, YouTube, Spotify. Likelihood of using the chatbot: 2 out of 5.
 - Cursors: knowledge of the cause 2 out of 5, civic engagement 4 out of 5, patience 1 out of 5, perception of technology 2 out of 5.
 - The rest of the card, occupation, family situation, history, expectations, prompt and tone, was left blank.
+
+![Persona card for Ariana Petite](../personas/superbot-ariana.jpg)
 
 ---
 

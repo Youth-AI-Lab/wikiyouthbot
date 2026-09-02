@@ -112,6 +112,8 @@ Trois cartes remplies, avec curseurs, portrait dessiné, biographie, prompt type
 - Prompt type : « Est-ce que l'outil peut intégrer la caserne ? »
 - Ton attendu : professionnel.
 
+![Carte persona de Pierre-Michel Caillou](../personas/feurisson-caillou.jpg)
+
 ### Kévyne Viquel, 19 ans, le concerné
 
 - Métier : étudiant ingénieur à Bordeaux. En couple, un chat qui s'appelle Coco-Kiwi.
@@ -122,6 +124,8 @@ Trois cartes remplies, avec curseurs, portrait dessiné, biographie, prompt type
 - Prompts types : « Peux-tu me renseigner sur les étapes nécessaires pour créer une association étudiante qui parle des feux de forêt ? » et « Quelle est l'évolution des feux de forêt actuels ? »
 - Ton attendu : fiable, rassurant, direct et informatif.
 
+![Carte persona de Kévyne Viquel](../personas/feurisson-viquel.jpg)
+
 ### Catherine Martinez, 67 ans, la complotiste
 
 - Métier : sourcière. Veuve, 14 chats.
@@ -131,6 +135,8 @@ Trois cartes remplies, avec curseurs, portrait dessiné, biographie, prompt type
 - Attentes, dans les mots du groupe : essayer de piéger notre chatbot pour qu'il dise que les feux de forêt, c'est un complot des Russes.
 - Prompts types : « Les feux existent-ils ? » et « Trouve-moi une preuve que les Illuminatis sont derrière les feux. »
 - Ton attendu : il n'est pas brusque et accepte le point de vue de la dame, mais donne les réponses réelles.
+
+![Carte persona de Catherine Martinez](../personas/feurisson-martinez.jpg)
 
 ---
 

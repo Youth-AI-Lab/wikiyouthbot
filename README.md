@@ -28,6 +28,7 @@ wikiyouthbot/
 │   │   ├── superbot.md              French, original
 │   │   ├── superbot.en.md           English translation
 │   │   └── feurisson-mascotte.png
+│   ├── personas/                    Persona card images, plus thumbs/ for the page
 │   ├── feurisson/index.html         Generated, do not edit by hand
 │   └── superbot/index.html          Generated, do not edit by hand
 └── tools/                           AI artefacts used as examples or facilitation supports
@@ -50,7 +51,7 @@ The two documentation pages are generated from the pair of markdown files for ea
 python3 build.py
 ```
 
-No dependency is needed, the converter is part of the script.
+No dependency is needed, the converter is part of the script. It covers headings, paragraphs, lists, pipe tables, bold, italics, code, links and images. An image written `![alt](../personas/name.jpg)` is rendered as a thumbnail linking to the full-size file, the thumbnail being looked up in the `thumbs/` subfolder of the same directory.
 
 ## Notes on the published versions
 

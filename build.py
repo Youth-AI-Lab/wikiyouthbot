@@ -41,7 +41,8 @@ def inline(text):
     """Render the inline markdown constructs, escaping everything else."""
     out = []
     pattern = re.compile(
-        r"\[([^\]]+)\]\(([^)]+)\)"          # link
+        r"!\[([^\]]*)\]\(([^)]+)\)"         # image
+        r"|\[([^\]]+)\]\(([^)]+)\)"          # link
         r"|\*\*([^*]+)\*\*"                  # bold
         r"|`([^`]+)`"                        # code
         r"|\*([^*]+)\*"                      # italics
@@ -49,14 +50,22 @@ def inline(text):
     pos = 0
     for m in pattern.finditer(text):
         out.append(html.escape(text[pos:m.start()]))
-        if m.group(1) is not None:
-            out.append('<a href="%s">%s</a>' % (html.escape(m.group(2), True), html.escape(m.group(1))))
+        if m.group(2) is not None:
+            src = m.group(2)
+            dossier, fichier = src.rsplit("/", 1)
+            vignette = dossier + "/thumbs/" + fichier
+            out.append(
+                '<a class="vignette" href="%s"><img src="%s" alt="%s" loading="lazy"></a>'
+                % (html.escape(src, True), html.escape(vignette, True), html.escape(m.group(1)))
+            )
         elif m.group(3) is not None:
-            out.append("<strong>%s</strong>" % html.escape(m.group(3)))
-        elif m.group(4) is not None:
-            out.append("<code>%s</code>" % html.escape(m.group(4)))
+            out.append('<a href="%s">%s</a>' % (html.escape(m.group(4), True), html.escape(m.group(3))))
+        elif m.group(5) is not None:
+            out.append("<strong>%s</strong>" % html.escape(m.group(5)))
+        elif m.group(6) is not None:
+            out.append("<code>%s</code>" % html.escape(m.group(6)))
         else:
-            out.append("<em>%s</em>" % html.escape(m.group(5)))
+            out.append("<em>%s</em>" % html.escape(m.group(7)))
         pos = m.end()
     out.append(html.escape(text[pos:]))
     return "".join(out)
@@ -168,6 +177,11 @@ TEMPLATE = """<!DOCTYPE html>
   hr {{ border:0; border-top:2px solid #e6e6e6; margin:34px 0; }}
   code {{ background:#f2f2f2; padding:1px 5px; border-radius:5px; font-size:.92em; }}
   a {{ color:#1a1a1a; }}
+  .vignette {{ display:inline-block; margin:4px 0 18px; border:2px solid var(--ink); border-radius:12px;
+             overflow:hidden; line-height:0; background:#fff; max-width:320px; }}
+  .vignette img {{ display:block; width:100%; height:auto; }}
+  .vignette:hover {{ box-shadow:4px 4px 0 var(--ink); transform:translate(-2px,-2px); }}
+  .vignette {{ transition:transform .15s ease, box-shadow .15s ease; }}
   .tablewrap {{ overflow-x:auto; margin:0 0 22px; border:2px solid var(--ink); border-radius:14px; background:#fff; }}
   table {{ border-collapse:collapse; width:100%; min-width:520px; font-size:.94rem; }}
   th, td {{ text-align:left; padding:11px 14px; border-bottom:1px solid #e6e6e6; vertical-align:top; line-height:1.55; }}

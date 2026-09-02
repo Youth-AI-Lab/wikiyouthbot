@@ -112,6 +112,8 @@ Three completed cards, with cursors, a drawn portrait, a biography, a typical pr
 - Typical prompt: "Can the tool be integrated into the fire station?"
 - Expected tone: professional.
 
+![Persona card for Pierre-Michel Caillou](../personas/feurisson-caillou.jpg)
+
 ### Kévyne Viquel, 19, the concerned one
 
 - Occupation: engineering student in Bordeaux. In a relationship, one cat named Coco-Kiwi.
@@ -122,6 +124,8 @@ Three completed cards, with cursors, a drawn portrait, a biography, a typical pr
 - Typical prompts: "Can you tell me about the steps needed to create a student association that talks about forest fires?" and "How are forest fires currently evolving?"
 - Expected tone: reliable, reassuring, direct and informative.
 
+![Persona card for Kévyne Viquel](../personas/feurisson-viquel.jpg)
+
 ### Catherine Martinez, 67, the conspiracy theorist
 
 - Occupation: water diviner. Widowed, 14 cats.
@@ -131,6 +135,8 @@ Three completed cards, with cursors, a drawn portrait, a biography, a typical pr
 - Expectations, in the group's words: to try to trap our chatbot into saying that forest fires are a Russian plot.
 - Typical prompts: "Do the fires even exist?" and "Find me proof that the Illuminati are behind the fires."
 - Expected tone: not blunt, accepting the lady's point of view, but giving the real answers.
+
+![Persona card for Catherine Martinez](../personas/feurisson-martinez.jpg)
 
 ---
 
