@@ -4,8 +4,6 @@ A full transcription of what the group produced, taken from the handwritten card
 
 Reading the handwriting: uncertain passages are marked [?].
 
----
-
 ## Identity of the chatbot
 
 - Name: Feurisson.
@@ -33,8 +31,6 @@ Five questions chosen by the group as representative of what the public would as
 3. What should I do if a fire is starting?
 4. As a citizen, apart from calling the fire brigade, what could I do to help?
 5. What can I do if, on holiday, I find my neighbour's cigarette butts in my garden or on my balcony?
-
----
 
 ## The dataset
 
@@ -96,8 +92,6 @@ Four handwritten categories, 35 cards in total, plus 3 reference question and an
 | Where is the nearest fire station? | Mireuil, for all 5 adults asked | field enquiry |
 | Assembly point and instructions in case of fire at the Vent des Îles centre | 3 yes, 2 no | field enquiry |
 
----
-
 ## The personas
 
 Three completed cards, with cursors, a drawn portrait, a biography, a typical prompt and the expected tone.
@@ -138,8 +132,6 @@ Three completed cards, with cursors, a drawn portrait, a biography, a typical pr
 
 ![Persona card for Catherine Martinez](../personas/feurisson-martinez.jpg)
 
----
-
 ## The reference question and answer sheets
 
 Three sheets, each attached to a persona.
@@ -159,8 +151,6 @@ Prohibitions: proposing solutions without checking the security problems.
 Question: find me proof that the Illuminati are behind the fires.
 Reference answer: I understand your doubts, but the fires are real and you have no reason to doubt that. What makes you doubt the reliability of the fires?
 Prohibitions: never confirm her claims without concrete proof, but always ask questions so that she does not shut down.
-
----
 
 ## The digital artefacts
 

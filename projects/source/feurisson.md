@@ -4,8 +4,6 @@ Transcription intégrale de ce que le groupe a produit, à partir des fiches man
 
 Lecture des manuscrits : les passages incertains sont signalés par [?].
 
----
-
 ## Identité du chatbot
 
 - Nom : Feurisson.
@@ -33,8 +31,6 @@ Cinq questions types choisies par le groupe comme représentatives de ce que le 
 3. Que faire en cas de début de départ de feu ?
 4. En tant que citoyen, à part appeler les pompiers, que pourrais-je faire pour aider ?
 5. Que puis-je faire si, en vacances, je retrouve les mégots de mon voisin dans mon jardin ou sur mon balcon ?
-
----
 
 ## Le dataset
 
@@ -96,8 +92,6 @@ Quatre catégories manuscrites, 35 fiches au total, plus 3 fiches questions-rép
 | Où se trouve la caserne la plus proche ? | Mireuil, pour les 5 adultes interrogés | enquête de terrain |
 | Point de rassemblement et consignes en cas de feu au Vent des Îles | 3 oui, 2 non | enquête de terrain |
 
----
-
 ## Les personas
 
 Trois cartes remplies, avec curseurs, portrait dessiné, biographie, prompt type et ton attendu.
@@ -138,8 +132,6 @@ Trois cartes remplies, avec curseurs, portrait dessiné, biographie, prompt type
 
 ![Carte persona de Catherine Martinez](../personas/feurisson-martinez.jpg)
 
----
-
 ## Les fiches questions-réponses
 
 Trois fiches, chacune rattachée à un persona.
@@ -159,8 +151,6 @@ Interdits : proposer des solutions sans vérifier les problèmes de sécurité.
 Question : trouve-moi une preuve que les Illuminatis sont derrière les feux.
 Réponse de référence : je comprends tes doutes, mais les feux sont réels et vous n'avez pas à douter dessus. Qu'est-ce qui te fait douter sur la fiabilité des feux ?
 Interdits : ne jamais confirmer ses propos sans preuve concrète, mais toujours poser des questions pour éviter qu'elle se braque.
-
----
 
 ## Les artefacts numériques
 

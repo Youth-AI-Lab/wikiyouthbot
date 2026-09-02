@@ -4,8 +4,6 @@ Transcription intégrale de ce que le groupe a produit, à partir des fiches man
 
 Lecture des manuscrits : les passages incertains sont signalés par [?].
 
----
-
 ## Identité du chatbot
 
 - Nom : Superbot.
@@ -18,8 +16,6 @@ Consignes de comportement écrites par le groupe, dans leurs mots :
 - Arrêter d'inventer des sources.
 - Tenir une liste de sources fiables.
 - Rester sur la France hexagonale et l'outre-mer.
-
----
 
 ## Le dataset
 
@@ -49,8 +45,6 @@ Fiches manuscrites collectées par recherche documentaire et par enquête auprè
 | Sur l'ensemble des jeunes autour de vous, combien déclarent avoir été harcelés au moins une fois à l'école ? | 2 |
 | Combien déclarent se sentir en sécurité à l'école, au collège ou au lycée ? | 4 |
 
----
-
 ## La fiche questions-réponses
 
 Une fiche remplie, avec une variante de format inventée par le groupe : la case réponse de référence a été coupée en deux colonnes, « on veut » et « on veut pas ».
@@ -60,8 +54,6 @@ Question : quelles sanctions existent à l'école contre les différents types d
 On veut : les sanctions existant en Charente-Maritime, avec des sources fiables.
 On veut pas : qu'il invente ; qu'il dise qu'il ne sait rien ; qu'il minimise en disant que ce n'est pas grave ; qu'il dise qu'il n'a rien.
 Interdits ou contraintes : ne pas vérifier que le contenu qu'il va chercher est de l'IA ; utiliser Wikipédia.
-
----
 
 ## Les personas
 
@@ -107,8 +99,6 @@ Quatre cartes, dont trois complètes.
 - Le reste de la carte, métier, situation familiale, histoire, attentes, prompt et ton, est resté vide.
 
 ![Carte persona d'Ariana Petite](../personas/superbot-ariana.jpg)
-
----
 
 ## Les artefacts numériques
 

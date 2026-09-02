@@ -4,8 +4,6 @@ A full transcription of what the group produced, taken from the handwritten card
 
 Reading the handwriting: uncertain passages are marked [?].
 
----
-
 ## Identity of the chatbot
 
 - Name: Superbot.
@@ -18,8 +16,6 @@ Behaviour instructions written by the group, in their own words:
 - Stop inventing sources.
 - Keep a list of reliable sources.
 - Stay on mainland France and the overseas territories.
-
----
 
 ## The dataset
 
@@ -49,8 +45,6 @@ Handwritten cards gathered through documentary research and by interviewing the 
 | Out of all the young people around you, how many say they have been bullied at least once at school? | 2 |
 | How many say they feel safe at primary, lower or upper secondary school? | 4 |
 
----
-
 ## The reference question and answer sheet
 
 One completed sheet, with a format variant invented by the group: the reference answer box was split into two columns, what we want and what we don't want.
@@ -60,8 +54,6 @@ Question: what sanctions exist at school against the different types of bullying
 What we want: the sanctions that apply in Charente-Maritime, with reliable sources.
 What we don't want: that it invents; that it says it knows nothing; that it plays down the seriousness [?]; that it says it has nothing.
 Prohibitions or constraints: not checking whether the content it retrieves is AI-generated; using Wikipedia.
-
----
 
 ## The personas
 
@@ -107,8 +99,6 @@ Four cards, three of them complete.
 - The rest of the card, occupation, family situation, history, expectations, prompt and tone, was left blank.
 
 ![Persona card for Ariana Petite](../personas/superbot-ariana.jpg)
-
----
 
 ## The digital artefacts
 
