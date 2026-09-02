@@ -177,7 +177,7 @@ TEMPLATE = """<!DOCTYPE html>
   hr {{ border:0; border-top:2px solid #e6e6e6; margin:34px 0; }}
   code {{ background:#f2f2f2; padding:1px 5px; border-radius:5px; font-size:.92em; }}
   a {{ color:#1a1a1a; }}
-  .vignette {{ display:inline-block; margin:4px 0 18px; border:2px solid var(--ink); border-radius:12px;
+  .vignette {{ display:inline-block; cursor:zoom-in; margin:4px 0 18px; border:2px solid var(--ink); border-radius:12px;
              overflow:hidden; line-height:0; background:#fff; max-width:320px; }}
   .vignette img {{ display:block; width:100%; height:auto; }}
   .vignette:hover {{ box-shadow:4px 4px 0 var(--ink); transform:translate(-2px,-2px); }}
@@ -211,7 +211,9 @@ TEMPLATE = """<!DOCTYPE html>
 }}
 @media (max-width: 620px) {{ .haut {{ right: 14px; bottom: 14px; }} }}
 
-dialog.visionneuse {{ border:0; padding:0; background:transparent; max-width:100vw; max-height:100vh; }}
+dialog.visionneuse {{ border:0; padding:0; background:transparent;
+  position:fixed; inset:0; margin:auto; width:fit-content; height:fit-content;
+  max-width:100vw; max-height:100vh; }}
 dialog.visionneuse::backdrop {{ background:rgba(0,0,0,.88); }}
 dialog.visionneuse .cadre {{ position:relative; line-height:0; }}
 dialog.visionneuse img {{ max-width:92vw; max-height:86vh; width:auto; height:auto; display:block; border-radius:12px; background:#fff; }}
